@@ -1,0 +1,9 @@
+<%= simple_form_for(@menu_item) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :spiciness %>
+  <%= f.input :cooking_time %>
+  <%= f.input :price %>
+  <%= f.input :menu_item_type, as: :select, collection: MenuItem::CATEGORY %>
+  <%= f.submit %>
+<% end %>

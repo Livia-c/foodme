@@ -1,6 +1,11 @@
 <h2>Here are all the ingredients that you have in your Inventory</h2>
 <ul>
 <% @ingredients.each do |ingredient| %>
-  <li><%= ingredient.category %> -> <%= ingredient.name %>: (<%= ingredient.quantity %> <%= ingredient.unit %>)</li>
+  <li><%= ingredient.category %> -> <%= ingredient.name %>: (<%= ingredient.quantity %> <%= ingredient.unit %>)
+  <%= link_to "Show ingredient", ingredient, class: "btn btn-primary"%>
+  </li>
   <% end %>
 </ul>
+
+
+<%= link_to "Add new ingredient to the inventory", new_ingredient_path(@ingredient), class: "btn btn-secondary" %>

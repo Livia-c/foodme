@@ -1,0 +1,12 @@
+<h2>Here are all the  items that you have in your menu</h2>
+<ul>
+<% @menu_items.each do |item| %>
+  <li>
+    <%= item.menu_item_type %> -> <%= item.name %> (<%= item.description %>)
+    <br>
+    <p>Spiciness level: <%= item.spiciness %></p>
+    <p>Price: <%= item.price %> euros</p>
+    <p>Est cooking time: <%= item.cooking_time %> minutes</p>
+  </li>
+  <% end %>
+</ul>

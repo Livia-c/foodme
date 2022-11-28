@@ -1,12 +1,20 @@
-<h2>Here are all the  items that you have in your menu</h2>
-<ul>
-<% @menu_items.each do |item| %>
-  <li>
-    <%= item.menu_item_type %> -> <%= item.name %> (<%= item.description %>)
-    <br>
-    <p>Spiciness level: <%= item.spiciness %></p>
-    <p>Price: <%= item.price %> euros</p>
-    <p>Est cooking time: <%= item.cooking_time %> minutes</p>
-  </li>
-  <% end %>
-</ul>
+<h2>Index with all menu items</h2>
+
+<div class="container">
+  <div>
+  <%= link_to "Add new menu item", new_menu_item_path %>
+  </div>
+  <div class="menu-item-card">
+
+    <% @menu_items.each do |item| %>
+
+        <%= item.menu_item_type %> -> <%= item.name %> (<%= item.description %>)
+        <br>
+        <p>Spiciness level: <%= item.spiciness %></p>
+        <p>Price: <%= item.price %> euros</p>
+        <p>Est cooking time: <%= item.cooking_time %> minutes</p>
+        <%= link_to "Show details", menu_item_path(item) %>
+
+      <% end %>
+  </div>
+</div>

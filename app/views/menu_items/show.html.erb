@@ -1,0 +1,10 @@
+<h2>Show selected menu item</h2>
+
+<div class="container">
+  <%= @menu_item.name %>
+  <%= @menu_item.price %>
+  <%= link_to "Back", menu_items_path %>
+  <%= link_to "Update menu item", edit_menu_item_path %>
+  <%= link_to "Delete this menu item", menu_item_path(@menu_item),
+  data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this delicious menu?"} %>
+</div>

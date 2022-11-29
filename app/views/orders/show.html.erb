@@ -1,0 +1,13 @@
+<h2>Show selected order</h2>
+
+<div class="container">
+  <p><%= @order.active %></p>
+  <p><%= @order.status %></p>
+  <p><%= @order.user_id %></p>
+  <%= Order.joins(:order_items).where(order_id: @order.id) %>
+  <br>
+  <%= link_to "Back", orders_path %>
+  <%= link_to "Change order", edit_order_path %>
+  <%= link_to "Delete this menu item", order_path(@order),
+  data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this delicious menu?"} %>
+</div>

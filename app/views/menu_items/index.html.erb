@@ -3,6 +3,10 @@
 <div class="container">
   <div>
   <%= link_to "Add new menu item", new_menu_item_path %>
+  <br>
+  <%= link_to "See order cart", orders_path %>
+  <br>
+  <%= link_to "Back to dashboard", root_path %>
   </div>
   <div class="menu-item-card">
 
@@ -14,7 +18,9 @@
         <p>Price: <%= item.price %> euros</p>
         <p>Est cooking time: <%= item.cooking_time %> minutes</p>
         <%= link_to "Show details", menu_item_path(item) %>
-
+        <%= button_to "Add To Cart", order_items_path(menu_item_id: item.id), method: :post %>
       <% end %>
   </div>
 </div>
+
+<%# add order overview if login is by user and not restaurant/chef %>

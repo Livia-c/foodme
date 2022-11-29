@@ -8,5 +8,6 @@ Rails.application.routes.draw do
 
   resources :ingredients
   resources :menu_items
-  resources :order_items, only: [:index]
+  resources :order_items, only: [:index, :create, :edit, :update]
+  resources :orders
 end

@@ -1,5 +1,6 @@
 class Ingredient < ApplicationRecord
   has_many :recipes
+  validates :name, uniqueness: true
 
   UNIT = ["kg", "g", "l", "ml", "pcs", "can"]
   validates_inclusion_of :unit, in: UNIT

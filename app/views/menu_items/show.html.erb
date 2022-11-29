@@ -1,34 +1,36 @@
 <h2>Show selected menu item</h2>
 
-<div class="container">
-  <%= @menu_item.name %>
-  <%= @menu_item.price %>
-  <%= link_to "Back", menu_items_path %>
-  <%= link_to "Update menu item", edit_menu_item_path %>
-  <%= link_to "Delete this menu item", menu_item_path(@menu_item),
-  data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this delicious menu?"} %>
+<div class='container'>
+  <p><%= @menu_item.name %></p>
+  <p><%= @menu_item.price %> euro</p>
+  <%= link_to 'Back', menu_items_path, class: 'btn btn-primary' %>
+  <%= link_to 'Update menu item', edit_menu_item_path(@menu_item), class: 'btn btn-primary' %>
+  <%= link_to 'Delete this menu item', menu_item_path(@menu_item), class: 'btn btn-primary',
+  data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this delicious menu?'} %>
 </div>
-
-<div class="container">
-<p>The recipe:</p>
- <% @menu_item.ingredients do |ing| %>
+<br><br><br>
+<div class='container'>
+<h5>The recipe:</h5>
+ <% @menu_item.recipes.each do |recipe| %>
   <ul>
-  <li><%= ing.name %></li>
+  <li><p><%= recipe.ingredient.name %> -> <%= recipe.quantity %> <%= recipe.ingredient.unit %>
+  <%= link_to 'Delete this ingredient', recipe_path(recipe), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-primary' %> </p></li>
   </ul>
   <% end %>
 </div>
 
 
-<h4>Add new ingredients</h4>
-<% ing_list = Ingredient.all %>
-<% ing_array = [] %>
-<% ing_list.each do |ing| %>
-<% ing_array << ing.name%>
-<% end %>
-<%# <div>
+<div class='container'>
+  <p>Add a new ingredient</p>
+  <% ing_all = Ingredient.all %>
+  <% ing_array = [] %>
+  <% ing_all.each do |ing| %>
+  <% ing_array << "#{ing.name.capitalize} (#{ing.unit})" %>
+  <% end %>
+
   <%= simple_form_for [@menu_item, @recipe] do |f| %>
-    <%# <%= f.input :ingredient_id, collection: ing_array %>
-    <%# <%= f.input :qunatity %> %>
-    <%# <%= f.button :submit, class: "btn btn-light"%> %>
-  <%# <% end %> %>
-<%# </div> %> %> %>
+    <%= f.input :ingredient_id, collection: ing_array%>
+    <%= f.input :quantity %>
+    <%= f.button :submit, class: "btn btn-primary" %>
+  <% end %>
+</div>

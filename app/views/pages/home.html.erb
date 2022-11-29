@@ -1,5 +1,63 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-<%= link_to "Inventory", "ingredients", class: "btn btn-primary" %>
-<%= link_to "Menu", "menu_items", class: "btn btn-primary" %>
-<%= link_to "Live Kitchen", "order_items", class: "btn btn-primary" %>
+
+  <% if user_signed_in? %>
+  <div class= "container">
+    <div class="d-flex justify-content-center">
+
+      <div class="home-card mx-3 " >
+        <%= image_tag "Customers Enjoy Food.png", class:"img-size" %>
+        <div class="cards-text">
+          <%= link_to "Inventory", "ingredients", class: "btn btn-primary rounded-4 buttons" %>
+        </div>
+      </div>
+
+
+      <div class= " home-card mx-4 ">
+        <%= image_tag "Customers Enjoy Food.png", class:"img-size" %>
+        <div class="cards-text">
+          <%= link_to "Menu", "menu_items", class: "btn btn-primary rounded-4 buttons" %>
+        </div>
+      </div>
+
+      <div class= "home-card mx-4 ">
+        <%= image_tag "Customers Enjoy Food.png", class:"img-size" %>
+        <div class="cards-text  ">
+          <%= link_to "Live Kitchen", "order_items", class: "btn btn-primary rounded-4 buttons" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% else %>
+    <%= render "banner" %>
+
+  <div class= "container col-6">
+    <div class="d-flex justify-content-center">
+
+      <div class="home-card mx-5" >
+        <%= image_tag "Driver Deliver Food.png", class:"img-size" %>
+        <div class="cards-text">
+          <p><strong>Faster turnaround</strong></p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+
+
+      <div class= "home-card mx-5">
+        <%= image_tag "Customers Enjoy Food.png", class:"img-size" %>
+        <div class="cards-text" >
+          <p><strong>Digital Inventory</strong></p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+
+      <div class= "home-card mx-5">
+        <%= image_tag "Customers Enjoy Food.png", class:"img-size" %>
+        <div class="cards-text">
+          <p><strong>Happy Customers</strong></p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <% end %>

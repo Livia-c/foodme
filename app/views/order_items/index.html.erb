@@ -1,14 +1,21 @@
-<h2>Live Kitchen</h2>
 
-<div container = "flex-column mt-5">
-  <div class = "inline justify-content-center ">
-    <% @menu_items.each do |item| %>
-    <div class= "rounded-4 shadow-sm p-3 mb-5 bg-body rounded col-5 design ">
-      <p><strong><%= item.name %></strong></p>
-      <p><%= item.description %></p>
+<div class = "container">
+  <div class ="row">
+    <h2 class = "mb-4 row justify-content-center">Live Kitchen</h2>
+    <div class = "row justify-content-center row flex-row ">
+      <% @menu_items.each do |item| %>
+      <div class= " rounded-4 shadow-sm p-3 mb-5 bg-body rounded col-5 ">
+        <p><strong><%= item.name %></strong></p>
+        <p><%= item.description %></p>
+        <p>spiciness: <%= item.spiciness%></p>
+        <p><%= item.vegetarian %></p>
+        <p><%= item.vegan %></p>
+      </div>
+      <div class="col-3">
+        <%= link_to "Prep", "order_items", class: " btn btn-primary rounded-4", style:" height:147px" %>
+        <%= link_to "", "order_items", class: "fa-solid fa-check btn btn-primary rounded-4", style:" height:147px" %>
+      </div>
+      <% end %>
     </div>
-    <%= link_to "done", "order_items", class: " btn btn-primary rounded-4 ", style:"height:63px, width: 62px" %>
-    <%= link_to "Prep", "order_items", class: " btn btn-primary rounded-4", style:"height:63px, width: 62px" %>
-    <% end %>
   </div>
 </div>

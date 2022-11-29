@@ -5,7 +5,7 @@
   <p><%= @menu_item.price %> euro</p>
   <%= link_to 'Back', menu_items_path, class: 'btn btn-primary' %>
   <%= link_to 'Update menu item', edit_menu_item_path(@menu_item), class: 'btn btn-primary' %>
-  <%= link_to 'Delete this menu item', menu_item_path(@menu_item), class: 'btn btn-primary',
+  <%= link_to 'Delete this menu item', menu_item_path(@menu_item), class: 'btn btn-danger',
   data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this delicious menu?'} %>
 </div>
 <br><br><br>
@@ -14,7 +14,7 @@
  <% @menu_item.recipes.each do |recipe| %>
   <ul>
   <li><p><%= recipe.ingredient.name %> -> <%= recipe.quantity %> <%= recipe.ingredient.unit %>
-  <%= link_to 'Delete this ingredient', recipe_path(recipe), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-primary' %> </p></li>
+  <%= link_to 'Delete ingredient', recipe_path(recipe), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-danger' %> </p></li>
   </ul>
   <% end %>
 </div>

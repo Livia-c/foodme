@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @menu_item = MenuItem.find(params[:menu_item_id])
-    @ingredient = Ingredient.find_by name: params['recipe']['ingredient_id'].split[0].downcase
+    @ingredient = Ingredient.find(params['recipe']['ingredient_id'])
     @recipe.ingredient = @ingredient
     @recipe.menu_item = @menu_item
     if @recipe.save

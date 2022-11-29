@@ -7,4 +7,8 @@ class Ingredient < ApplicationRecord
 
   CATEGORY = ["vegetable", "fruit", "carbohydrate", "protein", "dairy", "spice", "other"]
   validates_inclusion_of :category, in: CATEGORY
+
+  def label
+    "#{name.capitalize} (#{unit})"
+  end
 end

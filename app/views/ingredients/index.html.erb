@@ -1,16 +1,7 @@
 <div class="container">
   <h2>Here are all the ingredients that you have in your Inventory</h2>
   <div class="ing-cards">
-    <% @ingredients.each do |ingredient| %>
-      <div class="card" style="width: 8rem;">
-        <img src="https://spoonacular.com/cdn/ingredients_100x100/<%= ingredient.name %>.jpg" class="card-img-top" alt="<%= ingredient.name %>">
-        <div class="card-body">
-          <h5 class="card-title"><%= ingredient.name %></h5>
-          <p class="card-text">(<%= ingredient.quantity %> <%= ingredient.unit %>)</p>
-          <%= link_to "Show more", ingredient, class: "btn btn-primary"%>
-        </div>
-      </div>
-      <% end %>
+     <%= render "ing-card", ingredients: @ingredients %>
   </div>
   <%= link_to "Add new ingredient to the inventory", new_ingredient_path(@ingredient), class: "btn btn-secondary" %>
 </div>

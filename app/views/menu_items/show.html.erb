@@ -8,3 +8,27 @@
   <%= link_to "Delete this menu item", menu_item_path(@menu_item),
   data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this delicious menu?"} %>
 </div>
+
+<div class="container">
+<p>The recipe:</p>
+ <% @menu_item.ingredients do |ing| %>
+  <ul>
+  <li><%= ing.name %></li>
+  </ul>
+  <% end %>
+</div>
+
+
+<h4>Add new ingredients</h4>
+<% ing_list = Ingredient.all %>
+<% ing_array = [] %>
+<% ing_list.each do |ing| %>
+<% ing_array << ing.name%>
+<% end %>
+<%# <div>
+  <%= simple_form_for [@menu_item, @recipe] do |f| %>
+    <%# <%= f.input :ingredient_id, collection: ing_array %>
+    <%# <%= f.input :qunatity %> %>
+    <%# <%= f.button :submit, class: "btn btn-light"%> %>
+  <%# <% end %> %>
+<%# </div> %> %> %>

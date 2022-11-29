@@ -6,6 +6,7 @@ class IngredientsController < ApplicationController
   end
 
   def show
+    
   end
 
   def new
@@ -15,7 +16,7 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
-      redirect_to @ingredient, notice: "ingredient was successfully created."
+      redirect_to @ingredient, notice: "Ingredient was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,7 +27,7 @@ class IngredientsController < ApplicationController
 
   def update
     if @ingredient.update(ingredient_params)
-    redirect_to @ingredient, notice: "ingredient was successfully updated."
+    redirect_to @ingredient, notice: "Ingredient was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end

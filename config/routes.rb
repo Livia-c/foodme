@@ -6,13 +6,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  resources :ingredients do
+  resources :ingredients
+
+  resources :menu_items do
     resources :recipes, only: [:create]
   end
 
-  resources :recipes, only: %i[update destroy]
-
-  resources :menu_items
+  resources :recipes, only: %i[destroy]
   resources :order_items, only: [:index, :create, :edit, :update]
   resources :orders
 end

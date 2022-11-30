@@ -1,7 +1,6 @@
 .img-size{
   width: 200px;
   height: 190px;
-
 }
 
 // .buttons{
@@ -10,24 +9,19 @@
 //   background-color: green;
 // }
 
-
 .cards-text{
   text-align: center;
 }
-
 
 .home-card{
   margin-top: 100px;
   margin-bottom: 100px;
 }
 
-.buttons {
-  text-decoration: none;
-  background-color: green;
-  color: white;
-  &:hover {
-    background-color: lightgreen;
-    border-color: white;
-    transition: 0.2s;
-  }
-}
+// .buttons {
+//   text-decoration: none;
+//   color: $background-green;
+//   &:hover {
+//     transition: 0.2s;
+//   }
+// }

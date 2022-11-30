@@ -1,4 +1,5 @@
 class IngredientsController < ApplicationController
+  before_action :check_params, only: %i[create update]
   before_action :set_ingredient, only: %i[show edit update destroy]
 
   def index
@@ -15,7 +16,7 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
-      redirect_to @ingredient, notice: "ingredient was successfully created."
+      redirect_to @ingredient, notice: "Ingredient was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -26,20 +27,25 @@ class IngredientsController < ApplicationController
 
   def update
     if @ingredient.update(ingredient_params)
-    redirect_to @ingredient, notice: "ingredient was successfully updated."
+      redirect_to @ingredient, notice: "Ingredient was successfully updated."
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
-    def destroy
-      @ingredient.destroy
-      redirect_to ingredients_url, notice: "Ingredient was successfully destroyed."
-    end
+  def destroy
+    @ingredient.destroy
+    redirect_to ingredients_url, notice: "Ingredient was successfully destroyed."
+  end
+
   private
 
   def set_ingredient
     @ingredient = Ingredient.find(params[:id])
+  end
+
+  def check_params
+    params[:ingredient][:name].downcase!
   end
 
   def ingredient_params

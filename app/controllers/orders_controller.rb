@@ -20,6 +20,14 @@ class OrdersController < ApplicationController
   #   end
   # end
 
+  def update
+    @order = Order.find(params[:id])
+    @order.status == "pending" ? @order.update(status: 1) : @order.update(status: 2)
+    if @order.save
+      redirect_to order_items_path
+    end
+  end
+
   # private
 
   # def order_params

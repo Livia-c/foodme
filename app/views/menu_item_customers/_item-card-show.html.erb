@@ -1,0 +1,13 @@
+<div class="menu-item-card-mobile">
+  <h3><%= @menu_item.name %></h3>
+  <p><%= @menu_item.description %></p>
+  <p>Spiciness level: <%= @menu_item.spiciness %></p>
+  <p>Price: <%= @menu_item.price %> euros</p>
+  <p>Est cooking time: <%= @menu_item.cooking_time %> minutes</p>
+  <p>Add one</p>
+  <p>Reduce one</p>
+  <%# <%= link_to "Add one", order_item_add_path(id: @order_items), method: :post %> %>
+  <%# <%= link_to "Reduce one", order_item_reduce_path(id: order_item), method: :post %> %>
+  <%= button_to "Add To Cart", order_items_path(menu_item_id: @menu_item.id), method: :post %>
+  <br>
+</div>

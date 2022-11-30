@@ -9,6 +9,7 @@
   <br>
   <p><%= @menu_item.name %></p>
   <p><%= @menu_item.price %> euro</p>
+  <%# <%= button_to "Add To Cart", order_items_path(menu_item_id: @menu_item.id), method: :post %> %>
   <%= link_to 'Back', menu_items_path, class: 'btn btn-primary' %>
   <%= link_to 'Update menu item', edit_menu_item_path(@menu_item), class: 'btn btn-primary' %>
   <%= link_to 'Delete this menu item', menu_item_path(@menu_item), class: 'btn btn-danger',

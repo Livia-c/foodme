@@ -2,7 +2,7 @@ class RecipesController < ApplicationController
   def create
     @recipe = Recipe.new(recipe_params)
     @menu_item = MenuItem.find(params[:menu_item_id])
-    @ingredient = Ingredient.find(params['recipe']['ingredient_id'])
+    @ingredient = Ingredient.find(params.dig(:recipe, :ingredient))
     @recipe.ingredient = @ingredient
     @recipe.menu_item = @menu_item
     if @recipe.save
@@ -16,6 +16,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @menu_item = @recipe.menu_item
     @recipe.destroy
+    @recipe.photo.purge
     redirect_to menu_item_path(@menu_item), notice: 'Ingredient was successfully deleted.'
   end
 

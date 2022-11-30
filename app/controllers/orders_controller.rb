@@ -4,21 +4,18 @@ class OrdersController < ApplicationController
   end
 
   def show
+    @order = @current_order
     @order = Order.find(params[:id])
   end
 
-  # def new
-  #   @order = Order.new
-  # end
-
-  # def create
-  #   @order = Order.new(order_params)
-  #   if @order.save
-  #     redirect_to order_path(@order), notice: "Your order was sent to the kitchen"
-  #   else
-  #     render :new, status: :unprocessable_entity
-  #   end
-  # end
+  def destroy
+    # @order = @current_order
+    @order = Order.find(params[:id])
+    @order.destroy
+    # session[:order_id] = nil
+    # redirect_to root_path
+    redirect_to orders_url, notice: "Order was successfully deleted."
+   end
 
   def update
     @order = Order.find(params[:id])
@@ -26,11 +23,8 @@ class OrdersController < ApplicationController
     if @order.save
       redirect_to order_items_path
     end
-  end
+   end
 
   # private
-
-  # def order_params
-  #   params.require(:order).permit(:table_number, :active, :status)
-  # end
+   # redirect_to order_path(@current_order), notice: "Item was successfully removed from order"
 end

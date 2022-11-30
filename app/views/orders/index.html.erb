@@ -8,6 +8,7 @@
         <%= order.status %>
         <%= order.active %>
         <%= link_to "Show order details", order_path(order) %>
+        <%= link_to "Delete order", orders_path, data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this unresistible order?'} %>
       </li>
     <% end %>
   </ul>

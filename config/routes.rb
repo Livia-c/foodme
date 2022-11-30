@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :recipes, only: [:create]
   end
 
-  resources :recipes, only: %i[update destroy]
-  resources :order_items, only: [:index]
+  resources :recipes, only: %i[destroy]
+  resources :order_items, only: [:index, :create, :edit, :update]
+  resources :orders
 end

@@ -2,21 +2,45 @@
 <div class = "container">
   <div class ="row">
     <h2 class = "mb-4 row justify-content-center">Live Kitchen</h2>
+    <h4>in progress:</h4>
     <%= link_to "Back to dashboard", root_path %>
     <div class = "row justify-content-center row flex-row ">
-      <% @order_items.each do |item| %>
-      <div class= " rounded-4 shadow-sm p-3 mb-5 bg-body rounded col-5 ">
-        <p><strong><%= item.menu_item.name %></strong></p>
-        <p>#<%= item.order_id %></p>
-        <p><%= item.order.status %></p>
-        <p><%= item.comment %></p>
-        <%# add extras %>
-        <%# add time %>
-      </div>
-      <div class="col-3">
-        <%= link_to "Prep", "order_items", class: " btn btn-primary rounded-4", style:" height:147px" %>
-        <%= link_to "", "order_items", class: "fa-solid fa-check btn btn-primary rounded-4 buttons", style:" height:147px" %>
-      </div>
+      <% @in_progress_orders.each do |order_item| %>
+        <div class= " rounded-4 shadow-sm p-3 mb-5 bg-body rounded col-5 ">
+          <p><strong><%= order_item.menu_item.name %></strong></p>
+          <p><%= order_item.menu_item.description %></p>
+          <p><%= order_item.order_id %></p>
+          <p><%= order_item.comment %></p>
+          <%# add extras %>
+          <%# add time %>
+        </div>
+        <div class="col-3">
+          <%= button_to "Done", order_path(order_item.order), method: :patch, class: " btn btn-primary rounded-4" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+
+
+
+<div class = "container border-top">
+  <div class ="row">
+    <h4>Start next:</h4>
+    <div class = "row justify-content-center row flex-row ">
+      <% @pending_orders.each do |order_item| %>
+        <div class= " rounded-4 shadow-sm p-3 mb-5 bg-body rounded col-5 ">
+          <p><strong><%= order_item.menu_item.name %></strong></p>
+          <p><%= order_item.menu_item.description %></p>
+          <p><%= order_item.order_id %></p>
+          <p><%= order_item.comment %></p>
+          <%# add extras %>
+          <%# add time %>
+        </div>
+        <div class="col-3">
+          <%= button_to "Prep", order_path(order_item.order), method: :patch, class: " btn btn-primary rounded-4" %>
+        </div>
       <% end %>
     </div>
   </div>

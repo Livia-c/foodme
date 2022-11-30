@@ -5,6 +5,12 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+OrderItem.destroy_all
+Order.destroy_all
+User.destroy_all
+Ingredient.destroy_all
+MenuItem.destroy_all
+
 
 p "Adding the first 5 ingredients"
 
@@ -54,7 +60,7 @@ ingredient.save
 puts "I just created ingredient nr #{ingredient.id}"
 
 p "Adding the first 3 menu items"
-item = MenuItem.new(
+item1 = MenuItem.new(
   name: "spring rolls",
   description: "small starter to make your waiting time pass faster",
   spiciness: "1",
@@ -62,10 +68,10 @@ item = MenuItem.new(
   price: "4",
   menu_item_type: "starter"
 )
-item.save
-puts "I just created ingredient nr #{item.id}"
+item1.save
+puts "I just created ingredient nr #{item1.id}"
 
-item = MenuItem.new(
+item2 = MenuItem.new(
   name: "tofu curry",
   description: "coconut based thai curry",
   spiciness: "3",
@@ -73,10 +79,10 @@ item = MenuItem.new(
   price: "8",
   menu_item_type: "main dish"
 )
-item.save
-puts "I just created ingredient nr #{item.id}"
+item2.save
+puts "I just created ingredient nr #{item2.id}"
 
-item = MenuItem.new(
+item3 = MenuItem.new(
   name: "stir fry noodles",
   description: "noodles with lots of veggies",
   spiciness: "2",
@@ -84,15 +90,31 @@ item = MenuItem.new(
   price: "7.5",
   menu_item_type: "main dish"
 )
-item.save
-puts "I just created ingredient nr #{item.id}"
+item3.save
+puts "I just created ingredient nr #{item3.id}"
+
 
 puts "Creating an user admin to log in"
 user = User.new(
   email: "admin@restaurant.com",
   password: "123456"
 )
-user.save
+user.save!
 puts "I just created an admi user nr #{user.id}"
 puts "Use admin@restaurant.com and 123456 to log in"
 puts "Seeding completed. You now have #{Ingredient.count} ingredients and #{MenuItem.count} items"
+
+puts "Creating pending order"
+new_order = Order.create!(user: user)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1 )
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2 )
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2 )
+
+puts "Creating delivered order"
+new_in_progress_order = Order.create!(user: user)
+
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3 )
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1 )
+
+new_in_progress_order.update!(status: 1)

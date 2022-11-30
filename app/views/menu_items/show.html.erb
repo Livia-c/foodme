@@ -1,7 +1,12 @@
 <h2>Show selected menu item</h2>
 
 <div class='container'>
-  <%= cl_image_tag @menu_item.photo.key, height: 300, width: 400, crop: :fill  if @menu_item.photo.attached?%>
+  <% if @menu_item.photos.attached?%>
+            <% @menu_item.photos.each do |photo|%>
+              <%=cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+          <% end %>
+  <br>
   <p><%= @menu_item.name %></p>
   <p><%= @menu_item.price %> euro</p>
   <%= link_to 'Back', menu_items_path, class: 'btn btn-primary' %>

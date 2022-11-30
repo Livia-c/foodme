@@ -1,8 +1,11 @@
  <% menu_items.each do |item| %>
         <li>
-          <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill if item.photo.attached?%>
-          <%# <% cl_image_tag @item.photos.first.key, height: 300, width: 400, crop: :fill if item.photos.attached? %> %>
-          <%= item.menu_item_type %> -> <%= item.name %> (<%= item.description %>)
+          <% if item.photos.attached?%>
+            <% item.photos.each do |photo|%>
+              <%=cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+          <% end %>
+          <p><%= item.menu_item_type %> -> <%= item.name %> (<%= item.description %>)</p>
           <p>Spiciness level: <%= item.spiciness %></p>
           <p>Price: <%= item.price %> euros</p>
           <p>Est cooking time: <%= item.cooking_time %> minutes</p>

@@ -8,6 +8,6 @@
   <%= f.input :vegan, as: :radio_buttons %>
   <%= f.input :vegetarian, as: :radio_buttons %>
   <%= f.input :signature_dish, as: :radio_buttons %>
-  <%= f.input :photo, as: :file %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit %>
 <% end %>

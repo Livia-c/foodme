@@ -2,7 +2,11 @@
 
 <div class="container">
   <div>
-  <%= link_to "Add new menu item", new_menu_item_path, class: "btn btn-primary m-4" %>
+    <%= link_to "See order cart", orders_path %>
+    <br>
+    <%= link_to "Back to dashboard", root_path %>
+    <br>
+    <%= link_to "Add new menu item", new_menu_item_path, class: "btn btn-primary m-4" %>
   </div>
   <ul>
     <div class="menu-item-card">
@@ -10,3 +14,5 @@
     </div>
   </ul>
 </div>
+
+<%# add order overview if login is by user and not restaurant/chef %>

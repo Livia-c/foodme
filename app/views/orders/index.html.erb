@@ -1,0 +1,16 @@
+<h2>Index for orders<h2>
+
+<div class="container">
+  <ul>
+    <% @orders.each do |order| %>
+      <li>
+        <%= order.table_number %>
+        <%= order.status %>
+        <%= order.active %>
+        <%= link_to "Show order details", order_path(order) %>
+      </li>
+    <% end %>
+  </ul>
+  <br>
+  <%= link_to "See menu", menu_items_path %>
+</div>

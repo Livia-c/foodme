@@ -1,6 +1,12 @@
 <h2>Show selected menu item</h2>
 
 <div class='container'>
+  <% if @menu_item.photos.attached?%>
+            <% @menu_item.photos.each do |photo|%>
+              <%=cl_image_tag photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+          <% end %>
+  <br>
   <p><%= @menu_item.name %></p>
   <p><%= @menu_item.price %> euro</p>
   <%= link_to 'Back', menu_items_path, class: 'btn btn-primary' %>
@@ -23,7 +29,7 @@
 <div class='container'>
   <p>Add a new ingredient</p>
   <%= simple_form_for [@menu_item, @recipe] do |f| %>
-    <%= f.input :ingredient_id, collection: Ingredient.all.sort{|a,b| a.label <=> b.label}, value_method: :id, label_method: :label%>
+    <%= f.input :ingredient, collection: Ingredient.all.sort_by(&:label), label_method: :label%>
     <%= f.input :quantity %>
     <%= f.button :submit, class: "btn btn-primary" %>
   <% end %>

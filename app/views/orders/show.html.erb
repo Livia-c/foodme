@@ -12,24 +12,18 @@
 <%# </div> %>
 
 <div class="container">
-  <ul>
   <% @order.order_items.each do |order_item| %>
-    <li>Menu item: <%= order_item.menu_item.name %>/ Price: <%= number_to_currency(order_item.menu_item.price, options = {precision: 2, unit: "€"}) %>/
+    <h3>Menu item: <%= order_item.menu_item.name %></h3>
+    <p>Price: <%= number_to_currency(order_item.menu_item.price, options = {precision: 2, unit: "€"}) %></p>
     <%# Quantity: <%= order_item.quantity %>/
-    <%# Total Price: <%= number_to_currency(order_item.total_price) %> %> %>
-    <ul>
-      <li>
-        <%= link_to "Add one", order_item_add_path(id: order_item), method: :post %>
-        <%= link_to "Reduce one", order_item_reduce_path(id: order_item), method: :post %>
-      </li>
-      <li>
-        <%= link_to "Remove item", order_item_path(order_item), method: :delete %>
-      </li>
-    </ul>
+    <%# Total Price: <%= number_to_currency(order_item.total_price) %> %>
+    <%# <%= link_to "Add one", order_item_add_path(id: order_item), method: :post %> %>
+    <%# <%= link_to "Reduce one", order_item_reduce_path(id: order_item), method: :post %> %>
+    <p><%= link_to "Remove item", order_item_path(order_item), data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this item?'} %></p>
   <% end %>
-</ul>
-<%# <h3>Sub total: <%= number_to_currency(@order.sub_total, options = {precision: 2, unit: "€"}) %></h3> %>
-<%# <%= link_to "Proceed to checkout", new_order_path %> %>
-<br>
-<%# <%= link_to "Empty cart", order_path(@current_order),method: :delete, data: {confirm: "Are you sure you would like to empty cart?"} %> %>
+  <p><%= link_to "Delete entire order", orders_path, data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete the whole order?'} %></p>
+  <%# <h3>Sub total: <%= number_to_currency(@order.sub_total, options = {precision: 2, unit: "€"}) %></h3> %>
+  <%# <%= link_to "Proceed to checkout", new_order_path %> %>
+  <br>
+  <%# <%= link_to "Empty cart", order_path(@current_order),method: :delete, data: {confirm: "Are you sure you would like to empty cart?"} %> %>
 </div>

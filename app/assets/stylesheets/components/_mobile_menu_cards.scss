@@ -1,0 +1,26 @@
+.card-menu-mobile {
+  height: 120px;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  padding-left: 13px;
+  padding-right: 13px;
+}
+
+.card-menu-mobile-infos h3 {
+  margin: 0;
+}
+
+.card-menu-mobile-infos p {
+  margin: 0;
+}
+
+.card-menu-mobile-icons {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card-menu-mobile-time {
+  display: flex;
+  justify-content: space-between;
+}

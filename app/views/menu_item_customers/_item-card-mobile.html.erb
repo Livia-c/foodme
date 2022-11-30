@@ -1,12 +1,18 @@
+
 <% @menu_items.each do |item| %>
-  <div class="menu-item-card-mobile">
-    <h3><%= item.name %></h3>
-    <p><%= item.description %></p>
-    <p>Spiciness level: <%= item.spiciness %></p>
-    <p>Price: <%= item.price %> euros</p>
-    <p>Est cooking time: <%= item.cooking_time %> minutes</p>
-    <%= link_to "Show details", menu_item_customer_path(item), class: "btn btn-primary" %>
-    <p>remove button for mobile</p>
-    <br>
+  <div class="card-menu-mobile">
+    <div class="card-menu-mobile-infos">
+      <div class="card-menu-mobile-time">
+        <h3><%= item.name.capitalize %></h3>
+        <p><i class="fa-regular fa-clock"></i> <%= item.cooking_time %>min</p>
+      </div>
+      <p><%= item.description.capitalize %></p>
+      <div class="card-menu-mobile-icons">
+        <p><i class="fa-solid fa-pepper-hot"></i> <%= item.spiciness %></p>
+        <p><i class="fa-solid fa-euro-sign"></i> <%= item.price %></p>
+      </div>
+
+      <%= link_to "Show details (remove on mobile)", menu_item_customer_path(item), class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

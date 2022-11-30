@@ -1,7 +1,7 @@
 <div class="container">
   <h2>Here are all the ingredients that you have in your Inventory</h2>
   <div class="ing-cards">
-     <%= render "ing-card", ingredients: @ingredients %>
+     <%= render "ing_card", ingredients: @ingredients %>
   </div>
   <%= link_to "Add new ingredient to the inventory", new_ingredient_path(@ingredient), class: "btn btn-secondary" %>
 </div>

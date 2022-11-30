@@ -1,11 +1,13 @@
  <% menu_items.each do |item| %>
         <li>
-            <%= item.menu_item_type %> -> <%= item.name %> (<%= item.description %>)
-            <p>Spiciness level: <%= item.spiciness %></p>
-            <p>Price: <%= item.price %> euros</p>
-            <p>Est cooking time: <%= item.cooking_time %> minutes</p>
-            <%= link_to "Show details", menu_item_path(item), class: "btn btn-primary" %>
-            <%= button_to "Add To Cart", order_items_path(menu_item_id: item.id), method: :post %>
-            <br>  <br>
-          </li>
-        <% end %>
+          <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill if item.photo.attached?%>
+          <%# <% cl_image_tag @item.photos.first.key, height: 300, width: 400, crop: :fill if item.photos.attached? %> %>
+          <%= item.menu_item_type %> -> <%= item.name %> (<%= item.description %>)
+          <p>Spiciness level: <%= item.spiciness %></p>
+          <p>Price: <%= item.price %> euros</p>
+          <p>Est cooking time: <%= item.cooking_time %> minutes</p>
+          <%= link_to "Show details", menu_item_path(item), class: "btn btn-primary" %>
+          <%= button_to "Add To Cart", order_items_path(menu_item_id: item.id), method: :post %>
+          <br>  <br>
+        </li>
+      <% end %>

@@ -1,15 +1,10 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate_user!
+  before_action :current_order
 
-  # commented because using user instead of session
-  # from https://goodjobbin85.github.io/creating_a_shopping_cart_in_rails_part_i
-  # from https://medium.com/@yxp010/simple-shopping-cart-in-rails-ece6f51b27e6
-  # def current_order
-  #   if session[:order]
-  #     @order = Order.find(session[:order])
-  #   else
-  #     @order = Order.create
-  #     session[:order] = @order.id
-  #   end
-  # end
+  private
+
+  def current_order
+    @current_order = current_user.orders.where(active: true).first || @current_order = Order.create(user: current_user, active: true)
+  end
 end

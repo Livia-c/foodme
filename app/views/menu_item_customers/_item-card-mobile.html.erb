@@ -1,0 +1,12 @@
+<% @menu_items.each do |item| %>
+  <div class="menu-item-card-mobile">
+    <h3><%= item.name %></h3>
+    <p><%= item.description %></p>
+    <p>Spiciness level: <%= item.spiciness %></p>
+    <p>Price: <%= item.price %> euros</p>
+    <p>Est cooking time: <%= item.cooking_time %> minutes</p>
+    <%= link_to "Show details", menu_item_customer_path(item), class: "btn btn-primary" %>
+    <p>remove button for mobile</p>
+    <br>
+  </div>
+<% end %>

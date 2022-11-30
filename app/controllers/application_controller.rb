@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   private
 
   def current_order
+    return unless current_user.present?
+
     @current_order = current_user.orders.where(active: true).first || @current_order = Order.create(user: current_user, active: true)
   end
 end

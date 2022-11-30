@@ -2,15 +2,15 @@
 
 <div class="container">
   <div>
-    <%# <%= link_to "See order cart", orders_path %>
-    <%# <br> %>
-    <%= link_to "Back to dashboard", root_path %>
+    <%= link_to "See online menu", menu_item_customers_path, class: "btn btn-warning" %>
+    <br>
+    <%= link_to "Back to dashboard", root_path, class: "btn btn-warning" %>
     <br>
     <%= link_to "Add new menu item", new_menu_item_path, class: "btn btn-primary m-4" %>
   </div>
   <ul>
     <div class="menu-item-card">
-      <%= render "item-card", menu_items: @menu_items %>
+      <%= render "item_card", menu_items: @menu_items %>
     </div>
   </ul>
 </div>

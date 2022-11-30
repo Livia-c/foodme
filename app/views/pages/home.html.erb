@@ -1,11 +1,9 @@
-
 <% if user_signed_in? %>
   <% if current_user.restaurant_user? %>
     <%= render "home-restaurant" %>
   <% else %>
     <%= render "home-customer" %>
   <% end %>
-
 <% else %>
   <%= render "banner" %>
   <%= render "home-no-login" %>

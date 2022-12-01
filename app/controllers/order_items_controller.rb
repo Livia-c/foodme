@@ -1,9 +1,9 @@
 class OrderItemsController < ApplicationController
   def index
-    @waiting_orders = OrderItem.joins(:order).where(order: { status: "waiting" })
-    @pending_orders = OrderItem.joins(:order).where(order: { status: "pending" })
-    @in_progress_orders = OrderItem.joins(:order).where(order: { status: "in_progress" })
-    @delivered_orders = OrderItem.joins(:order).where(order: { status: "delivered" })
+    @waiting_orders = Order.where(status: :waiting)
+    @pending_orders = Order.where(status: :pending)
+    @in_progress_orders = Order.where(status: :in_progress)
+    @delivered_orders = Order.where(status: :delivered)
   end
 
   # def create

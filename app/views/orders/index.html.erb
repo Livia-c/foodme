@@ -1,17 +1,16 @@
 <h2>Index for orders<h2>
 
 <div class="container">
-  <ul>
     <% @orders.each do |order| %>
-      <li>
+      <div class="order-card">
         <%= order.table_number %>
-        <%= order.status %>
-        <%= order.active %>
-        <%= link_to "Show order details", order_path(order) %>
-        <%= link_to "Delete order", orders_path, data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this unresistible order?'} %>
-      </li>
+        <h3>Order ID:<%= order.id %></h3>
+        <p>Status: <%= order.status %></p>
+        <p>Active? <%= order.active %></p>
+        <p><%= link_to "Show order details", order_path(order) %></p>
+        <%# <%= link_to "Delete order", order_path, data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this unresistible order?'} %>
+      </div>
     <% end %>
-  </ul>
   <br>
-  <%= link_to "See menu", menu_items_path %>
+  <p><%= link_to "See menu", menu_items_path %></p>
 </div>

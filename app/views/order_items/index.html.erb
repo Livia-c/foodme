@@ -2,8 +2,8 @@
 <div class = "container">
   <div class ="row">
     <h2 class = "mb-4 row justify-content-center">Live Kitchen</h2>
-    <h4>in progress:</h4>
     <%= link_to "Back to dashboard", root_path %>
+    <h4>In progress:</h4>
     <div class = "row justify-content-center row flex-row ">
       <% @in_progress_orders.each do |order_item| %>
         <div class= " rounded-4 shadow-sm p-3 mb-5 bg-body rounded col-5 ">
@@ -22,12 +22,9 @@
   </div>
 </div>
 
-
-
-
 <div class = "container border-top">
   <div class ="row">
-    <h4>Start next:</h4>
+    <h4>Up next:</h4>
     <div class = "row justify-content-center row flex-row ">
       <% @pending_orders.each do |order_item| %>
         <div class= " rounded-4 shadow-sm p-3 mb-5 bg-body rounded col-5 ">
@@ -40,6 +37,22 @@
         </div>
         <div class="col-3">
           <%= button_to "Prep", order_path(order_item.order), method: :patch, class: " btn btn-primary rounded-4" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class = "container border-top">
+  <div class ="row">
+    <h4>Already cooked:</h4>
+    <div class = "row justify-content-center row flex-row ">
+      <% @delivered_orders.each do |order_item| %>
+        <div class= " rounded-4 shadow-sm p-3 mb-5 bg-body rounded col-5 ">
+          <p><strong><%= order_item.menu_item.name %></strong></p>
+          <p><%= order_item.menu_item.description %></p>
+          <p><%= order_item.order_id %></p>
+          <p><%= order_item.comment %></p>
         </div>
       <% end %>
     </div>

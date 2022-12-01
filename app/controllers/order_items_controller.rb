@@ -1,7 +1,9 @@
 class OrderItemsController < ApplicationController
   def index
-    @pending_orders = OrderItem.joins(:order).where(order: {status: "pending"})
-    @in_progress_orders = OrderItem.joins(:order).where(order: {status: "in_progress"})
+    @waiting_orders = OrderItem.joins(:order).where(order: { status: "waiting" })
+    @pending_orders = OrderItem.joins(:order).where(order: { status: "pending" })
+    @in_progress_orders = OrderItem.joins(:order).where(order: { status: "in_progress" })
+    @delivered_orders = OrderItem.joins(:order).where(order: { status: "delivered" })
   end
 
   # def create
@@ -24,30 +26,40 @@ class OrderItemsController < ApplicationController
   # end
 
   def create
-    #the quantity increase doesn't work. Try using find_by(can also take an instance) instead of find(takes only id)
     #When a new order item is created, by default the qty is null. Null+1 => error. The default quantity needs to be set to 1
 
     # Find associated menu_item and current order
     chosen_menu_item = MenuItem.find(params[:menu_item_id])
     current_order = @current_order
-  
-    # If order already has this menu_item then find the relevant order_item and iterate quantity otherwise create a new order_item for this menu_item
-    if current_order.menu_items.include?(chosen_menu_item)
-      # Find the line_item with the chosen_product
-      @order_item = current_order.order_items.find_by(menu_item_id: chosen_menu_item)
-      # Iterate the line_item's quantity by one
-      @order_item.quantity += 1
+    if @current_order.active?
+      # If order already has this menu_item then find the relevant order_item and iterate quantity otherwise create a new order_item for this menu_item
+      if current_order.menu_items.include?(chosen_menu_item)
+        # Find the line_item with the chosen_product
+        @order_item = current_order.order_items.find_by(menu_item_id: chosen_menu_item)
+        # Iterate the line_item's quantity by one
+        @order_item.quantity += 1
+      else
+        @order_item = OrderItem.new
+        @order_item.order = current_order
+        @order_item.menu_item = chosen_menu_item
+        @order_item.quantity = 1
+      end
     else
+      @current_order = Order.create(user: current_user, active: true)
       @order_item = OrderItem.new
       @order_item.order = current_order
       @order_item.menu_item = chosen_menu_item
       @order_item.quantity = 1
     end
-
     # Save and redirect to cart show path
     @order_item.save
     redirect_to order_path(current_order)
   end
+
+
+  # def update
+  #   if @order_item.update(order_item_params)
+  # end
 
   # def add_quantity
   #   @order_item = OrderItem.find(params[:id])

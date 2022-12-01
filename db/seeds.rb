@@ -282,10 +282,22 @@ user2.save!
 puts "I just created a guest user nr #{user2.id}"
 puts "Use ana@mail.com and 123456 to log in as guest"
 
-puts "Seeding completed. You now have #{Ingredient.count} ingredients and #{MenuItem.count} items"
+puts "Creating a guest account to log in"
+user3 = User.new(
+  email: "bob@mail.com",
+  password: "123456",
+  restaurant_user: false
+)
+user3.save!
+puts "I just created a guest user nr #{user3.id}"
+puts "Use bob@mail.com and 123456 to log in as guest"
 
-puts "Creating pending order"
-new_order = Order.create!(user: user2)
+puts "Creating cart (waiting) order"
+new_order = Order.create!(user: user2, active: true)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
 
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 2)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1 )
@@ -293,12 +305,33 @@ new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity:
 
 new_order_item.save
 
-puts "Creating delivered order"
-new_in_progress_order = Order.create!(user: user2)
+
+new_in_progress_order = Order.create!(user: user3, status: 1, active: false)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 2)
 
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 2)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
 
 new_in_progress_order_item.save
 
-new_in_progress_order.update!(status: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
+
+puts "New order #{new_order.id} id was created. The status is #{new_order.status} and active: #{new_order.active}"
+
+puts "Creating 2 done orders"
+new_order = Order.create!(user: user2, active: false, status: 3)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+puts "New order #{new_order.id} id was created. The status is #{new_order.status} and active: #{new_order.active}"
+
+new_order = Order.create!(user: user3, active: false, status: 3)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
+puts "New order #{new_order.id} id was created. The status is #{new_order.status} and active: #{new_order.active}"
+
+puts "Seeding completed. You now have #{Ingredient.count} ingredients and #{MenuItem.count} items"
+puts "You also have #{User.count} users, that placed #{Order.count} orders with #{OrderItem.count} items"

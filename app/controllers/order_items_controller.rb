@@ -1,11 +1,13 @@
 class OrderItemsController < ApplicationController
   def index
-    @waiting_orders = OrderItem.joins(:order).where(order: { status: "waiting" })
-    @pending_orders = OrderItem.joins(:order).where(order: { status: "pending" })
-    @in_progress_orders = OrderItem.joins(:order).where(order: { status: "in_progress" })
-    @delivered_orders = OrderItem.joins(:order).where(order: { status: "delivered" })
+    @waiting_orders = Order.where(status: :waiting)
+    @pending_orders = Order.where(status: :pending)
+    @in_progress_orders = Order.where(status: :in_progress)
   end
 
+  def completed_orders
+    @delivered_orders = Order.where(status: :delivered)
+  end
   # def create
   #   menu_item = MenuItem.find(params[:menu_item_id])
   #   @order_item = OrderItem.new
@@ -26,8 +28,6 @@ class OrderItemsController < ApplicationController
   # end
 
   def create
-    #When a new order item is created, by default the qty is null. Null+1 => error. The default quantity needs to be set to 1
-
     # Find associated menu_item and current order
     chosen_menu_item = MenuItem.find(params[:menu_item_id])
     current_order = @current_order

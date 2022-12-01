@@ -1,31 +1,29 @@
 <h2>Show selected order</h2>
 
-<%# <div class="container"> %>
-  <%# <p><%= @order.active %>
-  <%# <p><%= @order.status %>
-  <%# <p><%= @order.user_id %>
-  <%# <%= Order.joins(:order_items).where(order_id: @order.id) %>
-  <%# <br> %>
-  <%# <%= link_to "Back", orders_path %>
-  <%# <%= link_to "Change order", edit_order_path %>
-  <%# <%= link_to "Delete this menu item", order_path(@order), data: {turbo_method: :delete, turbo_confirm: "Do you really want to delete this delicious menu?"} %>
-<%# </div> %>
-
 <div class="container">
   <% @order.order_items.each do |order_item| %>
     <div class="order-card">
       <h3><%= order_item.quantity %>x <%= order_item.menu_item.name.capitalize %></h3>
-      <%# <p>Price per item: <%= number_to_currency(order_item.menu_item.price, options = {precision: 2, unit: "€"}) %></p>
-      <p>Total price: <%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€"}) %></p>
-      <%# <%= link_to "Add one", order_item_add_path(id: order_item), method: :post %>
-      <%# <%= link_to "Reduce one", order_item_reduce_path(id: order_item), method: :post %>
-      <p><i class="fa-regular fa-trash-can"></i><%= link_to "Remove item", order_item_path(order_item), data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this item?'} %></p>
+      <p>Price: <%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€"}) %></p>
+      <% if @order.waiting? %>
+        <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post } %>
+        <%= link_to "Reduce one", order_item_reduce_path(id: order_item), data: {turbo_method: :post } %>
+        <p><i class="fa-regular fa-trash-can"></i><%= link_to "Remove item", order_item_path(order_item), data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this item?'} %></p>
+      <% else %>
+        <p><i>This order was already sent to the kitchen and cannot be changed anymore.</i></p>
+      <% end %>
     </div>
   <% end %>
-  <p><%= button_to "Send order to kitchen", order_path(order_id: @order.id), method: :patch %></p>
-  <p><%= link_to "Delete entire order", order_path, data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete the whole order?'} %></p>
-  <%# <h3>Sub total: <%= number_to_currency(@order.sub_total, options = {precision: 2, unit: "€"})</h3> %>
-  <%# <%= link_to "Proceed to checkout", new_order_path %>
+  <p>Total order amount <%= number_to_currency(@order.sub_total, options = {precision: 2, unit: "€"}) %></p>
+  <% if @order.waiting? %>
+    <% if @order.order_items.empty? %>
+      <%= link_to "Your cart is currently empty, pick a dish", menu_item_customers_path %>
+    <% else %>
+      <p><%= button_to "Send order to kitchen", order_path(order_id: @order.id), method: :patch %></p>
+      <p><%= link_to "Empty cart", order_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure you would like to empty cart?'} %></p>
+    <% end %>
+  <% else %>
+    <p><%= link_to "Start a new order", menu_item_customers_path, class: "btn btn-primary" %></p>
+  <% end %>
   <br>
-  <%# <%= link_to "Empty cart", order_path(@current_order),method: :delete, data: {confirm: "Are you sure you would like to empty cart?"} %>
 </div>

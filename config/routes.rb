@@ -18,6 +18,6 @@ Rails.application.routes.draw do
   resources :order_items, only: %i[index create add_quantity reduce_quantity destroy]
   resources :orders
 
-  # post 'order_items/:id/add' => "order_items#add_quantity", as: "order_item_add"
-  # post 'order_items/:id/reduce' => "order_items#reduce_quantity", as: "order_item_reduce"
+  post 'order_items/:id/add' => "order_items#add_quantity", as: "order_item_add"
+  post 'order_items/:id/reduce' => "order_items#reduce_quantity", as: "order_item_reduce"
 end

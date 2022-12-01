@@ -2,4 +2,4 @@
 <p> you currently have <%= @ingredient.quantity %> <%= @ingredient.unit %> in your storage</p>
 <%= link_to "Update the amounts", edit_ingredient_path(@ingredient), class: "btn btn-primary" %>
 <%= link_to "Delete this ingredient", ingredient_path(@ingredient), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-danger"%>
-<%=  link_to "Back to your inventory", ingredients_path, class: "btn btn-primary" %>
+<%= link_to "Back to your inventory", ingredients_path, class: "btn btn-primary" %>

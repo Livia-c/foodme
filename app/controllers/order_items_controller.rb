@@ -30,7 +30,6 @@ class OrderItemsController < ApplicationController
     # Find associated menu_item and current order
     chosen_menu_item = MenuItem.find(params[:menu_item_id])
     current_order = @current_order
-  
     # If order already has this menu_item then find the relevant order_item and iterate quantity otherwise create a new order_item for this menu_item
     if current_order.menu_items.include?(chosen_menu_item)
       # Find the line_item with the chosen_product

@@ -8,6 +8,10 @@
   <p>Reduce one</p>
   <%# <%= link_to "Add one", order_item_add_path(id: @order_items), method: :post %> %>
   <%# <%= link_to "Reduce one", order_item_reduce_path(id: order_item), method: :post %> %>
-  <%= button_to "Add To Cart", order_items_path(menu_item_id: @menu_item.id), method: :post %>
+  <% if user_signed_in? %>
+  <%= link_to "Add To Cart", order_items_path(menu_item_id: @menu_item.id), data: {turbo_method: :post}, class: "btn btn-primary" %>
+  <% else %>
+  <%=  link_to "Add To Cart", order_items_path(menu_item_id: @menu_item.id), method: :post, class: "btn btn-primary"%>
+  <% end %>
   <br>
 </div>

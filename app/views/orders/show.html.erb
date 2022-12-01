@@ -15,7 +15,7 @@
   <% @order.order_items.each do |order_item| %>
     <h3>Menu item: <%= order_item.menu_item.name %></h3>
     <p>Price: <%= number_to_currency(order_item.menu_item.price, options = {precision: 2, unit: "€"}) %></p>
-    <%# Quantity: <%= order_item.quantity %>
+    <p>Quantity: <%= order_item.quantity %></p>
     <%# Total Price: <%= number_to_currency(order_item.total_price) %>
     <%# <%= link_to "Add one", order_item_add_path(id: order_item), method: :post %>
     <%# <%= link_to "Reduce one", order_item_reduce_path(id: order_item), method: :post %>

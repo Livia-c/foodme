@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   def index
-    #only shows the orders that match with the logged in user
+    # only shows the orders that match with the logged in user
     @orders = Order.where(user: current_user)
   end
 
@@ -29,5 +29,5 @@ class OrdersController < ApplicationController
    end
 
   # private
-   # redirect_to order_path(@current_order), notice: "Item was successfully removed from order"
+  # redirect_to order_path(@current_order), notice: "Item was successfully removed from order"
 end

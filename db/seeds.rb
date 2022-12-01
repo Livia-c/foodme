@@ -138,4 +138,25 @@ new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, men
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 2)
 puts "New order #{new_in_progress_order.id} id was created. The status is #{new_in_progress_order.status} and active: #{new_in_progress_order.active}"
 
+puts "Creating a in preparation order"
+new_order = Order.create!(user: user2, active: false, status: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
+
+puts "New order #{new_order.id} id was created. The status is #{new_order.status} and active: #{new_order.active}"
+
+puts "Creating 2 done orders"
+new_order = Order.create!(user: user2, active: false, status: 3)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+puts "New order #{new_order.id} id was created. The status is #{new_order.status} and active: #{new_order.active}"
+
+new_order = Order.create!(user: user3, active: false, status: 3)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
+puts "New order #{new_order.id} id was created. The status is #{new_order.status} and active: #{new_order.active}"
+
 puts "Seeding completed. You now have #{Ingredient.count} ingredients and #{MenuItem.count} items"
+puts "You also have #{User.count} users, that placed #{Order.count} orders with #{OrderItem.count} items"

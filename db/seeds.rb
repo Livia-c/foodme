@@ -97,22 +97,35 @@ puts "I just created ingredient nr #{item3.id}"
 puts "Creating an user admin to log in"
 user = User.new(
   email: "admin@restaurant.com",
-  password: "123456"
+  password: "123456",
+  restaurant_user: true
 )
 user.save!
-puts "I just created an admi user nr #{user.id}"
+puts "I just created an admin user nr #{user.id}"
 puts "Use admin@restaurant.com and 123456 to log in"
+
+
+puts "Creating a guest account to log in"
+user2 = User.new(
+  email: "ana@mail.com",
+  password: "123456",
+  restaurant_user: false
+)
+user2.save!
+puts "I just created a guest user nr #{user2.id}"
+puts "Use ana@mail.com and 123456 to log in as guest"
+
 puts "Seeding completed. You now have #{Ingredient.count} ingredients and #{MenuItem.count} items"
 
 puts "Creating pending order"
-new_order = Order.create!(user: user)
+new_order = Order.create!(user: user2)
 
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1 )
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2 )
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2 )
 
 puts "Creating delivered order"
-new_in_progress_order = Order.create!(user: user)
+new_in_progress_order = Order.create!(user: user2)
 
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3 )
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1 )

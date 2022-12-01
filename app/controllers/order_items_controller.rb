@@ -24,6 +24,9 @@ class OrderItemsController < ApplicationController
   # end
 
   def create
+    #the quantity increase doesn't work. Try using find_by(can also take an instance) instead of find(takes only id)
+    #When a new order item is created, by default the qty is null. Null+1 => error. The default quantity needs to be set to 1
+
     # Find associated menu_item and current order
     chosen_menu_item = MenuItem.find(params[:menu_item_id])
     current_order = @current_order

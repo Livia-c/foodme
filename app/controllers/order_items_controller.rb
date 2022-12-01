@@ -3,9 +3,11 @@ class OrderItemsController < ApplicationController
     @waiting_orders = Order.where(status: :waiting)
     @pending_orders = Order.where(status: :pending)
     @in_progress_orders = Order.where(status: :in_progress)
-    @delivered_orders = Order.where(status: :delivered)
   end
 
+  def completed_orders
+    @delivered_orders = Order.where(status: :delivered)
+  end
   # def create
   #   menu_item = MenuItem.find(params[:menu_item_id])
   #   @order_item = OrderItem.new

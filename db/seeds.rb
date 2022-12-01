@@ -93,7 +93,6 @@ item3 = MenuItem.new(
 item3.save
 puts "I just created ingredient nr #{item3.id}"
 
-
 puts "Creating an user admin to log in"
 user = User.new(
   email: "admin@restaurant.com",
@@ -115,19 +114,28 @@ user2.save!
 puts "I just created a guest user nr #{user2.id}"
 puts "Use ana@mail.com and 123456 to log in as guest"
 
+puts "Creating a guest account to log in"
+user3 = User.new(
+  email: "bob@mail.com",
+  password: "123456",
+  restaurant_user: false
+)
+user3.save!
+puts "I just created a guest user nr #{user3.id}"
+puts "Use bob@mail.com and 123456 to log in as guest"
+
+puts "Creating cart (waiting) order"
+new_order = Order.create!(user: user2, active: true)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+
+puts "New order #{new_order.id} id was created. The status is #{new_order.status} and active: #{new_order.active}"
+
+new_in_progress_order = Order.create!(user: user3, status: 1, active: false)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 2)
+puts "New order #{new_in_progress_order.id} id was created. The status is #{new_in_progress_order.status} and active: #{new_in_progress_order.active}"
+
 puts "Seeding completed. You now have #{Ingredient.count} ingredients and #{MenuItem.count} items"
-
-puts "Creating pending order"
-new_order = Order.create!(user: user2)
-
-new_order_item = OrderItem.create!(order: new_order, menu_item: item1 )
-new_order_item = OrderItem.create!(order: new_order, menu_item: item2 )
-new_order_item = OrderItem.create!(order: new_order, menu_item: item2 )
-
-puts "Creating delivered order"
-new_in_progress_order = Order.create!(user: user2)
-
-new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3 )
-new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1 )
-
-new_in_progress_order.update!(status: 1)

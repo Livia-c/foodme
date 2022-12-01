@@ -1,5 +1,5 @@
 class MenuItemCustomersController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
     @menu_items = MenuItem.all

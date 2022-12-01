@@ -15,6 +15,7 @@ class MenuItemsController < ApplicationController
 
   def create
     @menu_item = MenuItem.new(menu_item_params)
+    raise
     if @menu_item.save
       redirect_to menu_item_path(@menu_item), notice: "Menu item was successfully created."
     else
@@ -45,6 +46,6 @@ class MenuItemsController < ApplicationController
   end
 
   def menu_item_params
-    params.require(:menu_item).permit(:name, :description, :spiciness, :cooking_time, :price, :menu_item_type, photos: [])
+    params.require(:menu_item).permit(:name, :description, :spiciness, :cooking_time, :vegetarian, :vegan, :signature_dish, :price, :menu_item_type, photos: [])
   end
 end

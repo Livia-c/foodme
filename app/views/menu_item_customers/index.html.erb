@@ -1,3 +1,39 @@
 <h2>Menu Overview for customers</h2>
-<p>Add filters here</p>
+
+<%# <%= link_to menu_item_customers_path(:query => { :menu_item_type => :starters }), class: "tab" do %>
+  <%# <p>Starters</p> %>
+<%# <% end %>
+<%# <%= link_to menu_item_customers_path(:query => { :menu_item_type => :main_dish }), class: "tab" do %>
+  <%# <p>Main Dish</p> %>
+<%# <% end %>
+
+<%# <%= f.association :tags,
+                  as: :check_boxes,
+                  input_html: { class: "tag-selector" },
+                  item_wrapper_class: 'tag-item' %>
+<fieldset class="form-group check_boxes optional snippet_tags">
+  <legend class="col-form-label pt-0">Filters WIP</legend>
+  <input type="hidden" name="snippet[tag_ids][]" value="">
+  <div class="tag-item">
+    <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="1" name="snippet[tag_ids][]" id="snippet_tag_ids_1">
+    <label class="form-check-label collection_check_boxes" for="snippet_tag_ids_1">Starters</label>
+  </div>
+  <div class="tag-item">
+    <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="2" name="snippet[tag_ids][]" id="snippet_tag_ids_2">
+    <label class="form-check-label collection_check_boxes" for="snippet_tag_ids_2">Soup</label>
+  </div>
+  <div class="tag-item">
+    <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="3" name="snippet[tag_ids][]" id="snippet_tag_ids_3">
+    <label class="form-check-label collection_check_boxes" for="snippet_tag_ids_3">Main Dishes</label>
+  </div>
+  <div class="tag-item">
+    <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="4" name="snippet[tag_ids][]" id="snippet_tag_ids_4">
+    <label class="form-check-label collection_check_boxes" for="snippet_tag_ids_4">Side</label>
+  </div>
+  <div class="tag-item">
+    <input class="form-check-input check_boxes optional tag-selector" type="checkbox" value="5" name="snippet[tag_ids][]" id="snippet_tag_ids_5">
+    <label class="form-check-label collection_check_boxes" for="snippet_tag_ids_5">Dessert</label>
+  </div>
+</fieldset>
+
 <%= render "item-card-mobile" %>

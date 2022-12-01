@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   resources :orders
 
   get '/order_items/completed_orders', to: 'order_items#completed_orders', as: 'completed_orders'
-  # post 'order_items/:id/add' => 'order_items#add_quantity', as: 'order_item_add'
-  # post 'order_items/:id/reduce' => 'order_items#reduce_quantity', as: 'order_item_reduce'
+  post 'order_items/:id/add' => "order_items#add_quantity", as: "order_item_add"
+  post 'order_items/:id/reduce' => "order_items#reduce_quantity", as: "order_item_reduce"
+
 end

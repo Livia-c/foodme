@@ -1,5 +1,5 @@
 class MenuItem < ApplicationRecord
-  has_many :recipes
+  has_many :recipes, dependent: :destroy
   has_many :ingredients, through: :recipes
   has_many :order_items, dependent: :destroy
   has_many_attached :photos

@@ -1,18 +1,9 @@
-<h2>Index with all menu items</h2>
-
-<div class="container">
-  <div>
-    <%= link_to "See online menu", menu_item_customers_path, class: "btn btn-warning" %>
-    <br>
-    <%= link_to "Back to dashboard", root_path, class: "btn btn-warning" %>
-    <br>
-    <%= link_to "Add new menu item", new_menu_item_path, class: "btn btn-primary m-4" %>
-  </div>
-  <ul>
-    <div class="menu-item-card">
-      <%= render "item_card", menu_items: @menu_items %>
-    </div>
-  </ul>
-</div>
-
 <%# add order overview if login is by user and not restaurant/chef %>
+<div class="container mt-4">
+  <div class="d-flex mb-4">
+    <%= link_to "See online menu", menu_item_customers_path, class: "btn btn-warning ms-2" %>
+    <%= link_to "Back to dashboard", root_path, class: "btn btn-warning ms-2" %>
+    <%= link_to "Add new menu item", new_menu_item_path, class: "btn btn-primary ms-2" %>
+  </div>
+  <%= render "item_card", menu_items: @menu_items %>
+</div>

@@ -4,6 +4,6 @@
   grid-gap: 16px;
 }
 
-.ing-cards .card{
-  z-index: -1;
+.card {
+  position: unset !important;
 }

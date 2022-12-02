@@ -29,13 +29,12 @@ class OrdersController < ApplicationController
   def update
     if @order.waiting?
       @order.pending!
-      @order.active = false
+      @order.update(active: false)
       redirect_to placed_path
     else
       @order.pending? ? @order.in_progress! : @order.delivered!
       redirect_to order_items_path
     end
-
   end
 
   private

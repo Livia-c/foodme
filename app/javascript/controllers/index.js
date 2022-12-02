@@ -6,3 +6,6 @@ import { application } from "./application"
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
+
+import LivekitchenSubscriptionController from "./livekitchen_subscription_controller"
+application.register("livekitchen-subscription", LivekitchenSubscriptionController)

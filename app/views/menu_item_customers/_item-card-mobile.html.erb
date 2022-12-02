@@ -1,18 +1,26 @@
-
-<% @menu_items.each do |item| %>
-  <div class="card-menu-mobile">
-    <div class="card-menu-mobile-infos">
-      <div class="card-menu-mobile-time">
-        <h3><%= item.name.capitalize %></h3>
-        <p><i class="fa-regular fa-clock"></i> <%= item.cooking_time %>min</p>
+<div class="container-mobile-cards">
+  <% @menu_items.each do |item| %>
+    <div class="card-menu-mobile">
+      <div class="card-menu-mobile-infos">
+        <div class="card-menu-mobile-time">
+          <h3><%= item.name.capitalize %></h3>
+          <p><i class="fa-regular fa-clock"></i> <%= item.cooking_time %>min</p>
+        </div>
+        <p><%= item.description.capitalize %></p>
+        <div class="card-menu-mobile-icons">
+          <% if item.spiciness == 1 %>
+            <p><i class="fa-solid fa-pepper-hot"></i></p>
+          <% elsif item.spiciness == 2 %>
+            <p><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
+          <% elsif item.spiciness == 3%>
+            <p><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
+          <% else %>
+            <p></p>
+          <% end %>
+          <p>€ <%= item.price %></p>
+        </div>
+        <%# <%= link_to "Show details", menu_item_customer_path(item), class: "btn btn-primary" %> %>
       </div>
-      <p><%= item.description.capitalize %></p>
-      <div class="card-menu-mobile-icons">
-        <p><i class="fa-solid fa-pepper-hot"></i> <%= item.spiciness %></p>
-        <p><i class="fa-solid fa-euro-sign"></i> <%= item.price %></p>
-      </div>
-
-      <%= link_to "Show details (remove on mobile)", menu_item_customer_path(item), class: "btn btn-primary" %>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

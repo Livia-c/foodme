@@ -1,0 +1,50 @@
+.livekitchen h2 {
+  text-align: center;
+  color: $black-grey;
+  padding: 10px;
+}
+
+.livekitchen p {
+  color: $black-grey;
+  margin: 0;
+}
+
+.livekitchen h4 {
+  color: $black-grey;
+  padding: 10px;
+}
+
+.btn-kitchen {
+  margin: 0 10px;
+  height: 100%;
+}
+.card-livekitchen {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.livekitchen-text {
+  border: solid 1px $black-grey 20%;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: medium;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  flex-grow: 2;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px;
+  font-size: 14px;
+  margin: 0;
+}
+
+.livekitchen-lefttext p {
+  margin: 0;
+}
+
+.livekitchen-righttext p {
+  margin: 0;
+}
+.btn-closed {
+  margin: 30px;
+}

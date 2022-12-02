@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: %i[show update destroy]
+  before_action :set_order, only: %i[show order_placed update destroy]
 
   def index
     # only shows the orders that match with the logged in user
@@ -9,6 +9,9 @@ class OrdersController < ApplicationController
     else
       @orders = Order.where(user: current_user)
     end
+  end
+
+  def order_placed
   end
 
   def new
@@ -26,14 +29,10 @@ class OrdersController < ApplicationController
   def update
     if @order.waiting?
       @order.pending!
-      @order.active = false
+      @order.update(active: false)
+      redirect_to placed_path
     else
       @order.pending? ? @order.in_progress! : @order.delivered!
-    end
-
-    # Why do we need to save again here?
-
-    if @order.save
       redirect_to order_items_path
     end
   end

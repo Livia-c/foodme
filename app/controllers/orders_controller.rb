@@ -29,8 +29,13 @@ class OrdersController < ApplicationController
   def update
     if @order.waiting?
       @order.pending!
-      @order.update(active: false)
-      redirect_to placed_path
+      @order.active = false
+      if @order.save
+        ActionCable.server.broadcast(
+          "livekitchen", render_to_string(partial: "/order_items/livekitchen_card_pending", locals: {order: @order})
+        )
+        redirect_to placed_path
+      end
     else
       @order.pending? ? @order.in_progress! : @order.delivered!
       redirect_to order_items_path

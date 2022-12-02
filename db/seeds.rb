@@ -130,7 +130,7 @@ photo1 = URI.open("https://www.wholesomeyum.com/wp-content/uploads/2022/10/whole
 
 p "Adding the first 5 menu items"
 item1 = MenuItem.new(
-  name: "Chiken Korma",
+  name: "Chicken Korma",
   description: "chicken breast fillet strips with fresh ginger, almond, cashews, and raisins in curry cream sauce",
   spiciness: "3",
   cooking_time: "10",

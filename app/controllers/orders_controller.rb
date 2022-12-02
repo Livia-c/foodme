@@ -35,7 +35,6 @@ class OrdersController < ApplicationController
       @order.pending? ? @order.in_progress! : @order.delivered!
       redirect_to order_items_path
     end
-
   end
 
   private

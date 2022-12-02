@@ -1,5 +1,9 @@
-<% if current_user&.restaurant_user? %>
-  <%= render "shared/footer_restaurant" %>
+<% if user_signed_in? %>
+  <% if current_user.restaurant_user? %>
+    <%= render "shared/footer_restaurant" %>
+  <% else %>
+    <%= render "shared/footer_mobile" %>
+ <% end %>
 <% else %>
-  <%= render "shared/footer_mobile" %>
+  <%= render "shared/footer_restaurant" %>
 <% end %>

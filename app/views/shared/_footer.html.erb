@@ -1,4 +1,4 @@
-<% if current_user.restaurant_user? %>
+<% if current_user&.restaurant_user? %>
   <%= render "shared/footer_restaurant" %>
 <% else %>
   <%= render "shared/footer_mobile" %>

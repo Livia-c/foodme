@@ -1,0 +1,16 @@
+.menu-item-card-mobile {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-item-card-mobile-image {
+  width: 30%;
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-card-mobile-image img {
+  height: 200px;
+  border-radius: 13px;
+  object-fit: cover;
+}

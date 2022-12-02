@@ -1,13 +1,18 @@
 <div class="menu-item-card-mobile">
-  <h3><%= @menu_item.name %></h3>
-  <p><%= @menu_item.description %></p>
-  <p>Spiciness level: <%= @menu_item.spiciness %></p>
-  <p>Price: <%= @menu_item.price %> euros</p>
-  <p>Est cooking time: <%= @menu_item.cooking_time %> minutes</p>
-  <p>Add one</p>
-  <p>Reduce one</p>
-  <%# <%= link_to "Add one", order_item_add_path(id: @order_items), method: :post %> %>
-  <%# <%= link_to "Reduce one", order_item_reduce_path(id: order_item), method: :post %> %>
+  <h3><%= @menu_item.name.capitalize %></h3>
+  <div class="menu-item-card-mobile-image">
+    <% if @menu_item.photos.attached?%>
+      <% @menu_item.photos.each do |photo|%>
+        <%=cl_image_tag photo.key %>
+      <% end %>
+    <% end %>
+  </div>
+  <p><%= @menu_item.description.capitalize %></p>
+  <p><i class="fa-solid fa-pepper-hot"></i> <%= @menu_item.spiciness %></p>
+  <p>€ <%= @menu_item.price %></p>
+  <p><i class="fa-regular fa-clock"></i> <%= @menu_item.cooking_time %>minutes</p>
+  <%# <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post } %>
+  <%# <%= link_to "Reduce one", order_item_reduce_path(id: order_item), method: :post %>
   <% if user_signed_in? %>
   <%= link_to "Add To Cart", order_items_path(menu_item_id: @menu_item.id), data: {turbo_method: :post}, class: "btn btn-primary" %>
   <% else %>

@@ -5,7 +5,9 @@
         <% @menu_item.photos.each do |photo|%>
 
     <div class="shadow p-3 mb-5 bg-body rounded col-7">
+        <div>
           <%=cl_image_tag photo.key, height: 300, width: 400,class:"rounded-4", crop: :fill %>
+        </div>
         <% end %>
       <% end %>
       <div class="d-flex justify-content-between border-bottom mb-3 mt-2">
@@ -19,7 +21,7 @@
     </div>
 
     <div class='col-3 shadow p-3 mb-5 bg-body rounded' style="margin-left:147px">
-        <p><strong>Add a new ingredient</strong></p>
+        <p class="border-bottom text-center"><strong>Add a new ingredient</strong></p>
         <%= simple_form_for [@menu_item, @recipe] do |f| %>
           <%= f.input :ingredient, collection: Ingredient.all.sort_by(&:label), label_method: :label%>
           <%= f.input :quantity %>
@@ -29,15 +31,12 @@
   </div>
 
   <div class='shadow p-3 mb-5 bg-body rounded col-7 justify-content-between'>
-    <h5><strong>Recipe:</strong></h5>
+    <h5 class="border-bottom text-center"><strong>Recipe:</strong></h5>
     <% @menu_item.recipes.each do |recipe| %>
-
-      <ul>
-      <div class="justify-content-between">
-          <li><p><%= recipe.ingredient.name %> (<%= recipe.quantity %>) <%= recipe.ingredient.unit %>
-          <%= link_to 'Delete ingredient', recipe_path(recipe), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-danger' %> </p></li>
+      <div class="d-flex justify-content-between">
+        <p><%= recipe.ingredient.name %> (<%= recipe.quantity %>) <%= recipe.ingredient.unit %></p>
+        <%= link_to 'Delete ingredient', recipe_path(recipe), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-danger m-1' %>
       </div>
-        </ul>
     <% end %>
   </div>
 </div>

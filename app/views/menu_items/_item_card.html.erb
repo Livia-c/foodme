@@ -5,8 +5,8 @@
         <% item.photos.each do |photo|%>
           <div class="col-6">
             <div class="rounded-4" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path photo.key, height: 800, crop: :fill %>'); height: 248px;
-    background-size: cover;
-    background-position: center;"></div>
+            background-size: cover;
+            background-position: center;"></div>
           </div>
         <% end %>
       <% end %>

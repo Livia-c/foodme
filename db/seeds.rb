@@ -80,7 +80,7 @@ ingredient7.save
 puts "I just created ingredient nr #{ingredient7.id}"
 
 ingredient8 = Ingredient.new(
-  name: "Onions",
+  name: "Onion",
   quantity: "9",
   unit: "kg",
   category: "vegetable"
@@ -106,8 +106,7 @@ ingredient10 = Ingredient.new(
 ingredient10.save
 puts "I just created ingredient nr #{ingredient10.id}"
 
-
-ingredient11= Ingredient.new(
+ingredient11 = Ingredient.new(
   name: "Flour",
   quantity: "4",
   unit: "kg",
@@ -116,7 +115,7 @@ ingredient11= Ingredient.new(
 ingredient11.save
 puts "I just created ingredient nr #{ingredient11.id}"
 
-ingredient12= Ingredient.new(
+ingredient12 = Ingredient.new(
   name: "Cheese",
   quantity: "4",
   unit: "kg",
@@ -124,7 +123,6 @@ ingredient12= Ingredient.new(
 )
 ingredient12.save
 puts "I just created ingredient nr #{ingredient12.id}"
-
 
 photo1 = URI.open("https://www.wholesomeyum.com/wp-content/uploads/2022/10/wholesomeyum-Chicken-Korma-1.jpg")
 
@@ -139,8 +137,7 @@ item1 = MenuItem.new(
 )
 item1.photos.attach(io: photo1, filename: "chicken_korma.png", content_type: "image/png")
 item1.save
-puts "I just created ingredient nr #{item1.id}"
-
+puts "I just created menu item nr #{item1.id}"
 
 photo2 = URI.open("https://images.unsplash.com/photo-1596797038530-2c107229654b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80")
 item2 = MenuItem.new(
@@ -153,8 +150,7 @@ item2 = MenuItem.new(
 )
 item2.photos.attach(io: photo2, filename: "chiken_jalferezi.png", content_type: "image/png")
 item2.save
-puts "I just created ingredient nr #{item2.id}"
-
+puts "I just created menu item nr #{item2.id}"
 
 photo3 = URI.open("https://static01.nyt.com/images/2021/11/10/dining/ZS-mixed-sabzi/ZS-mixed-sabzi-articleLarge.jpg")
 
@@ -168,7 +164,7 @@ item3 = MenuItem.new(
 )
 item3.photos.attach(io: photo3, filename: "mixed_sabzi.png", content_type: "image/png")
 item3.save
-puts "I just created ingredient nr #{item3.id}"
+puts "I just created menu item nr #{item3.id}"
 
 photo4 = URI.open("https://assets.tmecosys.com/image/upload/t_web767x639/img/recipe/ras/Assets/31a07405f479895a13b02aed87cb8998/Derivates/7299f9ff863c5eb61b8d2e9f9696bb103542f95b.jpg")
 
@@ -182,8 +178,7 @@ item4 = MenuItem.new(
 )
 item4.photos.attach(io: photo4, filename: "palak_paneer.png", content_type: "image/png")
 item4.save
-puts "I just created ingredient nr #{item4.id}"
-
+puts "I just created menu item nr #{item4.id}"
 
 photo5 = URI.open("https://img.chefkoch-cdn.de/rezepte/1043141209290503/bilder/401196/crop-960x540/gulab-jamun.jpg")
 
@@ -197,8 +192,7 @@ item5 = MenuItem.new(
 )
 item5.photos.attach(io: photo5, filename: "gulab_jaman.png", content_type: "image/png")
 item5.save
-puts "I just created ingredient nr #{item4.id}"
-
+puts "I just created menu item nr #{item5.id}"
 
 photo6 = URI.open("https://www.eatbetter.de/sites/eatbetter.de/files/styles/full_width_tablet_4_3/public/2021-06/linsen_dahl_1.jpg?h=4521fff0&itok=8FByRmoN")
 
@@ -212,9 +206,7 @@ item6 = MenuItem.new(
 )
 item6.photos.attach(io: photo6, filename: "dal_curry.png", content_type: "image/png")
 item6.save
-puts "I just created ingredient nr #{item4.id}"
-
-
+puts "I just created  menu item nr #{item6.id}"
 
 recipe = Recipe.new
 recipe.menu_item = item1
@@ -240,14 +232,12 @@ recipe.ingredient = ingredient4
 recipe.quantity = 0.2
 recipe.save
 
-
 recipe = Recipe.new
 recipe.menu_item = item2
 recipe.ingredient = ingredient12
 recipe.quantity = 0.2
 recipe.save
 
-
 recipe = Recipe.new
 recipe.menu_item = item2
 recipe.ingredient = ingredient2
@@ -259,7 +249,6 @@ recipe.menu_item = item2
 recipe.ingredient = ingredient2
 recipe.quantity = 0.2
 recipe.save
-
 
 puts "Creating an user admin to log in"
 user = User.new(
@@ -270,7 +259,6 @@ user = User.new(
 user.save!
 puts "I just created an admin user nr #{user.id}"
 puts "Use admin@restaurant.com and 123456 to log in"
-
 
 puts "Creating a guest account to log in"
 user2 = User.new(
@@ -293,45 +281,34 @@ puts "I just created a guest user nr #{user3.id}"
 puts "Use bob@mail.com and 123456 to log in as guest"
 
 puts "Creating cart (waiting) order"
-new_order = Order.create!(user: user2, active: true)
+new_order = Order.create!(user: user2, active: false, status: 1)
 
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
-new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
 
-new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 2)
-new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1 )
-new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3 )
-
+new_order = Order.create!(user: user3, active: false, status: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
 new_order_item.save
 
-
-new_in_progress_order = Order.create!(user: user3, status: 1, active: false)
+new_in_progress_order = Order.create!(user: user3, status: 2, active: false)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
-new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 2)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
 
-new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 2)
+new_in_progress_order = Order.create!(user: user2, status: 2, active: false)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
 
 new_in_progress_order_item.save
-
-
 new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
 
-puts "New order #{new_order.id} id was created. The status is #{new_order.status} and active: #{new_order.active}"
-
-puts "Creating 2 done orders"
 new_order = Order.create!(user: user2, active: false, status: 3)
-
 new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
-puts "New order #{new_order.id} id was created. The status is #{new_order.status} and active: #{new_order.active}"
-
 new_order = Order.create!(user: user3, active: false, status: 3)
-
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
-puts "New order #{new_order.id} id was created. The status is #{new_order.status} and active: #{new_order.active}"
+
 
 puts "Seeding completed. You now have #{Ingredient.count} ingredients and #{MenuItem.count} items"
 puts "You also have #{User.count} users, that placed #{Order.count} orders with #{OrderItem.count} items"

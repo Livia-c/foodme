@@ -3,6 +3,6 @@
   <%# check how table number will display when no table nr is given %>
   <p>Table: <%= order.table_number || "takeaway"%></p>
   <% order.order_items.each do |item| %>
-    <p>Order: <%= item.menu_item.name %> (<%= pluralize @item.quantity, "portions" %>)</p>
+    <p>Order: <%= item.menu_item.name %> (<%= pluralize item.quantity, "portion" %>)</p>
   <% end %>
 </div>

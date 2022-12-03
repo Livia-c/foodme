@@ -1,2 +1,11 @@
-<%= link_to "See menu", menu_item_customers_path, class: "btn btn-primary m-5" %>
-<%= link_to "Your cart", order_path(@current_order), class: "btn btn-primary m-5" %>
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-12 col-lg-6 guest_btn" >
+        <%= link_to "See menu", menu_item_customers_path, class: "btn btn-primary m-5" %>
+      </div>
+      <div class="col-12 col-lg-6 guest_btn">
+        <%= link_to "Your cart", order_path(@current_order), class: "btn btn-primary m-5" %>
+      </div>
+    </div>
+  </div>
+</div>

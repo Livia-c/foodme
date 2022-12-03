@@ -8,7 +8,7 @@
   color: $background-green;
 }
 
-@media only screen and (max-width: 400px) {
+@media only screen and (max-width: 415px) {
   .footer {
     display: flex;
     flex-direction: column;
@@ -22,6 +22,7 @@
 
     .footer-copyright {
       padding: 10px;
+      text-align: center;
     }
   }
 }

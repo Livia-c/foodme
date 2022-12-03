@@ -9,3 +9,6 @@ application.register("hello", HelloController)
 
 import LivekitchenSubscriptionController from "./livekitchen_subscription_controller"
 application.register("livekitchen-subscription", LivekitchenSubscriptionController)
+
+import NavbarController from "./navbar_controller"
+application.register("navbar", NavbarController)

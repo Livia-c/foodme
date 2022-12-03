@@ -1,0 +1,13 @@
+<%= simple_form_for(@menu_item) do |f| %>
+  <%= f.input :name %>
+  <%= f.input :description %>
+  <%= f.input :spiciness, as: :radio_buttons, collection: 0..3 %>
+  <%= f.input :cooking_time %>
+  <%= f.input :price %>
+  <%= f.input :menu_item_type, as: :select, collection: MenuItem::CATEGORY %>
+  <%= f.input :vegan, as: :radio_buttons %>
+  <%= f.input :vegetarian, as: :radio_buttons %>
+  <%= f.input :signature_dish, as: :radio_buttons %>
+  <%= f.input :photos, as: :file, input_html: { multiple: true } %>
+  <%= f.submit %>
+<% end %>

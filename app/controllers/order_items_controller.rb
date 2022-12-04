@@ -12,9 +12,9 @@ class OrderItemsController < ApplicationController
   #   menu_item = MenuItem.find(params[:menu_item_id])
   #   @order_item = OrderItem.new
   #   @order_item.menu_item = menu_item
-  #   # if Order.where(active: true, user: current_user).present?
+  #   # if Order.where(status: 0, user: current_user).present?
   #   if Order.where(user: current_user).present?
-  #     @order_item.order = Order.where(active: true, user: current_user).first
+  #     @order_item.order = Order.where(status: 0, user: current_user).first
   #   else
   #     @new_order = Order.create(user: current_user)
   #     @order_item.order = @new_order

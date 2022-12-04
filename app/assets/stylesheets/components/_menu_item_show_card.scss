@@ -1,0 +1,30 @@
+.update-img-link {
+  color: $background-green;
+  border-radius: 50%;
+  border: 1px solid $background-green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  opacity: 0.4;
+  font-weight: lighter;
+}
+
+.menu-item-img:hover .update-img-link {
+    color: $background-green;
+    text-decoration: none;
+    opacity: 1;
+  }
+
+
+.menu-item-img {
+  position: relative;
+
+  img {
+  width: 100%;
+  }
+}

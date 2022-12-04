@@ -1,13 +1,14 @@
-
 <div class='container mt-4'>
   <div class="d-flex">
-    <% if @menu_item.photos.attached?%>
-        <% @menu_item.photos.each do |photo|%>
-
     <div class="shadow p-3 mb-5 bg-body rounded col-7">
-        <div>
-          <%=cl_image_tag photo.key, height: 300, width: 400,class:"rounded-4", crop: :fill %>
-        </div>
+      <% if @menu_item.photos.attached?%>
+        <% @menu_item.photos.each do |photo|%>
+          <div class="menu-item-img">
+            <%=cl_image_tag photo.key, class:"rounded-4", crop: :fill %>
+            <%= link_to upload_pictures_path(@menu_item), class: "update-img-link" do %>
+              <i class="fa-solid fa-image" style="color:white"></i>
+            <% end %>
+          </div>
         <% end %>
       <% end %>
       <div class="d-flex justify-content-between border-bottom mb-3 mt-2">
@@ -21,15 +22,14 @@
     </div>
 
     <div class='col-3 shadow p-3 mb-5 bg-body rounded' style="margin-left:147px">
-        <p class="border-bottom text-center"><strong>Add a new ingredient</strong></p>
-        <%= simple_form_for [@menu_item, @recipe] do |f| %>
-          <%= f.input :ingredient, collection: Ingredient.all.sort_by(&:label), label_method: :label%>
-          <%= f.input :quantity %>
-          <%= f.button :submit, class: "btn btn-primary col-12" %>
-        <% end %>
+      <p class="border-bottom text-center"><strong>Add a new ingredient</strong></p>
+      <%= simple_form_for [@menu_item, @recipe] do |f| %>
+        <%= f.input :ingredient, collection: Ingredient.all.sort_by(&:label), label_method: :label%>
+        <%= f.input :quantity %>
+        <%= f.button :submit, class: "btn btn-primary col-12" %>
+      <% end %>
     </div>
   </div>
-
   <div class='shadow p-3 mb-5 bg-body rounded col-7 justify-content-between'>
     <h5 class="border-bottom text-center"><strong>Recipe:</strong></h5>
     <% @menu_item.recipes.each do |recipe| %>

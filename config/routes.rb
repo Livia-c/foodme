@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :recipes, only: [:create]
   end
   resources :recipes, only: %i[destroy]
+  get 'menu_items/:id/upload_pictures', to: 'menu_items#upload_pictures', as: :upload_pictures
 
   resources :menu_item_customers, only: %i[index show]
 

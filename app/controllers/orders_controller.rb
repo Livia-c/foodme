@@ -29,7 +29,6 @@ class OrdersController < ApplicationController
   def update
     if @order.waiting?
       @order.pending!
-      @order.active = false
       if @order.save
         ActionCable.server.broadcast(
           "livekitchen", render_to_string(partial: "/order_items/livekitchen_card_pending", locals: {order: @order})

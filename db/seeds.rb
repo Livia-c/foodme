@@ -281,21 +281,21 @@ puts "I just created a guest user nr #{user3.id}"
 puts "Use bob@mail.com and 123456 to log in as guest"
 
 puts "Creating cart (waiting) order"
-new_order = Order.create!(user: user2, active: false, status: 1)
+new_order = Order.create!(user: user2, status: 1)
 
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
 
-new_order = Order.create!(user: user3, active: false, status: 1)
+new_order = Order.create!(user: user3, status: 1)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
 new_order_item.save
 
-new_in_progress_order = Order.create!(user: user3, status: 2, active: false)
+new_in_progress_order = Order.create!(user: user3, status: 2)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
 
-new_in_progress_order = Order.create!(user: user2, status: 2, active: false)
+new_in_progress_order = Order.create!(user: user2, status: 2)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
 
@@ -304,9 +304,9 @@ new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity:
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
 
-new_order = Order.create!(user: user2, active: false, status: 3)
+new_order = Order.create!(user: user2, status: 3)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
-new_order = Order.create!(user: user3, active: false, status: 3)
+new_order = Order.create!(user: user3, status: 3)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
 
 

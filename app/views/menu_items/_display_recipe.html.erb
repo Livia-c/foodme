@@ -1,0 +1,4 @@
+<div class="d-flex justify-content-between">
+  <p><%= recipe.ingredient.name %> (<%= recipe.quantity %>) <%= recipe.ingredient.unit %></p>
+  <%= link_to 'Delete ingredient', recipe_path(recipe), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-danger m-1' %>
+</div>

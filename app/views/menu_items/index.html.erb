@@ -5,5 +5,9 @@
     <%= link_to "Back to dashboard", root_path, class: "btn btn-warning ms-2" %>
     <%= link_to "Add new menu item", new_menu_item_path, class: "btn btn-primary ms-2" %>
   </div>
-  <%= render "menu_item_card", menu_items: @menu_items %>
+  <div class="menu-item-cards">
+    <% @menu_items.each do |item| %>
+      <%= render "menu_item_show_modal", item: item %>
+    <% end %>
+  </div>
 </div>

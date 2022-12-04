@@ -1,11 +1,12 @@
-.menu-item-card a {
+.menu-item-card {
     text-decoration: none;
     // overflow: hidden;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid black 0.8;
     height: 230px;
+    cursor: grab;
+    overflow: hidden;
 
      p {
       line-height: 1.4;

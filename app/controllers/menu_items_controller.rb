@@ -3,6 +3,7 @@ class MenuItemsController < ApplicationController
 
   def index
     @menu_items = MenuItem.all
+    @recipe = Recipe.new
   end
 
   def show

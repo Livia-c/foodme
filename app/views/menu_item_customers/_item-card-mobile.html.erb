@@ -18,7 +18,7 @@
                 <p></p>
               <% end %>
               <p><i class="fa-regular fa-clock"></i> <%= item.cooking_time %>min</p>
-              <p>€ <%= item.price %></p>
+              <p>€<%= '%.2f' % item.price %></p>
             </div>
           </div>
           <div class="card-menu-mobile-image">

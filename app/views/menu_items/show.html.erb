@@ -13,7 +13,7 @@
       <% end %>
       <div class="d-flex justify-content-between border-bottom mb-3 mt-2">
         <p><strong><%= @menu_item.name %></strong></p>
-        <p><strong><%= @menu_item.price %>€</strong></p>
+        <p><strong>€<%= '%.2f' % @menu_item.price %></strong></p>
       </div>
       <%= link_to 'Back', menu_items_path, class: 'btn btn-primary col-3' %>
       <%= link_to 'Update Menu Item', edit_menu_item_path(@menu_item), class: 'btn btn-primary col-3' %>

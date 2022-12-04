@@ -11,6 +11,9 @@ class OrdersController < ApplicationController
     end
   end
 
+  def checkout
+  end
+
   def order_placed
   end
 
@@ -19,6 +22,7 @@ class OrdersController < ApplicationController
   end
 
   def show
+
   end
 
   def destroy
@@ -28,12 +32,14 @@ class OrdersController < ApplicationController
 
   def update
     if @order.waiting?
-      @order.pending!
-      if @order.save
+      if @order.update(order_params)
+        @order.pending!
         ActionCable.server.broadcast(
           "livekitchen", render_to_string(partial: "/order_items/livekitchen_card_pending", locals: {order: @order})
         )
         redirect_to placed_path
+      else
+        render :show, status: :unprocessable_entity
       end
     else
       @order.pending? ? @order.in_progress! : @order.delivered!
@@ -45,5 +51,9 @@ class OrdersController < ApplicationController
 
   def set_order
     @order = Order.find(params[:id])
+  end
+
+  def order_params
+    params.require(:order).permit(:table_number)
   end
 end

@@ -23,5 +23,4 @@ Rails.application.routes.draw do
   post 'order_items/:id/add' => "order_items#add_quantity", as: "order_item_add"
   post 'order_items/:id/reduce' => "order_items#reduce_quantity", as: "order_item_reduce"
   get '/order/:id/order_placed', to: 'orders#order_placed', as: 'placed'
-
 end

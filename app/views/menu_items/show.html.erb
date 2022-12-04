@@ -15,6 +15,9 @@
         <p><strong><%= @menu_item.name %></strong></p>
         <p><strong>€<%= '%.2f' % @menu_item.price %></strong></p>
       </div>
+      <div>
+       <p><strong>Description: </strong><%= @menu_item.description %></p>
+      </div>
       <%= link_to 'Back', menu_items_path, class: 'btn btn-primary col-3' %>
       <%= link_to 'Update Menu Item', edit_menu_item_path(@menu_item), class: 'btn btn-primary col-3' %>
       <%= link_to 'Delete Menu Item', menu_item_path(@menu_item), class: 'btn btn-danger col-3',

@@ -5,18 +5,20 @@
         <div class="menu-card-text">
           <p><strong>Name: </strong><%= item.name %></p>
           <p><strong>Category:</strong> <%= item.menu_item_type %></p>
-          <p><strong>Description: </strong><%= item.description %></p>
+          <p class="menu-item-description"><strong>Description: </strong><%= item.description %></p>
           <p><strong>Spiciness level:</strong> <%= item.spiciness %></p>
           <div class="d-flex justify-content-between">
             <p><strong>Cooking time:</strong> <%= item.cooking_time %> minutes</p>
             <p><strong>Price: </strong>€<%= '%.2f' % item.price%></p>
           </div>
         </div>
+        <div class="menu-card-image">
           <% if item.photos.attached?%>
             <% item.photos.each do |photo|%>
               <%=cl_image_tag photo.key %>
             <% end %>
           <% end %>
+        </div>
       <% end %>
     </div>
   <% end %>

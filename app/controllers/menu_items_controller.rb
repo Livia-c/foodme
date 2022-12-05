@@ -4,13 +4,6 @@ class MenuItemsController < ApplicationController
   def index
     @menu_items = MenuItem.all
     @recipe = Recipe.new
-    @menu_items.each do |menu_item|
-      menu_item.recipes.each do |recipe|
-        quantity_stock = Ingredient.find(recipe.ingredient_id).quantity
-        quantity_stock > recipe.quantity ? menu_item.check_status = true : menu_item.check_status = false
-        menu_item.save!
-      end
-    end
   end
 
   def show

@@ -62,7 +62,6 @@ class OrderItemsController < ApplicationController
   # end
 
   def add_quantity
-    # raise
     @order_item = OrderItem.find(params[:id])
     @order_item.quantity += 1
     @order_item.save

@@ -2,16 +2,11 @@ class OrdersController < ApplicationController
   before_action :set_order, only: %i[show order_placed update destroy]
 
   def index
-    # only shows the orders that match with the logged in user
-    # show all if the admin is logged in
     if current_user.restaurant_user?
       @orders = Order.all
     else
       @orders = Order.where(user: current_user)
     end
-  end
-
-  def checkout
   end
 
   def order_placed
@@ -31,16 +26,21 @@ class OrdersController < ApplicationController
 
   def update
     if @order.waiting?
-      if @order.update(order_params)
-        @order.pending!
-        @order.update_ingredients
-        ActionCable.server.broadcast(
-          "livekitchen", render_to_string(partial: "/order_items/livekitchen_card_pending", locals: {order: @order})
-        )
-        redirect_to placed_path
-      else
+      unless @order.update(order_params)
         render :show, status: :unprocessable_entity
+        return
       end
+      unless @order.enough_ingredients?
+        flash.notice = "Sorry, one of your items seems to be sold out"
+        render :show, status: :unprocessable_entity
+        return
+      end
+      @order.pending!
+      @order.update_ing
+      ActionCable.server.broadcast(
+        "livekitchen", render_to_string(partial: "/order_items/livekitchen_card_pending", locals: {order: @order})
+      )
+      redirect_to placed_path
     else
       if @order.pending?
         @order.update(status: 2)

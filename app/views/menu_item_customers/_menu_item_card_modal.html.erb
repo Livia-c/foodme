@@ -4,6 +4,7 @@
     <div class="card-menu-mobile-infos">
         <div class="card-menu-mobile-title-description">
           <h3><strong><%= menu_item.name.capitalize %></strong></h3>
+          <p class="warning-text"><%="This menu item is currently sold out" unless menu_item.available?%></p>
           <p><strong><%= menu_item.description.capitalize %></strong></p>
         </div>
         <div class="card-menu-mobile-icons">
@@ -28,7 +29,6 @@
         <% end %>
     </div>
   </div>
-
 
   <div class="modal fade" id="menuItem-<%=menu_item.id%>-Modal" tabindex="-1" aria-labelledby="menuItem-<%=menu_item.id%>-ModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -59,10 +59,14 @@
             <p><i class="fa-regular fa-clock"></i> <%= menu_item.cooking_time %>min</p>
             <p>€<%= '%.2f' % menu_item.price %></p>
           </div>
-            <% if user_signed_in? %>
-            <%= link_to "Add To Cart", order_items_path(menu_item_id: menu_item.id), data: {turbo_method: :post}, class: "btn btn-primary" %>
+            <% if menu_item.available? %>
+              <% if user_signed_in? %>
+              <%= link_to "Add To Cart", order_items_path(menu_item_id: menu_item.id), data: {turbo_method: :post}, class: "btn btn-primary" %>
+              <% else %>
+              <%=  link_to "Add To Cart", order_items_path(menu_item_id: menu_item.id), method: :post, class: "btn btn-primary "%>
+              <% end %>
             <% else %>
-            <%=  link_to "Add To Cart", order_items_path(menu_item_id: menu_item.id), method: :post, class: "btn btn-primary "%>
+              <%= link_to "Add To Cart", order_items_path(menu_item_id: menu_item.id), data: {turbo_method: :post}, class: "btn btn-primary disabled" %>
             <% end %>
         </div>
       </div>

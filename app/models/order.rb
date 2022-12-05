@@ -5,7 +5,6 @@ class Order < ApplicationRecord
 
   TABLE = (1..10)
   validates_inclusion_of :table_number, in: TABLE, on: :update
-
   validates :table_number, presence: true,  on: :update
 
   enum :status, {
@@ -23,15 +22,32 @@ class Order < ApplicationRecord
     return sum
   end
 
-  def update_ingredients
+  def enough_ingredients?
+    create_ing_hash.each_pair do |ingredient, needed_quantity|
+      return false if needed_quantity > ingredient.quantity
+    end
+    return true
+  end
+
+  def update_ing
+    create_ing_hash.each_pair do |ingredient, needed_quantity|
+      ingredient.quantity -= needed_quantity
+      ingredient.save
+    end
+  end
+
+  private
+
+  def create_ing_hash
+    ingredient_needed_quantity = Hash.new(0)
     order_items.each do |order_item|
       quantity_menu_item = order_item.quantity
       order_item.menu_item.recipes.each do |recipe|
-        quantity_ingredient = recipe.quantity
-        @ingredient = Ingredient.find(recipe.ingredient_id)
-        current_quantity = @ingredient.quantity - (quantity_menu_item * quantity_ingredient)
-        @ingredient.update(quantity: current_quantity)
+        needed_quantity = recipe.quantity * quantity_menu_item
+        ingredient = Ingredient.find(recipe.ingredient_id)
+        ingredient_needed_quantity[ingredient] += needed_quantity
       end
     end
+    return ingredient_needed_quantity
   end
 end

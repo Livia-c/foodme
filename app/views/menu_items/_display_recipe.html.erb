@@ -1,4 +1,9 @@
-<div class="d-flex justify-content-between">
-  <p><%= recipe.ingredient.name %> (<%= recipe.quantity %>) <%= recipe.ingredient.unit %></p>
-  <%= link_to 'Delete ingredient', recipe_path(recipe), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-danger m-1' %>
+<div class="d-flex delete-ing" data-controller="delete-from-list" data-delete-from-list-authenticity-token-value=<%= form_authenticity_token %>>
+ <%= link_to recipe_path(recipe), data: {
+    turbo_method: :delete,
+    delete_from_list_target: "link",
+    action: "click->delete-from-list#delete"}, remote: true, class:"delete-icon" do %>
+      <i class="fa-regular fa-square-minus"></i>
+    <% end %>
+  <p><%=recipe.ingredient.name %> (<%= recipe.quantity %> <%= recipe.ingredient.unit %>)</p>
 </div>

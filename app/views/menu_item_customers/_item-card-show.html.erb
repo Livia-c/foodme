@@ -9,7 +9,7 @@
   </div>
   <p><%= @menu_item.description.capitalize %></p>
   <p><i class="fa-solid fa-pepper-hot"></i> <%= @menu_item.spiciness %></p>
-  <p>€ <%= @menu_item.price %></p>
+  <p>€<%= '%.2f' % @menu_item.price %></p>
   <p><i class="fa-regular fa-clock"></i> <%= @menu_item.cooking_time %>minutes</p>
   <%# <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post } %>
   <%# <%= link_to "Reduce one", order_item_reduce_path(id: order_item), method: :post %>

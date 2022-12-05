@@ -5,10 +5,14 @@ class RecipesController < ApplicationController
     @ingredient = Ingredient.find(params.dig(:recipe, :ingredient))
     @recipe.ingredient = @ingredient
     @recipe.menu_item = @menu_item
-    if @recipe.save
-      redirect_to @menu_item, notice: 'Ingredient added'
-    else
-      render 'menu_items/show', status: :unprocessable_entity
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to menu_items_path, notice: 'Ingredient added' }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      else
+        format.html { render "menu_items/show", status: :unprocessable_entity }
+        format.json # Follow the classic Rails flow and look for a create.json view
+      end
     end
   end
 
@@ -16,7 +20,6 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @menu_item = @recipe.menu_item
     @recipe.destroy
-    @recipe.photo.purge
     redirect_to menu_item_path(@menu_item), notice: 'Ingredient was successfully deleted.'
   end
 

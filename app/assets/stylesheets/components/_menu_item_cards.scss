@@ -1,0 +1,50 @@
+.menu-item-card {
+    text-decoration: none;
+    // overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 230px;
+    cursor: grab;
+    overflow: hidden;
+
+     p {
+      line-height: 1.4;
+      opacity: .7;
+      margin-bottom: 0;
+      margin-top: 8px;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+}
+
+.menu-card-image {
+    width: 200px;
+    height: 100%;
+    position: relative;
+
+    img {
+      position: absolute;
+      top: 0px;
+      left: 0px;
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+      // background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3));
+    }
+}
+
+.menu-item-card:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.menu-card-text {
+  padding: 30px;
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.menu-item-description {
+
+}

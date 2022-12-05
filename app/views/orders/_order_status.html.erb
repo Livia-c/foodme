@@ -1,0 +1,25 @@
+<div class="container text-center">
+  <div class="row justify-content-center">
+    <div class="col-12 col-lg-6 orderstatus">
+      <% case order.status %>
+      <% when "pending" %>
+        <%= image_tag "status_1.png" %>
+        <p><strong>Your order was placed.</strong></p>
+        <p>One of our chefs will shortly start preparing your order.</p>
+        <p>Your order #<%= @order.id %></p>
+      <% when "in_progress" %>
+        <%= image_tag "status_2.png" %>
+        <p><strong>Your order is being prepared.</strong></p>
+        <p>Hang in there while one of our chefs does the magic!</p>
+        <p>Your order #<%= @order.id %></p>
+      <% when "delivered" %>
+        <%= image_tag "status_3.png" %>
+        <p><strong>Your order is ready.</strong></p>
+        <p>Your food is finally done! A waiter will bring it to you in no time!</p>
+        <p>Your order #<%= @order.id %></p>
+      <% else %>
+        <p>System error!</p>
+      <% end %>
+     </div>
+  </div>
+</div>

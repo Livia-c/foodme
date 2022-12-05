@@ -6,7 +6,6 @@
         <%= order.table_number %>
         <h3>Order ID:<%= order.id %></h3>
         <p>Status: <%= order.status %></p>
-        <p>Active? <%= order.active %></p>
         <p><%= link_to "Show order details", order_path(order) %></p>
         <%# <%= link_to "Delete order", order_path, data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this unresistible order?'} %>
       </div>

@@ -1,0 +1,7 @@
+ <%= simple_form_for([item, recipe],
+                    data: {insert_ingredient_target: "form",
+                    action: "submit->insert-ingredient#send"})  do |f| %>
+                    <%= f.input :ingredient, collection: Ingredient.all.sort_by(&:label), label_method: :label%>
+                    <%= f.input :quantity %>
+                    <%= f.button :submit, class: "btn btn-primary col-12" %>
+                  <% end %>

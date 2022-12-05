@@ -1,0 +1,65 @@
+ <!-- Card triggering modal -->
+    <div class="menu-item-card border rounded m-4" data-bs-toggle="modal" data-bs-target="#menuItem-<%=item.id%>-Modal">
+        <div class="menu-card-text">
+          <p><strong>Name: </strong><%= item.name %></p>
+          <p><strong>Category:</strong> <%= item.menu_item_type %></p>
+          <p class="menu-item-description"><strong>Description: </strong><%= item.description %></p>
+          <p><strong>Spiciness level:</strong> <%= item.spiciness %></p>
+          <div class="d-flex justify-content-between">
+            <p><strong>Cooking time:</strong> <%= item.cooking_time %> minutes</p>
+            <p><strong>Price: </strong>€<%= '%.2f' % item.price%></p>
+          </div>
+        </div>
+        <div class="menu-card-image">
+          <% if item.photos.attached?%>
+            <% item.photos.each do |photo|%>
+              <%=cl_image_tag photo.key %>
+            <% end %>
+          <% end %>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="menuItem-<%=item.id%>-Modal" tabindex="-1" aria-labelledby="menuItem-<%=item.id%>-ModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5 text-center" id="menuItemModalLabel"><%= item.name %></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <% if item.photos.attached?%>
+              <% item.photos.each do |photo|%>
+                <div class="menu-item-img">
+                  <%=cl_image_tag photo.key%>
+                  <%= link_to upload_pictures_path(item), class: "update-img-link" do %>
+                    <i class="fa-solid fa-image" style="color:white"></i>
+                  <% end %>
+                </div>
+              <% end %>
+            <% end %>
+            <p><strong>€<%= '%.2f' % item.price %></strong></p>
+            <p><strong>Description: </strong><%= item.description %></p>
+            <%= link_to 'Update Menu Item', edit_menu_item_path(item), class: 'btn btn-primary col-3' %>
+            <%= link_to 'Delete Menu Item', menu_item_path(item), class: 'btn btn-danger col-3',
+            data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this delicious menu?'} %>
+            <div class='justify-content-between'>
+              <h5 class="border-bottom text-center mt-4">Recipe</h5>
+              <% item.recipes.each do |recipe| %>
+                 <%= render "display_recipe", recipe: recipe %>
+              <% end %>
+            </div>
+            <div class='justify-content-between'>
+              <div data-controller="insert-ingredient">
+                <div data-insert-ingredient-target="ingredients">
+                </div>
+                  <h5 class="border-bottom text-center mt-4">Add new ingredient</h5>
+                    <%= render "recipes/add_ingredient", item: item, recipe: @recipe %>
+                </div>
+              </div>
+            </div>
+          <div class="modal-footer">
+          </div>
+        </div>
+      </div>
+    </div>

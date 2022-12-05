@@ -12,9 +12,9 @@ class OrderItemsController < ApplicationController
   #   menu_item = MenuItem.find(params[:menu_item_id])
   #   @order_item = OrderItem.new
   #   @order_item.menu_item = menu_item
-  #   # if Order.where(active: true, user: current_user).present?
+  #   # if Order.where(status: 0, user: current_user).present?
   #   if Order.where(user: current_user).present?
-  #     @order_item.order = Order.where(active: true, user: current_user).first
+  #     @order_item.order = Order.where(status: 0, user: current_user).first
   #   else
   #     @new_order = Order.create(user: current_user)
   #     @order_item.order = @new_order
@@ -31,7 +31,7 @@ class OrderItemsController < ApplicationController
     # Find associated menu_item and current order
     chosen_menu_item = MenuItem.find(params[:menu_item_id])
     current_order = @current_order
-    if @current_order.active?
+    if @current_order.waiting?
       # If order already has this menu_item then find the relevant order_item and iterate quantity otherwise create a new order_item for this menu_item
       if current_order.menu_items.include?(chosen_menu_item)
         # Find the line_item with the chosen_product
@@ -45,7 +45,7 @@ class OrderItemsController < ApplicationController
         @order_item.quantity = 1
       end
     else
-      @current_order = Order.create(user: current_user, active: true)
+      @current_order = Order.create(user: current_user)
       @order_item = OrderItem.new
       @order_item.order = current_order
       @order_item.menu_item = chosen_menu_item

@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :recipes, only: [:create]
   end
   resources :recipes, only: %i[destroy]
+  get 'menu_items/:id/upload_pictures', to: 'menu_items#upload_pictures', as: :upload_pictures
 
   resources :menu_item_customers, only: %i[index show]
 
@@ -22,5 +23,4 @@ Rails.application.routes.draw do
   post 'order_items/:id/add' => "order_items#add_quantity", as: "order_item_add"
   post 'order_items/:id/reduce' => "order_items#reduce_quantity", as: "order_item_reduce"
   get '/order/:id/order_placed', to: 'orders#order_placed', as: 'placed'
-
 end

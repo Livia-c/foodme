@@ -1,26 +1,33 @@
-<h2>Show selected order</h2>
-
-<div class="container">
-  <% @order.order_items.each do |order_item| %>
-    <div class="order-card">
-      <h3><%= order_item.quantity %>x <%= order_item.menu_item.name.capitalize %></h3>
-      <p>Price: <%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€"}) %></p>
-      <% if @order.waiting? %>
-        <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post } %>
-        <%= link_to "Reduce one", order_item_reduce_path(id: order_item), data: {turbo_method: :post } %>
-        <p><i class="fa-regular fa-trash-can"></i><%= link_to "Remove item", order_item_path(order_item), data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this item?'} %></p>
-      <% else %>
-        <p><i>This order was already sent to the kitchen and cannot be changed anymore.</i></p>
-      <% end %>
-    </div>
-  <% end %>
-  <p>Total order amount <%= number_to_currency(@order.sub_total, options = {precision: 2, unit: "€"}) %></p>
-  <% if @order.waiting? %>
+<% if @order.waiting? %>
     <% if @order.order_items.empty? %>
       <%= link_to "Your cart is currently empty, pick a dish", menu_item_customers_path %>
     <% else %>
-      <p><%= button_to "Send order to kitchen", order_path(order_id: @order.id), method: :patch %></p>
+      <div class="container">
+      <h5>Order details:</h5>
       <p><%= link_to "Empty cart", order_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure you would like to empty cart?'} %></p>
+      <div class="container">
+      <% @order.order_items.each do |order_item| %>
+        <div class="order-card">
+          <h3><%= order_item.quantity %>x <%= order_item.menu_item.name.capitalize %></h3>
+          <p>Price: <%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€"}) %></p>
+          <% if @order.waiting? %>
+            <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post } %>
+            <%= link_to "Reduce one", order_item_reduce_path(id: order_item), data: {turbo_method: :post } %>
+            <p><i class="fa-regular fa-trash-can"></i><%= link_to "Remove item", order_item_path(order_item), data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this item?'} %></p>
+          <% else %>
+            <p><i>This order was already sent to the kitchen and cannot be changed anymore.</i></p>
+          <% end %>
+        </div>
+      <% end %>
+      <p>Total order amount <%= number_to_currency(@order.sub_total, options = {precision: 2, unit: "€"}) %></p>
+
+      <%# Hardcoded 10 min for buffer time for the chef to see the order and waiter to deliver it %>
+      <p>Estimated time: <%=  @order.menu_items.all.sort_by(&:cooking_time).last.cooking_time + 10 %> min</p>
+      <%= simple_form_for [@order] do |f| %>
+        <%= f.input :table_number, as: :select, collection: Order::TABLE%>
+        <%= button_to "Confirm payment", order_path(order_id: @order.id), method: :patch, class: "btn btn-primary"%>
+      <% end %>
+      </div>
     <% end %>
   <% else %>
     <p><%= link_to "Start a new order", menu_item_customers_path, class: "btn btn-primary" %></p>

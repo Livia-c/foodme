@@ -53,7 +53,7 @@ class OrderItemsController < ApplicationController
     end
     # Save and redirect to cart show path
     @order_item.save
-    redirect_to order_path(current_order)
+    redirect_to menu_item_customers_path
   end
 
 

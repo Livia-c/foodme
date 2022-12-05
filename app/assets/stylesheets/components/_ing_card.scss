@@ -2,8 +2,65 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
   grid-gap: 16px;
+  margin-top: 13px;
+  margin-bottom: 30px;
+}
+
+.ing-cards a {
+  text-decoration: none;
+  color: $gray;
 }
 
 .card {
   position: unset !important;
+}
+
+.card:hover {
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  transition: 0.2s;
+}
+
+.card-body {
+  padding: 13px;
+}
+.card-body-details {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.card-body-details p {
+  margin: 0px;
+  width: 70%;
+  text-align: center;
+  background-color: $gray;
+  border-radius: 13px;
+  color: white;
+  padding: 6px;
+  // font-weight: bold;
+}
+
+#btn-status {
+  border-radius: 50px;
+  width: 35.99px;
+}
+
+.ingredient-update {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.ingredient-update .fa-trash-can {
+  color: white;
+  align-items: center;
+  display: flex
+}
+
+.ingredient-update .btn-primary {
+  width: 70%;
+}
+
+.card-category h4 {
+  margin: 0px;
 }

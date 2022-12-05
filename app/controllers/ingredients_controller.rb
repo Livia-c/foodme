@@ -4,6 +4,13 @@ class IngredientsController < ApplicationController
 
   def index
     @ingredients = Ingredient.all
+    @ingredient_vegetables = Ingredient.where(category: "vegetable")
+    @ingredient_fruits = Ingredient.where(category: "fruit")
+    @ingredient_carbohydrates = Ingredient.where(category: "carbohydrate")
+    @ingredient_proteins = Ingredient.where(category: "protein")
+    @ingredient_dairys = Ingredient.where(category: "dairy")
+    @ingredient_spices = Ingredient.where(category: "spice")
+    @ingredient_others = Ingredient.where(category: "other")
   end
 
   def show
@@ -16,7 +23,7 @@ class IngredientsController < ApplicationController
   def create
     @ingredient = Ingredient.new(ingredient_params)
     if @ingredient.save
-      redirect_to @ingredient, notice: "Ingredient was successfully created."
+      redirect_to ingredients_path, notice: "Ingredient was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -27,10 +34,15 @@ class IngredientsController < ApplicationController
 
   def update
     if @ingredient.update(ingredient_params)
-      redirect_to @ingredient, notice: "Ingredient was successfully updated."
+      # redirect_to @ingredient, notice: "Ingredient was successfully updated."
+      respond_to do |format|
+        format.html { redirect_to ingredients_path }
+        format.text { render partial: "ingredients/ingredient_infos", locals: { ingredient: @ingredient }, formats: [:html] }
+      end
     else
       render :edit, status: :unprocessable_entity
     end
+
   end
 
   def destroy
@@ -45,7 +57,9 @@ class IngredientsController < ApplicationController
   end
 
   def check_params
-    params[:ingredient][:name].downcase!
+    # params[:ingredient][:name].downcase!
+    params.dig(:ingredient, :name)&.downcase
+    # params[:ingredient][:name]
   end
 
   def ingredient_params

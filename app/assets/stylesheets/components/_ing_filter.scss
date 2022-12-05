@@ -1,0 +1,22 @@
+.inventory-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 13px;
+}
+
+.filter-card a {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50rem;
+  padding: 0.3rem 0.9rem;
+  background-color: rgba(51, 115, 87, 0.2);
+  color: $black-grey;
+  border: 0px solid $dark-green;
+  margin-right: 0.6rem;
+  margin-bottom: 0.4rem;
+  text-decoration: none;
+
+}

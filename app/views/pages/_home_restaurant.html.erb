@@ -1,22 +1,26 @@
-  <div class= "container">
-    <div class="d-flex justify-content-center">
-      <div class="home-card mx-3 " >
-        <%= image_tag "img1.png", class:"img-size" %>
-        <div class="cards-text">
-          <%= link_to "Inventory", "ingredients", class: "btn btn-primary rounded-4 btn-menu buttons" %>
-        </div>
+<div class="container d-flex align-items-center flex-column justify-content-center">
+  <div class="container-welcome d-flex align-items-center flex-column mb-5">
+    <h2 class="mb-3">Welcome to your dashboard <%= current_user.email %>!</h2>
+    <p class="mb-5">See below an overview of your inventory, menus and your live orders</p>
+  </div>
+  <div class= "container-dashboard d-flex">
+    <div class="home-card mx-2 " >
+      <%= image_tag "img1.png", class:"img-size" %>
+      <div class="cards-text">
+        <%= link_to "Inventory", "ingredients", class: "btn btn-primary rounded-4 btn-menu buttons" %>
       </div>
-      <div class= " home-card mx-4 ">
-        <%= image_tag "img1.png", class:"img-size" %>
-        <div class="cards-text">
-          <%= link_to "Menu", "menu_items", class: "btn btn-primary rounded-4 btn-menu buttons" %>
-        </div>
+    </div>
+    <div class= " home-card mx-2 ">
+      <%= image_tag "img1.png", class:"img-size" %>
+      <div class="cards-text">
+        <%= link_to "Menu", "menu_items", class: "btn btn-primary rounded-4 btn-menu buttons" %>
       </div>
-      <div class= "home-card mx-4 ">
-        <%= image_tag "img1.png", class:"img-size" %>
-        <div class="cards-text  ">
-          <%= link_to "Live Kitchen", "order_items", class: "btn btn-primary rounded-4 btn-menu buttons" %>
-        </div>
+    </div>
+    <div class= "home-card mx-2 ">
+      <%= image_tag "img1.png", class:"img-size" %>
+      <div class="cards-text  ">
+        <%= link_to "Live Kitchen", "order_items", class: "btn btn-primary rounded-4 btn-menu buttons" %>
       </div>
     </div>
   </div>
+</div>

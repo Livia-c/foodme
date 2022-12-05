@@ -29,7 +29,7 @@ class Order < ApplicationRecord
       order_item.menu_item.recipes.each do |recipe|
         quantity_ingredient = recipe.quantity
         @ingredient = Ingredient.find(recipe.ingredient_id)
-        current_quantity = @ingerdient.quantity - (quantity_menu_item * quantity_ingredient)
+        current_quantity = @ingredient.quantity - (quantity_menu_item * quantity_ingredient)
         @ingredient.update(quantity: current_quantity)
       end
     end

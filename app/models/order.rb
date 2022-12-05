@@ -28,9 +28,9 @@ class Order < ApplicationRecord
       quantity_menu_item = order_item.quantity
       order_item.menu_item.recipes.each do |recipe|
         quantity_ingredient = recipe.quantity
-        @ingerdient = Ingredient.find(recipe.ingredient_id)
+        @ingredient = Ingredient.find(recipe.ingredient_id)
         current_quantity = @ingerdient.quantity - (quantity_menu_item * quantity_ingredient)
-        @ingerdient.update(quantity: current_quantity)
+        @ingredient.update(quantity: current_quantity)
       end
     end
   end

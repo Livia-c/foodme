@@ -11,5 +11,7 @@
       <p>Table: <%= order.table_number || "takeaway"%></p>
     </div>
   </div>
-  <%= button_to "Prep", order_path(order), method: :patch, class: "btn btn-primary btn-kitchen" %>
+
+<%= button_to "", order_path(order), method: :patch, class: "btn btn-primary btn-kitchen fa-solid fa-arrow-rotate-right", style:"color:white"%>
 </div>
+

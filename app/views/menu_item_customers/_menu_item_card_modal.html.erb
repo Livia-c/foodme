@@ -1,0 +1,71 @@
+<div class="container-mobile-cards">
+  <!-- Button trigger modal -->
+  <div class="card-menu-mobile menu-card"data-bs-toggle="modal" data-bs-target="#menuItem-<%=menu_item.id%>-Modal" id="menu-item-<%=menu_item.id%>">
+    <div class="card-menu-mobile-infos">
+        <div class="card-menu-mobile-title-description">
+          <h3><strong><%= menu_item.name.capitalize %></strong></h3>
+          <p><strong><%= menu_item.description.capitalize %></strong></p>
+        </div>
+        <div class="card-menu-mobile-icons">
+          <% if menu_item.spiciness == 1 %>
+            <p><i class="fa-solid fa-pepper-hot"></i></p>
+          <% elsif menu_item.spiciness == 2 %>
+            <p><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
+          <% elsif menu_item.spiciness == 3%>
+            <p><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
+          <% else %>
+            <p></p>
+          <% end %>
+          <p><strong><i class="fa-regular fa-clock"></i> <%= menu_item.cooking_time %>min</strong></p>
+          <p><strong><%= '%.2f' % menu_item.price %>€</strong></p>
+        </div>
+      </div>
+      <div class="card-menu-mobile-image">
+        <% if menu_item.photos.attached?%>
+          <% menu_item.photos.each do |photo|%>
+            <%=cl_image_tag photo.key %>
+          <% end %>
+        <% end %>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="menuItem-<%=menu_item.id%>-Modal" tabindex="-1" aria-labelledby="menuItem-<%=menu_item.id%>-ModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="menuItem-<%=menu_item.id%>-ModalLabel"><%= menu_item.name.capitalize %></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="card-menu-mobile-image">
+            <% if menu_item.photos.attached?%>
+              <% menu_item.photos.each do |photo|%>
+                <%=cl_image_tag photo.key %>
+              <% end %>
+            <% end %>
+          </div>
+          <p><%= menu_item.description.capitalize %></p>
+          <div class="card-menu-mobile-icons">
+            <% if menu_item.spiciness == 1 %>
+              <p><i class="fa-solid fa-pepper-hot"></i></p>
+            <% elsif menu_item.spiciness == 2 %>
+              <p><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
+            <% elsif menu_item.spiciness == 3%>
+              <p><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
+            <% else %>
+              <p></p>
+            <% end %>
+            <p><i class="fa-regular fa-clock"></i> <%= menu_item.cooking_time %>min</p>
+            <p>€<%= '%.2f' % menu_item.price %></p>
+          </div>
+            <% if user_signed_in? %>
+            <%= link_to "Add To Cart", order_items_path(menu_item_id: menu_item.id), data: {turbo_method: :post}, class: "btn btn-primary" %>
+            <% else %>
+            <%=  link_to "Add To Cart", order_items_path(menu_item_id: menu_item.id), method: :post, class: "btn btn-primary "%>
+            <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

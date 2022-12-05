@@ -22,4 +22,16 @@ class Order < ApplicationRecord
     end
     return sum
   end
+
+  def update_ingredients
+    order_items.each do |order_item|
+      quantity_menu_item = order_item.quantity
+      order_item.menu_item.recipes.each do |recipe|
+        quantity_ingredient = recipe.quantity
+        @ingerdient = Ingredient.find(recipe.ingredient_id)
+        current_quantity = @ingerdient.quantity - (quantity_menu_item * quantity_ingredient)
+        @ingerdient.update(quantity: current_quantity)
+      end
+    end
+  end
 end

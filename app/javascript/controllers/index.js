@@ -15,3 +15,6 @@ application.register("livekitchen-subscription", LivekitchenSubscriptionControll
 
 import NavbarController from "./navbar_controller"
 application.register("navbar", NavbarController)
+
+import OrderstatusSubscriptionController from "./orderstatus_subscription_controller"
+application.register("orderstatus-subscription", OrderstatusSubscriptionController)

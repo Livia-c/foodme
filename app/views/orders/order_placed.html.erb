@@ -1,6 +1,5 @@
-<div class="container text-center ">
-  <%= image_tag "img4.png" %>
-  <p><strong>Your order was placed.</strong></p>
-  <p>Hang in there till your order is being cooked</p>
-  <p>Your order nr: <%= @order.id %></p>
+<div class="" data-controller="orderstatus-subscription" data-orderstatus-subscription-orderstatus-id-value="<%= @order.id %>">
+  <div class="status" data-orderstatus-subscription-target="status">
+    <%= render "order_status", order: @order %>
+  </div>
 </div>

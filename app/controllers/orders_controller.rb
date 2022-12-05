@@ -42,8 +42,21 @@ class OrdersController < ApplicationController
         render :show, status: :unprocessable_entity
       end
     else
-      @order.pending? ? @order.in_progress! : @order.delivered!
-      redirect_to order_items_path
+      if @order.pending?
+        @order.update(status: 2)
+        OrderstatusChannel.broadcast_to(
+          @order,
+          render_to_string(partial: "order_status", locals: {order: @order})
+        )
+        redirect_to order_items_path
+      else
+        @order.update(status: 3)
+        OrderstatusChannel.broadcast_to(
+          @order,
+          render_to_string(partial: "order_status", locals: {order: @order})
+        )
+        redirect_to order_items_path
+      end
     end
   end
 

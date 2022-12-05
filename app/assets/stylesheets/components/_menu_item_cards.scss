@@ -44,7 +44,12 @@
   white-space: nowrap;
   overflow: hidden;
 }
+.delete-icon {
+  color: $black-grey;
+  opacity: 0.4;
+  padding-right: 5px;
+}
 
-.menu-item-description {
-
+.delete-ing:hover .delete-icon {
+  opacity: 1;
 }

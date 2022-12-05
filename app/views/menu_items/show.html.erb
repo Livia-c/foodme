@@ -35,12 +35,15 @@
       <% end %>
     </div>
   </div>
-  <div class='shadow p-3 mb-5 bg-body rounded col-7 justify-content-between'>
+  <div class='shadow p-3 mb-5 bg-body rounded col-7 justify-content-between' >
     <h5 class="border-bottom text-center"><strong>Recipe:</strong></h5>
     <% @menu_item.recipes.each do |recipe| %>
-      <div class="d-flex justify-content-between">
+      <div class="d-flex justify-content-between" data-controller="delete-from-list">
         <p><%= recipe.ingredient.name %> (<%= recipe.quantity %>) <%= recipe.ingredient.unit %></p>
-        <%= link_to 'Delete ingredient', recipe_path(recipe), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: 'btn btn-danger m-1' %>
+        <%= link_to 'Delete ingredient', recipe_path(recipe),data: {
+          turbo_method: :delete,
+          delete_from_list_target: "link",
+          action: "click->delete-from-list#delete"}, remote: true %>
       </div>
     <% end %>
   </div>

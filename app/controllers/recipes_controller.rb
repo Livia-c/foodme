@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @menu_item = @recipe.menu_item
     @recipe.destroy
-    redirect_to menu_item_path(@menu_item), notice: 'Ingredient was successfully deleted.'
+    head :ok
   end
 
   private

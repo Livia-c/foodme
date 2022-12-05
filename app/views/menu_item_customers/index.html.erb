@@ -36,6 +36,12 @@
       <label class="form-check-label collection_check_boxes" for="snippet_tag_ids_5">Dessert</label>
     </div>
   </fieldset>
+  <% @menu_items.each do |menu_item| %>
+    <%= render "menu_item_card_modal", menu_item: menu_item %>
+  <% end %>
 
-  <%= render "item-card-mobile" %>
+  <%# <%= @current_order.order_items.pluck(:quantity).sum %>
+
+  <%= link_to "(#{@current_order.order_items.pluck(:quantity).sum}) Go to checkout  #{number_to_currency(@current_order.sub_total, options = {precision: 2, unit: "€"})}",
+              order_path(@current_order), class: 'btn btn-primary m-4' %>
 </div>

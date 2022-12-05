@@ -4,6 +4,13 @@ class MenuItemsController < ApplicationController
   def index
     @menu_items = MenuItem.all
     @recipe = Recipe.new
+    @menu_items.each do |menu_item|
+      menu_item.recipes.each do |recipe|
+        quantity_stock = Ingredient.find(recipe.ingredient_id).quantity
+        quantity_stock > recipe.quantity ? menu_item.check_status = true : menu_item.check_status = false
+        menu_item.save!
+      end
+    end
   end
 
   def show
@@ -49,6 +56,6 @@ class MenuItemsController < ApplicationController
   end
 
   def menu_item_params
-    params.require(:menu_item).permit(:name, :description, :spiciness, :cooking_time, :vegetarian, :vegan, :signature_dish, :price, :menu_item_type, photos: [])
+    params.require(:menu_item).permit(:name, :description, :spiciness, :cooking_time, :vegetarian, :vegan, :signature_dish, :check_status, :price, :menu_item_type, photos: [])
   end
 end

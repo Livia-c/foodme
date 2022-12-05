@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["ingredients", "form"]
 
   connect() {
-    console.log("hello10")
   }
 
   send(event) {

@@ -1,8 +1,8 @@
 class OrderItemsController < ApplicationController
   def index
-    @waiting_orders = Order.includes({order_items: :menu_item}).where(status: :waiting)
-    @pending_orders = Order.includes({order_items: :menu_item}).where(status: :pending)
-    @in_progress_orders = Order.includes({order_items: :menu_item}).where(status: :in_progress)
+    @waiting_orders = Order.includes({order_items: :menu_item}).where(status: :waiting).order(:created_at)
+    @pending_orders = Order.includes({order_items: :menu_item}).where(status: :pending).order(:created_at)
+    @in_progress_orders = Order.includes({order_items: :menu_item}).where(status: :in_progress).order(:created_at)
   end
 
   def completed_orders

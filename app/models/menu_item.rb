@@ -18,7 +18,7 @@ class MenuItem < ApplicationRecord
   def available?
     recipes.each do |recipe|
       quantity_needed = recipe.quantity
-      ingredient = Ingredient.find(recipe.ingredient_id)
+      ingredient = recipe.ingredient
       current_quantity = ingredient.quantity
       return false if quantity_needed > current_quantity
     end
@@ -29,7 +29,7 @@ class MenuItem < ApplicationRecord
     max_number = Float::INFINITY
     recipes.each do |recipe|
       quantity_needed = recipe.quantity
-      ingredient = Ingredient.find(recipe.ingredient_id)
+      ingredient = recipe.ingredient
       current_quantity = ingredient.quantity
       available_number = (current_quantity / quantity_needed).floor
       max_number = available_number if max_number > available_number

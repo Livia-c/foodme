@@ -1,8 +1,9 @@
-<div class = "container border-top">
-    <h4>Already cooked:</h4>
-    <div class = "row justify-content-center row flex-row ">
-      <% @delivered_orders.each do |order| %>
-        <%= render "livekitchen_card_delivered", order: order %>
-      <% end %>
+<div class = "container col-6 mt-4">
+  <h4 class="text-center">Already cooked</h4>
+  <div class = "row justify-content-center row flex-row ">
+    <% @delivered_orders.each do |order| %>
+      <%= render "livekitchen_card_delivered", order: order %>
+    <% end %>
   </div>
+      <%= link_to "Back", order_items_path(@order_items)  , class: 'btn btn-primary complete-btn ' %>
 </div>

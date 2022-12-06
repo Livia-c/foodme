@@ -21,8 +21,8 @@
        <p><strong>Description: </strong><%= @menu_item.description %></p>
       </div>
       <%= link_to 'Back', menu_items_path, class: 'btn btn-primary col-3' %>
-      <%= link_to 'Update Menu Item', edit_menu_item_path(@menu_item), class: 'btn btn-primary col-3' %>
-      <%= link_to 'Delete Menu Item', menu_item_path(@menu_item), class: 'btn btn-danger col-3',
+      <%= link_to 'Update', edit_menu_item_path(@menu_item), class: 'btn btn-primary col-3' %>
+      <%= link_to 'Delete', menu_item_path(@menu_item), class: 'btn btn-danger col-3',
       data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this delicious menu?'} %>
     </div>
 

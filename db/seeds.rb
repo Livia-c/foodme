@@ -15,112 +15,136 @@ MenuItem.destroy_all
 
 puts "Adding the first 5 ingredients"
 
+pic1 = URI.open("https://foodsguy.com/wp-content/uploads/2020/08/Can-You-Freeze-Uncooked-Rice.jpg")
 ingredient1 = Ingredient.new(
   name: "Rice",
   quantity: "10",
   unit: "kg",
   category: "other"
 )
+ingredient1.photos.attach(io: pic1, filename: "rice.png", content_type: "image/png")
 ingredient1.save
 puts "I just created ingredient nr #{ingredient1.id}"
 
+pic2 = URI.open("https://assets.tendercuts.in/product/C/H/0b2422c9-12d1-4c13-bd96-9948ad114c97.webp")
 ingredient2 = Ingredient.new(
   name: "Chicken",
   quantity: "20",
   unit: "kg",
   category: "protein"
 )
+ingredient2.photos.attach(io: pic2, filename: "chicken.png", content_type: "image/png")
 ingredient2.save
 puts "I just created ingredient nr #{ingredient2.id}"
 
+pic3 = URI.open("https://www.outtraveler.com/sites/default/files/2016/01/28/fish-cr_0.jpg")
 ingredient3 = Ingredient.new(
   name: "Fish",
   quantity: "10",
   unit: "pcs",
   category: "protein"
 )
+ingredient3.photos.attach(io: pic3, filename: "chicken.png", content_type: "image/png")
 ingredient3.save
 puts "I just created ingredient nr #{ingredient3.id}"
 
+pic4 = URI.open("https://post.healthline.com/wp-content/uploads/2020/08/corn-oil-732x549-thumbnail-732x549.jpg")
 ingredient4 = Ingredient.new(
   name: "Oil",
   quantity: "10",
   unit: "l",
   category: "protein"
 )
+ingredient4.photos.attach(io: pic4, filename: "chicken.png", content_type: "image/png")
 ingredient4.save
 puts "I just created ingredient nr #{ingredient4.id}"
 
 
+pic5 = URI.open("https://cdn.britannica.com/68/143268-050-917048EA/Beef-loin.jpg")
 ingredient5 = Ingredient.new(
   name: "Beef",
   quantity: "10",
   unit: "kg",
   category: "protein"
 )
+ingredient5.photos.attach(io: pic5, filename: "chicken.png", content_type: "image/png")
 ingredient5.save
 puts "I just created ingredient nr #{ingredient5.id}"
 
+pic6 = URI.open("https://www.lifeberrys.com/img/article/tomato-pulp-1610367560-lb.jpg")
 ingredient6 = Ingredient.new(
   name: "Tomato",
   quantity: "10",
   unit: "kg",
   category: "vegetable"
 )
+ingredient6.photos.attach(io: pic6, filename: "chicken.png", content_type: "image/png")
 ingredient6.save
 puts "I just created ingredient nr #{ingredient6.id}"
 
+pic7 = URI.open("https://post.healthline.com/wp-content/uploads/2020/09/AN440-Potatoes-732x549-thumb-732x549.jpg")
 ingredient7 = Ingredient.new(
   name: "Potato",
   quantity: "9",
   unit: "kg",
   category: "protein"
 )
+ingredient7.photos.attach(io: pic7, filename: "chicken.png", content_type: "image/png")
 ingredient7.save
 puts "I just created ingredient nr #{ingredient7.id}"
 
+pic8 = URI.open("https://images.immediate.co.uk/production/volatile/sites/30/2020/08/the-health-benefits-of-onions-main-image-700-350-8425535.jpg")
 ingredient8 = Ingredient.new(
   name: "Onion",
   quantity: "9",
   unit: "kg",
   category: "vegetable"
 )
+ingredient8.photos.attach(io: pic8, filename: "chicken.png", content_type: "image/png")
 ingredient8.save
 puts "I just created ingredient nr #{ingredient8.id}"
 
+pic9 = URI.open("https://www.mashed.com/img/gallery/mistakes-everyone-makes-while-cooking-spinach/l-intro-1649867592.jpg")
 ingredient9 = Ingredient.new(
   name: "Spinach",
   quantity: "4",
   unit: "kg",
   category: "vegetable"
 )
+ingredient9.photos.attach(io: pic9, filename: "chicken.png", content_type: "image/png")
 ingredient9.save
 puts "I just created ingredient nr #{ingredient9.id}"
 
+pic10 = URI.open("https://m.economictimes.com/thumb/msid-96004233,width-1200,height-900,resizemode-4,imgsize-90840/sugar.jpg")
 ingredient10 = Ingredient.new(
   name: "Sugar",
   quantity: "4",
   unit: "kg",
   category: "other"
 )
+ingredient10.photos.attach(io: pic10, filename: "chicken.png", content_type: "image/png")
 ingredient10.save
 puts "I just created ingredient nr #{ingredient10.id}"
 
+pic11 = URI.open("https://bakeitwithlove.com/wp-content/uploads/2022/06/All-Purpose-Flour-Substitute-sq.jpg")
 ingredient11 = Ingredient.new(
   name: "Flour",
   quantity: "4",
   unit: "kg",
   category: "other"
 )
+ingredient11.photos.attach(io: pic11, filename: "chicken.png", content_type: "image/png")
 ingredient11.save
 puts "I just created ingredient nr #{ingredient11.id}"
 
+pic12 = URI.open("https://sc04.alicdn.com/kf/U10e11fd7668d4e65b4d1aa3be565ced61.jpg")
 ingredient12 = Ingredient.new(
   name: "Cheese",
   quantity: "4",
   unit: "kg",
   category: "dairy"
 )
+ingredient12.photos.attach(io: pic12, filename: "chicken.png", content_type: "image/png")
 ingredient12.save
 puts "I just created ingredient nr #{ingredient12.id}"
 
@@ -281,21 +305,21 @@ puts "I just created a guest user nr #{user3.id}"
 puts "Use bob@mail.com and 123456 to log in as guest"
 
 puts "Creating cart (waiting) order"
-new_order = Order.create!(user: user2, status: 1)
+new_order = Order.create!(user: user2, status: 1, table_number: 7)
 
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
 
-new_order = Order.create!(user: user3, status: 1)
+new_order = Order.create!(user: user3, status: 1, table_number: 7)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
 new_order_item.save
 
-new_in_progress_order = Order.create!(user: user3, status: 2)
+new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 7)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
 
-new_in_progress_order = Order.create!(user: user2, status: 2)
+new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 7)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
 
@@ -304,11 +328,253 @@ new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity:
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
 
-new_order = Order.create!(user: user2, status: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
-new_order = Order.create!(user: user3, status: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
 
+new_order = Order.create!(user: user2, status: 2, table_number: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 10)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 8)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 3, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+
+new_order = Order.create!(user: user3, status: 2, table_number: 4)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order = Order.create!(user: user2, status: 1, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 1, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order_item.save
+
+new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
+
+new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
+
+new_in_progress_order_item.save
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 10)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 8)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 3, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+
+new_order = Order.create!(user: user3, status: 2, table_number: 4)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order = Order.create!(user: user2, status: 1, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 1, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order_item.save
+
+new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
+
+new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
+
+new_in_progress_order_item.save
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 10)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 8)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 3, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+
+new_order = Order.create!(user: user3, status: 2, table_number: 4)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order = Order.create!(user: user2, status: 1, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 1, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order_item.save
+
+new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
+
+new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
+
+new_in_progress_order_item.save
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 10)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 8)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 3, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+
+new_order = Order.create!(user: user3, status: 2, table_number: 4)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order = Order.create!(user: user2, status: 1, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 1, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order_item.save
+
+new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
+
+new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
+
+new_in_progress_order_item.save
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 10)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 8)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 3, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+
+new_order = Order.create!(user: user3, status: 2, table_number: 4)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
 
 puts "Seeding completed. You now have #{Ingredient.count} ingredients and #{MenuItem.count} items"
 puts "You also have #{User.count} users, that placed #{Order.count} orders with #{OrderItem.count} items"

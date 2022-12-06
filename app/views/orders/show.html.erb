@@ -28,7 +28,7 @@
       <%# Hardcoded 10 min for buffer time for the chef to see the order and waiter to deliver it %>
       <p>Estimated time: <%=  @order.menu_items.all.sort_by(&:cooking_time).last.cooking_time + 10 %> min</p>
       <%= simple_form_for [@order] do |f| %>
-        <%= f.input :table_number, as: :select, collection: Order::TABLE%>
+        <%= f.input :table_number, as: :select, collection: (1..10)%>
         <%= button_to "Confirm payment", order_path(order_id: @order.id), method: :patch, class: "btn btn-primary"%>
       <% end %>
       </div>

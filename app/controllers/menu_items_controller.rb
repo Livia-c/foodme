@@ -2,7 +2,7 @@ class MenuItemsController < ApplicationController
   before_action :set_menu_item, only: %i[show edit upload_pictures update destroy]
 
   def index
-    @menu_items = MenuItem.includes([{recipes: [:ingredient]}, :photos_attachments]).all
+    @menu_items = MenuItem.includes([{recipes: [:ingredient]}, :photos_attachments]).order(:created_at).all
     @recipe = Recipe.new
   end
 

@@ -2,7 +2,7 @@ class MenuItemCustomersController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   def index
-    @menu_items = MenuItem.includes([:recipes, :photos_attachments]).all
+    @menu_items = MenuItem.includes([:recipes, :photos_attachments]).order(:created_at).all
     # if params[:query].present?
     #   if params[:query]["menu_item_type"]
     #     @search = params[:query]["menu_item_type"]

@@ -1,5 +1,5 @@
 class Ingredient < ApplicationRecord
-  has_many :recipes
+  has_many :recipes, dependent: :destroy
   validates :name, uniqueness: true
   validates :name, :quantity, :unit, :category, presence: true
   validates :quantity, comparison: { greater_than: 0 }, on: :update

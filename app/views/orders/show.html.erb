@@ -11,8 +11,12 @@
           <h3><%= order_item.quantity %>x <%= order_item.menu_item.name.capitalize %></h3>
           <p>Price: <%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€"}) %></p>
           <% if @order.waiting? %>
-            <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post } %>
-            <%= link_to "Reduce one", order_item_reduce_path(id: order_item), data: {turbo_method: :post } %>
+            <% if order_item.quantity >= order_item.menu_item.max_available? %>
+              <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post }, class: "btn btn-primary disabled" %>
+            <% else %>
+              <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post }, class: "btn btn-primary" %>
+            <% end %>
+            <%= link_to "Reduce one", order_item_reduce_path(id: order_item), data: {turbo_method: :post }, class: "btn btn-primary" %>
             <p><i class="fa-regular fa-trash-can"></i><%= link_to "Remove item", order_item_path(order_item), data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this item?'} %></p>
           <% else %>
             <p><i>This order was already sent to the kitchen and cannot be changed anymore.</i></p>

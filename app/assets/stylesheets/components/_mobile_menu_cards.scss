@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   border-radius: 13px;
+  width: 90vw;
 }
 
 .container-mobile-cards a {
@@ -34,9 +35,15 @@
   padding-top: 6px;
 }
 
-.card-menu-mobile-title-description p {
+.card-menu-mobile-title-description {
+  white-space: nowrap;
+  overflow: hidden;
+ p {
   margin: 0;
   font-size: 10px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+ }
 }
 
 .card-menu-mobile-icons {

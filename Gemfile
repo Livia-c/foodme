@@ -51,6 +51,9 @@ gem "sassc-rails"
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+# Installing Bullet to clean the N+1 queries
+gem 'bullet', group: 'development'
+
 # Installing .env second time
 gem "dotenv-rails", groups: [:development, :test]
 

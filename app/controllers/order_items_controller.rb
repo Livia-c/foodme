@@ -1,12 +1,12 @@
 class OrderItemsController < ApplicationController
   def index
-    @waiting_orders = Order.where(status: :waiting)
-    @pending_orders = Order.where(status: :pending)
-    @in_progress_orders = Order.where(status: :in_progress)
+    @waiting_orders = Order.includes({order_items: :menu_item}).where(status: :waiting)
+    @pending_orders = Order.includes({order_items: :menu_item}).where(status: :pending)
+    @in_progress_orders = Order.includes({order_items: :menu_item}).where(status: :in_progress)
   end
 
   def completed_orders
-    @delivered_orders = Order.where(status: :delivered)
+    @delivered_orders = Order.includes({order_items: :menu_item}).where(status: :delivered)
   end
   # def create
   #   menu_item = MenuItem.find(params[:menu_item_id])
@@ -62,7 +62,6 @@ class OrderItemsController < ApplicationController
   # end
 
   def add_quantity
-    # raise
     @order_item = OrderItem.find(params[:id])
     @order_item.quantity += 1
     @order_item.save

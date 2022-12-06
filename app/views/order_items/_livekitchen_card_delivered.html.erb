@@ -7,8 +7,7 @@
     </div>
     <div class="livekitchen-lefttext">
       <p><strong>Order #<%= order.id %></strong></p>
-      <%# check how table number will display when no table nr is given %>
-      <p><strong>Table: <%= order.table_number || "takeaway"%></strong></p>
+      <p><strong>Table: <%= order.table_number == 0 ? "takeaway" : order.table_number %></strong></p>
     </div>
   </div>
 </div>

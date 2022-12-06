@@ -1,5 +1,4 @@
 class MenuItemsController < ApplicationController
-  include ActionView::RecordIdentifier
   before_action :set_menu_item, only: %i[show edit upload_pictures update destroy]
 
   def index

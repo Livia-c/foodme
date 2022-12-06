@@ -2,7 +2,7 @@ class MenuItemsController < ApplicationController
   before_action :set_menu_item, only: %i[show edit upload_pictures update destroy]
 
   def index
-    @menu_items = MenuItem.includes([{recipes: [:ingredient]}, :photos_attachments]).order(:created_at).all
+    @menu_items = MenuItem.includes([{recipes: [:ingredient]}, {photos_attachments: :blob}]).order(:created_at).all
     @recipe = Recipe.new
   end
 
@@ -17,7 +17,7 @@ class MenuItemsController < ApplicationController
   def create
     @menu_item = MenuItem.new(menu_item_params)
     if @menu_item.save
-      redirect_to menu_item_path(@menu_item), notice: "Menu item was successfully created."
+      redirect_to menu_items_path, notice: "Menu item was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,7 +31,7 @@ class MenuItemsController < ApplicationController
 
   def update
     if @menu_item.update(menu_item_params)
-      redirect_to menu_item_path(@menu_item), notice: "Menu item was successfully updated."
+      redirect_to menu_items_path, notice: "Menu item was successfully updated."
     else
       render :new, status: :unprocessable_entity
     end

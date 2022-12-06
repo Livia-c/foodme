@@ -18,5 +18,9 @@
   margin-right: 0.6rem;
   margin-bottom: 0.4rem;
   text-decoration: none;
+}
 
+.filter-card a:hover {
+  background-color: rgba(51, 115, 87, 0.6);
+  transition: 0.2s;
 }

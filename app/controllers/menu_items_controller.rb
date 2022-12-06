@@ -2,7 +2,7 @@ class MenuItemsController < ApplicationController
   before_action :set_menu_item, only: %i[show edit upload_pictures update destroy]
 
   def index
-    @menu_items = MenuItem.all
+    @menu_items = MenuItem.includes([{recipes: [:ingredient]}, :photos_attachments]).all
     @recipe = Recipe.new
   end
 
@@ -49,6 +49,6 @@ class MenuItemsController < ApplicationController
   end
 
   def menu_item_params
-    params.require(:menu_item).permit(:name, :description, :spiciness, :cooking_time, :vegetarian, :vegan, :signature_dish, :check_status, :price, :menu_item_type, photos: [])
+    params.require(:menu_item).permit(:name, :description, :spiciness, :cooking_time, :vegetarian, :vegan, :signature_dish, :price, :menu_item_type, photos: [])
   end
 end

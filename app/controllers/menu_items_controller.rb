@@ -1,4 +1,5 @@
 class MenuItemsController < ApplicationController
+  include ActionView::RecordIdentifier
   before_action :set_menu_item, only: %i[show edit upload_pictures update destroy]
 
   def index
@@ -31,7 +32,7 @@ class MenuItemsController < ApplicationController
 
   def update
     if @menu_item.update(menu_item_params)
-      redirect_to menu_items_path, notice: "Menu item was successfully updated."
+      redirect_to menu_items_path(anchor: dom_id(@menu_item)), data: {turbo: false}, notice: "Menu item was successfully updated."
     else
       render :new, status: :unprocessable_entity
     end

@@ -4,12 +4,14 @@
 
 import { application } from "./application"
 
-import EditIngredientController from "./edit_ingredient_controller"
-application.register("edit-ingredient", EditIngredientController)
-
 import DeleteFromListController from "./delete_from_list_controller"
 application.register("delete-from-list", DeleteFromListController)
 
+import DismissNoticeController from "./dismiss_notice_controller"
+application.register("dismiss-notice", DismissNoticeController)
+
+import EditIngredientController from "./edit_ingredient_controller"
+application.register("edit-ingredient", EditIngredientController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)

@@ -21,7 +21,7 @@ class OrdersController < ApplicationController
 
   def destroy
     @order.destroy
-    redirect_to orders_url, notice: "Order was successfully deleted."
+    redirect_to menu_item_customers_path, notice: "Order was successfully deleted."
   end
 
   def update

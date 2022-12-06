@@ -2,16 +2,15 @@
   <div class="livekitchen-text">
     <div class="livekitchen-righttext">
       <% order.order_items.each do |item| %>
-        <p><%= item.menu_item.name %> (<%= pluralize item.quantity, "portion" %>)</p>
+        <p><strong><%= item.menu_item.name %> (<%= pluralize item.quantity, "portion" %>)</strong></p>
       <% end %>
     </div>
     <div class="livekitchen-lefttext">
-      <p>Order #<%= order.id %></p>
+      <p><strong>Order #<%= order.id %></strong></p>
       <%# check how table number will display when no table nr is given %>
-      <p>Table: <%= order.table_number || "takeaway"%></p>
+      <p><strong>Table: <%= order.table_number == 0 ? "takeaway" : order.table_number %></strong></p>
     </div>
   </div>
 
-<%= button_to "", order_path(order), method: :patch, class: "btn btn-primary btn-kitchen fa-solid fa-arrow-rotate-right", style:"color:white"%>
+<%= button_to "", order_path(order), method: :patch, class: "btn btn-primary btn-kitchen fa-solid fa-fire-burner", style:"color:white"%>
 </div>
-

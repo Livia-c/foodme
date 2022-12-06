@@ -3,6 +3,7 @@ class Ingredient < ApplicationRecord
   validates :name, uniqueness: true
   validates :name, :quantity, :unit, :category, presence: true
   validates :quantity, comparison: { greater_than: 0 }, on: :update
+  has_many_attached :photos
 
   UNIT = ["kg", "g", "l", "ml", "pcs", "can"]
   validates_inclusion_of :unit, in: UNIT

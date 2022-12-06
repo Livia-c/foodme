@@ -7,7 +7,6 @@ export default class extends Controller {
     displayForm(event) {
       this.formTargets.forEach(form => form.classList.add("d-none"))
       const ingredientId = event.currentTarget.dataset.ingredientId
-      console.log(event.currentTarget)
       const form = this.formTargets.find((form) => form.attributes.id.value === `edit_ingredient_${ingredientId}`)
       form.classList.remove("d-none")
     }
@@ -18,16 +17,20 @@ export default class extends Controller {
 
   update(event) {
     event.preventDefault()
-    const url = this.formTarget.action
+    const formId = event.currentTarget.attributes.id.value
+    const form = this.formTargets.find((form) => form.attributes.id.value === formId)
+    const idArray = formId.split("_")
+    const ingredientId = idArray[idArray.length - 1]
+    const card = this.cardTargets.find(card => (card.dataset.ingredientId === ingredientId))
+    const url = form.action
     fetch(url, {
       method: "PATCH",
       headers: { "Accept": "text/plain" },
-      body: new FormData(this.formTarget)
+      body: new FormData(form)
     })
       .then(response => response.text())
       .then((data) => {
-        this.cardTarget.outerHTML = data
+        card.outerHTML = data
       })
-      console.log("success")
   }
 }

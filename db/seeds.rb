@@ -281,21 +281,21 @@ puts "I just created a guest user nr #{user3.id}"
 puts "Use bob@mail.com and 123456 to log in as guest"
 
 puts "Creating cart (waiting) order"
-new_order = Order.create!(user: user2, status: 1, table_number: 0)
+new_order = Order.create!(user: user2, status: 1, table_number: 7)
 
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
 
-new_order = Order.create!(user: user3, status: 1, table_number: 0)
+new_order = Order.create!(user: user3, status: 1, table_number: 7)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
 new_order_item.save
 
-new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 0)
+new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 7)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
 
-new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 0)
+new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 7)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
 new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
 
@@ -304,11 +304,253 @@ new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity:
 new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
 
-new_order = Order.create!(user: user2, status: 3, table_number: 0)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
-new_order = Order.create!(user: user3, status: 3, table_number: 0)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
 new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
 
+new_order = Order.create!(user: user2, status: 2, table_number: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 10)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 8)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 3, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+
+new_order = Order.create!(user: user3, status: 2, table_number: 4)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order = Order.create!(user: user2, status: 1, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 1, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order_item.save
+
+new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
+
+new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
+
+new_in_progress_order_item.save
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 10)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 8)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 3, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+
+new_order = Order.create!(user: user3, status: 2, table_number: 4)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order = Order.create!(user: user2, status: 1, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 1, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order_item.save
+
+new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
+
+new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
+
+new_in_progress_order_item.save
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 10)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 8)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 3, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+
+new_order = Order.create!(user: user3, status: 2, table_number: 4)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order = Order.create!(user: user2, status: 1, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 1, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order_item.save
+
+new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
+
+new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
+
+new_in_progress_order_item.save
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 10)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 8)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 3, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+
+new_order = Order.create!(user: user3, status: 2, table_number: 4)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order = Order.create!(user: user2, status: 1, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item6, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 1, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
+new_order_item.save
+
+new_in_progress_order = Order.create!(user: user3, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item3, quantity: 1)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item5, quantity: 2)
+
+new_in_progress_order = Order.create!(user: user2, status: 2, table_number: 7)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item4, quantity: 2)
+new_in_progress_order_item = OrderItem.create!(order: new_in_progress_order, menu_item: item1, quantity: 3)
+
+new_in_progress_order_item.save
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 2)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 1)
+new_order = Order.create!(user: user3, status: 3, table_number: 7)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 2)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user3, status: 3, table_number: 10)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item5, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 2, table_number: 8)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item3, quantity: 2)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 3)
+
+new_order = Order.create!(user: user2, status: 3, table_number: 7)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item2, quantity: 1)
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 1)
+
+new_order = Order.create!(user: user3, status: 2, table_number: 4)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item1, quantity: 3)
+new_order = Order.create!(user: user3, status: 3, table_number: 1)
+
+new_order_item = OrderItem.create!(order: new_order, menu_item: item4, quantity: 2)
 
 puts "Seeding completed. You now have #{Ingredient.count} ingredients and #{MenuItem.count} items"
 puts "You also have #{User.count} users, that placed #{Order.count} orders with #{OrderItem.count} items"

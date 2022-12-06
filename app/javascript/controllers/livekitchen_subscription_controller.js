@@ -12,6 +12,5 @@ export default class extends Controller {
       // { received: data => console.log(data)}
       { received: data => this.ordersTarget.insertAdjacentHTML("beforeend", data) }
     )
-    console.log(`Subscribe to the livekitchen`)
   }
 }

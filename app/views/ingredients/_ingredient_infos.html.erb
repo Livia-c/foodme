@@ -24,7 +24,7 @@
         <%= f.input :quantity %>
         <div class="ingredient-update">
           <%= link_to "", ingredient_path(ingredient), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-danger fa-solid fa-trash-can" %>
-          <%= f.button :submit, id: "blue_button", class: "btn btn-primary", value: "Update" %>
+          <%= f.submit "Update", id: "blue_button_#{ingredient.id}", class: "btn btn-primary" %>
         </div>
     <% end %>
   </div>

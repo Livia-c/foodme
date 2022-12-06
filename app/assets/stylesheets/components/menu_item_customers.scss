@@ -3,3 +3,21 @@
   opacity: 3;
   cursor: pointer;
 }
+
+.checkout-btn {
+  direction: ltr;
+  position: fixed;
+  left: 5%;
+  bottom: 50px;
+  right: 5%;
+  z-index: 999;
+  transform: translate3d(0px, 100%, 0px);
+  padding-top: 1rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  padding-bottom: calc(1rem + env(safe-area-inset-bottom) / 2);
+  width: 80%;
+}
+.empty-space {
+  height: 90px;
+}

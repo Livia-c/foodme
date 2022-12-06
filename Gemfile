@@ -52,7 +52,7 @@ gem "sassc-rails"
 # gem "image_processing", "~> 1.2"
 
 # Installing Bullet to clean the N+1 queries
-gem 'bullet', group: 'development'
+# gem 'bullet', group: 'development'
 
 # Installing .env second time
 gem "dotenv-rails", groups: [:development, :test]

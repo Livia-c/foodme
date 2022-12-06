@@ -11,9 +11,10 @@
 @import "components/index";
 @import "pages/index";
 
-
-.wrapper {
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  min-height: 100vh;
+@media only screen and (min-width: 700px) {
+  .wrapper {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    min-height: 100vh;
+  }
 }

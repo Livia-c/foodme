@@ -1,0 +1,45 @@
+.customer-menu-filter {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 13px;
+  overflow: hidden;
+  overflow-x: scroll;
+  position: sticky;
+  top: 72px;
+  background-color: $background-green;
+  padding-left: 12px;
+  height: 40px
+}
+
+/* Hide scrollbar for Chrome and Safari */
+.customer-menu-filter::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.customer-menu-filter {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.customer-menu-filter-card {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  white-space: nowrap;
+  margin-right: 0.2rem;
+  position: relative;
+
+}
+
+.customer-menu-filter-card a {
+  cursor: pointer;
+  font-size: .775rem;
+  border-radius: 50rem;
+  padding: 0.3rem 0.9rem;
+  background-color: rgba(51, 115, 87, 0.2);
+  color: $black-grey;
+  text-decoration: none;
+}

@@ -3,17 +3,13 @@ class MenuItemCustomersController < ApplicationController
 
   def index
     @menu_items = MenuItem.includes([:recipes, :photos_attachments]).all
-    # if params[:query].present?
-    #   if params[:query]["menu_item_type"]
-    #     @search = params[:query]["menu_item_type"]
-    #     @hide = true
-    #   else
-    #     @search = params[:query]
-    #   end
-    #   # @menu_items = MenuItem.global_search(@search)
-    # else
-    #   @menu_items = MenuItem.all
-    # end
+    @menu_items_starter = MenuItem.where(menu_item_type: "starter").order(:created_at)
+    @menu_items_soup = MenuItem.where(menu_item_type: "soup").order(:created_at)
+    @menu_items_maindish = MenuItem.where(menu_item_type: "main dish").order(:created_at)
+    @menu_items_side = MenuItem.where(menu_item_type: "side").order(:created_at)
+    @menu_items_dessert = MenuItem.where(menu_item_type: "dessert").order(:created_at)
+    @menu_items_drink = MenuItem.where(menu_item_type: "drink").order(:created_at)
+    @menu_items_other = MenuItem.where(menu_item_type: "other").order(:created_at)
   end
 
   def show

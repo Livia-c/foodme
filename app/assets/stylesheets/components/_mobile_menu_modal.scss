@@ -1,0 +1,49 @@
+.modal-dialog-mobile {
+  position:fixed;
+  top:auto;
+  right:auto;
+  left:auto;
+  bottom:0;
+}
+
+.modal-content-mobile {
+  border-radius: 13px;
+}
+
+.modal-header-mobile {
+  border-bottom: 0px;
+  padding: 0px;
+}
+
+.modal-button-close-mobile {
+  position: absolute;
+  right: 13px;
+  top: 13px;
+}
+
+.modal-body-mobile {
+  display: flex;
+  flex-direction: column;
+  p {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.card-menu-mobile-image-modal {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 13px;
+  }
+}
+
+.modal-card-menu-mobile-icons {
+  // margin-top: 1rem;
+  margin-bottom: 1rem;
+  // align-items: center;
+}

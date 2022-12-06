@@ -41,8 +41,8 @@
             <% end %>
             <p><strong>€<%= '%.2f' % item.price %></strong></p>
             <p><strong>Description: </strong><%= item.description %></p>
-            <%= link_to 'Update Menu Item', edit_menu_item_path(item), class: 'btn btn-primary col-3' %>
-            <%= link_to 'Delete Menu Item', menu_item_path(item), class: 'btn btn-danger col-3',
+            <%= link_to 'Update', edit_menu_item_path(item), class: 'btn btn-primary col-3' %>
+            <%= link_to 'Delete', menu_item_path(item), class: 'btn btn-danger col-3',
             data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this delicious menu?'} %>
             <div class='justify-content-between'>
               <h5 class="border-bottom text-center mt-4">Recipe</h5>

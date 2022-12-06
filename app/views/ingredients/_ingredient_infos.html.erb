@@ -1,37 +1,31 @@
 <div class="ing-card card" data-edit-ingredient-target="card" aria-label="Edit ingredient" data-action="click->edit-ingredient#displayForm" data-ingredient-id="<%= ingredient.id %>">
-  <%# <i class="fa-solid fa-pen fa-xs ml-2" ></i> %>
-  <%# <%= link_to ingredient_path(ingredient) do %>
-    <img src="https://spoonacular.com/cdn/ingredients_100x100/<%= ingredient.name %>.jpg" class="card-img-top" alt="<%= ingredient.name %>">
-    <div class="card-body">
-      <h5 class="card-title"><%= ingredient.name.capitalize %></h5>
-      <div class="card-body-details <%= 'd-none' if ingredient.errors.any? %>" data-edit-ingredient-target="infos">
-        <p class="card-text"><%= ingredient.quantity %> <%= ingredient.unit %></p>
-        <%# <%= link_to "Update", ingredient_path(ingredient), class: "btn btn-primary"%>
-        <% if ingredient.quantity < 2 %>
-          <button type="button" class="btn btn-danger" id="btn-status"> </button>
-        <% elsif ingredient.quantity >=5 %>
-          <button type="button" class="btn btn-success" id="btn-status"> </button>
-        <% else %>
-          <button type="button" class="btn btn-info" id="btn-status"> </button>
-        <% end %>
-        <%# <button aria-label="Edit ingredient"> %>
-          <%# <i class="fa-solid fa-pen fa-xs ml-2" data-action="click->edit-ingredient#displayForm"></i> %>
-        <%# </button> %>
-      </div>
-      <%= simple_form_for ingredient,
-        html: {
-          class: ingredient.errors.any? ? "" : "d-none",
-          data: {
-            edit_ingredient_target: "form",
-            action: "submit->edit-ingredient#update"
-          }
-        } do |f| %>
-          <%= f.input :quantity %>
-          <div class="ingredient-update">
-            <%= link_to "", ingredient_path(ingredient), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-danger fa-solid fa-trash-can" %>
-            <%= f.button :submit, id: "blue_button", class: "btn btn-primary", value: "Update" %>
-          </div>
+  <img src="https://spoonacular.com/cdn/ingredients_100x100/<%= ingredient.name %>.jpg" class="card-img-top" alt="<%= ingredient.name %>">
+  <div class="card-body">
+    <h5 class="card-title"><%= ingredient.name.capitalize %></h5>
+    <div class="card-body-details <%= 'd-none' if ingredient.errors.any? %>" data-edit-ingredient-target="infos">
+      <p class="card-text"><%= ingredient.quantity %> <%= ingredient.unit %></p>
+      <%# <%= link_to "Update", ingredient_path(ingredient), class: "btn btn-primary"%>
+      <% if ingredient.quantity < 2 %>
+        <p id="circle-status-low"> </p>
+      <% elsif ingredient.quantity >=5 %>
+        <p id="circle-status-full"> </p>
+      <% else %>
+        <p id="circle-status-warning"> </p>
       <% end %>
     </div>
-  <%# <% end %>
+    <%= simple_form_for ingredient,
+      html: {
+        class: ingredient.errors.any? ? "" : "d-none",
+        data: {
+          edit_ingredient_target: "form",
+          action: "submit->edit-ingredient#update"
+        }
+      } do |f| %>
+        <%= f.input :quantity %>
+        <div class="ingredient-update">
+          <%= link_to "", ingredient_path(ingredient), data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}, class:"btn btn-danger fa-solid fa-trash-can" %>
+          <%= f.button :submit, id: "blue_button", class: "btn btn-primary", value: "Update" %>
+        </div>
+    <% end %>
+  </div>
 </div>

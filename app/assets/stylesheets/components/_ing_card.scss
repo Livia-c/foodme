@@ -18,6 +18,7 @@
 .card:hover {
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   transition: 0.2s;
+  cursor: pointer;
 }
 
 .card-body {
@@ -34,15 +35,28 @@
   width: 70%;
   text-align: center;
   background-color: $gray;
-  border-radius: 13px;
+  border-radius: 25px;
   color: white;
   padding: 6px;
   // font-weight: bold;
 }
 
-#btn-status {
+#circle-status-full {
   border-radius: 50px;
   width: 35.99px;
+  background-color: $light-green;
+}
+
+#circle-status-warning {
+  border-radius: 50px;
+  width: 35.99px;
+  background-color: #FFC65A;
+}
+
+#circle-status-low {
+  border-radius: 50px;
+  width: 35.99px;
+  background-color: #D9754A;
 }
 
 .ingredient-update {

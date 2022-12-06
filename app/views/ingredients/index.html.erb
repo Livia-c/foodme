@@ -25,7 +25,6 @@
     <div class="filter-card">
       <%= link_to "Other", "#{ingredients_path}#other" %>
     </div>
-
   </div>
   <div class="card-container">
     <div class="card-category" id="vegetables">
@@ -37,40 +36,38 @@
     <div class="card-category" id="fruits">
       <h4>Fruits</h4>
     </div>
-    <div class="ing-cards">
+    <div class="ing-cards" data-controller="edit-ingredient">
       <%= render "ing_cards", ingredients: @ingredient_fruits %>
     </div>
     <div class="card-category" id="carbohydrates">
       <h4>Carbohydrates</h4>
     </div>
-    <div class="ing-cards">
+    <div class="ing-cards" data-controller="edit-ingredient">
       <%= render "ing_cards", ingredients: @ingredient_carbohydrates %>
     </div>
     <div class="card-category" id="proteins">
       <h4>Proteins</h4>
     </div>
-    <div class="ing-cards">
+    <div class="ing-cards" data-controller="edit-ingredient">
       <%= render "ing_cards", ingredients: @ingredient_proteins %>
     </div>
     <div class="card-category" id="dairy">
       <h4>Dairy</h4>
     </div>
-    <div class="ing-cards">
+    <div class="ing-cards" data-controller="edit-ingredient">
       <%= render "ing_cards", ingredients: @ingredient_dairys %>
     </div>
     <div class="card-category" id="spices">
       <h4>Spices</h4>
     </div>
-    <div class="ing-cards">
+    <div class="ing-cards" data-controller="edit-ingredient">
       <%= render "ing_cards", ingredients: @ingredient_spices %>
     </div>
     <div class="card-category" id="other">
       <h4>Other</h4>
     </div>
-    <div class="ing-cards">
+    <div class="ing-cards" data-controller="edit-ingredient">
       <%= render "ing_cards", ingredients:  @ingredient_others %>
     </div>
   </div>
 </div>
-
-<%# "vegetable", "fruit", "carbohydrate", "protein", "dairy", "spice", "other" %>

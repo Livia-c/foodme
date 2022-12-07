@@ -6,11 +6,10 @@
       <% end %>
     </div>
     <div class="livekitchen-lefttext">
-      <p><strong>Order #<%= order.id %></strong></p>
+      <p>Order #<%= order.id %></p>
       <%# check how table number will display when no table nr is given %>
-      <p><strong>Table: <%= order.table_number == 0 ? "takeaway" : order.table_number %></strong></p>
+      <p>Table: <%= order.table_number == 0 ? "takeaway" : order.table_number %></p>
     </div>
   </div>
-
-<%= button_to "", order_path(order), method: :patch, class: "btn btn-primary btn-kitchen fa-solid fa-fire-burner", style:"color:white"%>
+  <%= button_to "", order_path(order), method: :patch, class: "btn btn-primary btn-kitchen fa-solid fa-fire-burner", style:"color:white"%>
 </div>

@@ -1,15 +1,26 @@
 <div class="container livekitchen col-6" data-controller="livekitchen-subscription">
-  <h2>Live Kitchen</h2>
-  <h4 class="">In progress:</h4>
-    <% @in_progress_orders.each do |order| %>
-      <%= render "livekitchen_card_progress", order: order %>
-    <% end %>
-  <h4>Up next:</h4>
-  <div data-livekitchen-subscription-target="orders">
-    <% @pending_orders.each do |order| %>
-      <%= render "livekitchen_card_pending", order: order %>
-    <% end %>
+  <div class="d-flex flex-column min-vh-90">
+    <h2>Live Kitchen</h2>
+    <% if @in_progress_orders.empty? && @pending_orders.empty? %>
+      <h4 class="flex-grow-1 shadow-sm p-3 mb-5 bg-white rounded text-center">There is no order</h4>
+
+    <% else %>
+      <h4 class="">In progress:</h4>
+        <% @in_progress_orders.each do |order| %>
+          <%= render "livekitchen_card_progress", order: order %>
+        <% end %>
+      <h4>Up next:</h4>
+      <div data-livekitchen-subscription-target="orders">
+        <% @pending_orders.each do |order| %>
+          <%= render "livekitchen_card_pending", order: order %>
+        <% end %>
+      </div>
+    <%end %>
+    <div class="flex-grow-1">
+    </div>
+    <div>
+      <%= link_to " Back", root_path(@root)  , class: 'btn btn-primary btn-closed' %>
+      <%= link_to "Finished orders", completed_orders_path, class: "btn btn-warning btn-closed " %>
+    </div>
   </div>
-  <%= link_to " Back", root_path(@root)  , class: 'btn btn-primary btn-closed' %>
-  <%= link_to "Finished orders", completed_orders_path, class: "btn btn-warning btn-closed " %>
 </div>

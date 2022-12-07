@@ -1,7 +1,6 @@
 <div class="container livekitchen col-6" data-controller="livekitchen-subscription">
   <div class="d-flex flex-column min-vh-90">
     <h2>Live Kitchen</h2>
-    <%# <h4 class="flex-grow-1 shadow-sm p-3 mb-5 bg-white rounded text-center">There is no order</h4> %>
     <h4>In progress:</h4>
     <% if @in_progress_orders.empty? %>
       <div class="card-livekitchen-empty">
@@ -9,9 +8,7 @@
         <p>There are currently no orders being cooked</p>
       </div>
     <% else %>
-      <% @in_progress_orders.each do |order| %>
-        <%= render "livekitchen_card_progress", order: order %>
-      <% end %>
+      <%= render "livekitchen_all_progress", in_progress_orders: @in_progress_orders %>
     <% end %>
     <h4>Up next:</h4>
     <% if @pending_orders.empty? %>
@@ -21,9 +18,7 @@
       </div>
     <% else %>
       <div data-livekitchen-subscription-target="orders">
-        <% @pending_orders.each do |order| %>
-          <%= render "livekitchen_card_pending", order: order %>
-        <% end %>
+        <%= render "livekitchen_all_pending", pending_orders: @pending_orders %>
       </div>
     <% end %>
     <div class="flex-grow-1">

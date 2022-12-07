@@ -4,13 +4,11 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = {key: String, sessionId: String}
   connect() {
-    console.log("hello2");
-    console.log(this.keyValue);
-  }
-  click() {
-      const stripe = Stripe(this.keyValue);
-      stripe.redirectToCheckout({
-        sessionId: this.sessionIdValue
-      });
+  // }
+  // click() {
+  //     const stripe = Stripe(this.keyValue);
+  //     stripe.redirectToCheckout({
+  //       sessionId: this.sessionIdValue
+  //     });
   }
 }

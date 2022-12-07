@@ -24,7 +24,7 @@
 
   <%# <%= @current_order.order_items.pluck(:quantity).sum %>
   <%unless !@current_order || @current_order.order_items.pluck(:quantity).sum == 0 %>
-    <%= link_to "(#{@current_order.order_items.pluck(:quantity).sum}) Go to checkout  #{number_to_currency(@current_order.sub_total, options = {precision: 2, unit: "€"})}",
+    <%= link_to "(#{@current_order.order_items.pluck(:quantity).sum})           Go to checkout  #{number_to_currency(@current_order.sub_total, options = {precision: 2, unit: "€"})}",
               order_path(@current_order), class: 'btn btn-primary m-4 checkout-btn' %>
     <div class="empty-space"></div>
     <% end %>

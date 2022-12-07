@@ -13,7 +13,8 @@
             <div class="order-card">
               <div class="order-card-title-price">
                 <h3><%= order_item.quantity %>x <%= order_item.menu_item.name.capitalize %></h3>
-                <h3><%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€ "}) %></h3>
+                  <%invoice_payment = '%.2f' % (order_item.total_price/100.0) %>
+                <h3><%= number_to_currency(invoice_payment , options = {precision: 2, unit: "€ "}) %></h3>
               </div>
               <% if @order.waiting? %>
                 <div class="order-card-quantity">

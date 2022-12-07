@@ -3,7 +3,8 @@ class MenuItem < ApplicationRecord
   has_many :ingredients, through: :recipes
   has_many :order_items, dependent: :destroy
   has_many_attached :photos
-  validates :name, :spiciness, :price, :menu_item_type, presence: true
+  validates :name, :spiciness, :menu_item_type, presence: true
+  monetize :price_cents
 
   before_create :attach_default
   before_update :attach_default

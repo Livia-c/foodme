@@ -21,7 +21,7 @@
                 <p></p>
               <% end %>
               <p><i class="fa-regular fa-clock"></i> <%= item.cooking_time %>min</p>
-              <p>€<%= '%.2f' % item.price %></p>
+              <p><%= humanized_money_with_symbol(item.price) %></p>
             </div>
           </div>
           <div class="card-menu-mobile-image">

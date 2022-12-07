@@ -8,7 +8,8 @@
           <p><strong>Spiciness level:</strong> <%= item.spiciness %></p>
           <div class="d-flex justify-content-between">
             <p><strong>Cooking time:</strong> <%= item.cooking_time %> minutes</p>
-            <p><strong>Price: </strong>€<%= '%.2f' % item.price%></p>
+            <%# <p><strong>Price: </strong>€<%= '%.2f' % item.price%></p>
+            <p>Price: <%= humanized_money_with_symbol(item.price) %></p>
           </div>
         </div>
         <div class="menu-card-image">
@@ -39,7 +40,8 @@
                 </div>
               <% end %>
             <% end %>
-            <p><strong>€<%= '%.2f' % item.price %></strong></p>
+            <%# <p><strong>€<%= '%.2f' % item.price %></strong></p>
+            <p><strong><%= humanized_money_with_symbol(item.price) %></strong></p>
             <p><strong>Description: </strong><%= item.description %></p>
             <%= link_to 'Update', edit_menu_item_path(item), class: 'btn btn-primary col-3' %>
             <%= link_to 'Delete', menu_item_path(item), class: 'btn btn-danger col-3',

@@ -9,7 +9,9 @@
       <% @order.order_items.sort_by(&:created_at).each do |order_item| %>
         <div class="order-card">
           <h3><%= order_item.quantity %>x <%= order_item.menu_item.name.capitalize %></h3>
-          <p>Price: <%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€"}) %></p>
+          <%# <p>Price: <%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€"}) %>
+          <p><strong>Price:<%= humanized_money_with_symbol(order_item.total_price) %></strong></p>
+
           <% if @order.waiting? %>
             <% if order_item.quantity >= order_item.menu_item.max_available? %>
               <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post }, class: "btn btn-primary disabled" %>

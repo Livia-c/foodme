@@ -1,5 +1,6 @@
 <%# add order overview if login is by user and not restaurant/chef %>
 <div class="container mt-4 col-8">
+  <h2>Menu Overview</h2>
   <div class="menu-item-cards">
     <% @menu_items.each do |item| %>
       <%= render "menu_item_show_modal", item: item %>

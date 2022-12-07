@@ -5,21 +5,23 @@
       <% when "pending" %>
         <%= image_tag "status_1.png" %>
         <p><strong>Your order was placed.</strong></p>
-        <p>One of our chefs will shortly start preparing your order.</p>
+        <p class="m-0">One of our chefs will shortly start preparing your order.</p>
         <p>Your order #<%= @order.id %></p>
       <% when "in_progress" %>
         <%= image_tag "status_2.png" %>
         <p><strong>Your order is being prepared.</strong></p>
-        <p>Hang in there while one of our chefs does the magic!</p>
+        <p class="m-0">Hang in there while one of our chefs does the magic!</p>
         <p>Your order #<%= @order.id %></p>
       <% when "delivered" %>
         <%= image_tag "status_3.png" %>
         <p><strong>Your order is ready.</strong></p>
-        <p>Your food is finally done! A waiter will bring it to you in no time!</p>
+        <p class="m-0">Your food is finally done! A waiter will bring it to you in no time!</p>
         <p>Your order #<%= @order.id %></p>
       <% else %>
         <p>System error!</p>
       <% end %>
+      <p class="p-0">Would you like to order anything else?</p>
+      <%= link_to "Menu", menu_item_customers_path, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>

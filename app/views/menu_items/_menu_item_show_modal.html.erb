@@ -1,8 +1,12 @@
 <!-- Card triggering modal -->
+  <% if item.available? %>
     <div class="menu-item-card border rounded mt-4 mb-4" data-bs-toggle="modal" data-bs-target="#menuItem-<%=item.id%>-Modal" id="<%=dom_id(item)%>">
+  <% else %>
+    <div class="menu-item-card border rounded mt-4 mb-4" id="warning-text-card" data-bs-toggle="modal" data-bs-target="#menuItem-<%=item.id%>-Modal" id="<%=dom_id(item)%>">
+  <% end %>
         <div class="menu-card-text">
-          <p class="warning-text"><%="This menu item is currently sold out" unless item.available?%></p>
-          <p><strong>Name: </strong><%= item.name %></p>
+          <p class="warning-text" style="opacity: 1"><%="This menu item is currently sold out" unless item.available?%></p>
+          <h4><strong></strong><%= item.name %></h4>
           <p><strong>Category:</strong> <%= item.menu_item_type %></p>
           <p class="menu-item-description"><strong>Description: </strong><%= item.description %></p>
           <p><strong>Spiciness level:</strong> <%= item.spiciness %></p>

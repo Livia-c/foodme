@@ -3,9 +3,9 @@ class Order < ApplicationRecord
   has_many :menu_items, through: :order_items
   belongs_to :user
 
-  TABLE = (0..10)
-  validates_inclusion_of :table_number, in: TABLE, on: :update
-  validates :table_number, presence: true,  on: :update
+  # TABLE = (0..10)
+  # validates_inclusion_of :table_number, in: TABLE, on: :update
+  # validates :table_number, presence: true,  on: :update
 
   enum :status, {
     waiting: 0,
@@ -32,7 +32,7 @@ class Order < ApplicationRecord
   def update_ing
     create_ing_hash.each_pair do |ingredient, needed_quantity|
       ingredient.quantity -= needed_quantity
-      ingredient.save
+      ingredient.save!
     end
   end
 

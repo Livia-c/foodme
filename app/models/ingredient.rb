@@ -2,7 +2,7 @@ class Ingredient < ApplicationRecord
   has_many :recipes, dependent: :destroy
   # validates :name, uniqueness: true
   validates :name, :quantity, :unit, :category, presence: true
-  validates :quantity, comparison: { greater_than: 0 }, on: :update
+  validates :quantity, comparison: { greater_than_or_equal_to: 0 }, on: :update
   has_many_attached :photos
   before_create :attach_default
   before_update :attach_default

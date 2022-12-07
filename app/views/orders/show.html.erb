@@ -39,14 +39,14 @@
       </div>
       <%# Hardcoded 10 min for buffer time for the chef to see the order and waiter to deliver it %>
       <p>Estimated time: <i class="fa-regular fa-clock"></i> <%=  @order.menu_items.all.sort_by(&:cooking_time).last.cooking_time + 10 %> min</p>
-      <p>Total order amount <%= number_to_currency(@order.sub_total, options = {precision: 2, unit: "€ "}) %></p>
-      <%= simple_form_for [@order] do |f| %>
-        <%= f.input :table_number, as: :select, collection: (1..10)%>
-        <%= button_to "Confirm payment", order_path(order_id: @order.id), method: :patch, class: "btn btn-primary"%>
-      <% end %>
+      <%invoice_payment = '%.2f' % (@order.sub_total/100.0) %>
+      <p>Total order amount <%= number_to_currency(invoice_payment, options = {precision: 2, unit: "€ "}) %></p>
     <% end %>
   <% else %>
     <p><%= link_to "Start a new order", menu_item_customers_path, class: "btn btn-primary" %></p>
   <% end %>
   <br>
+  <div data-controller="pay" data-pay-key-value="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>" data-pay-session-id-value="<%= @order.checkout_session_id %>">
+    <button id="pay" class="btn btn-primary" data-action="click->pay#click">Pay</button>
+  </div>
 </div>

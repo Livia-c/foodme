@@ -15,7 +15,8 @@
       <% end %>
       <div class="d-flex justify-content-between border-bottom mb-3 mt-2">
         <p><strong><%= @menu_item.name %></strong></p>
-        <p><strong>€<%= '%.2f' % @menu_item.price %></strong></p>
+        <%# <p><strong>€<%= '%.2f' % @menu_item.price %>
+        <p><strong><%= humanized_money_with_symbol(@menu_item.price) %></strong></p>
       </div>
       <div>
        <p><strong>Description: </strong><%= @menu_item.description %></p>

@@ -18,7 +18,8 @@
           <p><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
         <% end %>
         <p><i class="fa-regular fa-clock">&#160;</i> <%= menu_item.cooking_time %>min</p>
-        <p><strong>€ <%= '%.2f' % menu_item.price %></strong></p>
+        <%# <p><strong>€ <%= '%.2f' % menu_item.price %>
+        <p><strong><%= humanized_money_with_symbol(menu_item.price) %></strong></p>
       </div>
     </div>
     <div class="card-menu-mobile-image">
@@ -60,7 +61,8 @@
               <p><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
             <% end %>
             <p><i class="fa-regular fa-clock">&#160;</i> <%= menu_item.cooking_time %>min</p>
-            <p><strong>€<%= '%.2f' % menu_item.price %></strong></p>
+            <%# <p><strong>€<%= '%.2f' % menu_item.price %>
+            <p><strong><%= humanized_money_with_symbol(menu_item.price) %> </strong></p>
           </div>
           <% if menu_item.available? %>
             <% if user_signed_in? %>

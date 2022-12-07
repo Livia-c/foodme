@@ -8,7 +8,8 @@
           <p><strong>Spiciness level:</strong> <%= item.spiciness %></p>
           <div class="d-flex justify-content-between">
             <p><strong>Cooking time:</strong> <%= item.cooking_time %> minutes</p>
-            <p><strong>Price: </strong>€<%= '%.2f' % item.price%></p>
+            <%# <p><strong>Price: </strong>€<%= '%.2f' % item.price%>
+            <p><strong>Price:</strong> <%= humanized_money_with_symbol(item.price) %></p>
           </div>
         </div>
         <div class="menu-card-image">
@@ -39,7 +40,7 @@
           <div class="modal-body justify-content-between">
             <div class="d-flex justify-content-between">
               <p><strong><%= item.name %></strong></p>
-              <p><strong>€<%= '%.2f' % item.price %></strong></p>
+              <p><strong>Price:</strong> <%= humanized_money_with_symbol(item.price) %></p>
             </div>
             <p><%= item.description %></p>
             <div class="modal-btn-center">

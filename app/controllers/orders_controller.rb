@@ -10,13 +10,36 @@ class OrdersController < ApplicationController
   end
 
   def order_placed
+    @order.pending!
+    @order.update_ing
+
+    ActionCable.server.broadcast(
+      "livekitchen", render_to_string(partial: "/order_items/livekitchen_card_pending", locals: {order: @order})
+    )
   end
 
-  def new
-    @order = Order.new
-  end
+  # def new
+  #   @order = Order.new
+  # end
 
   def show
+    session = Stripe::Checkout::Session.create(
+      payment_method_types: ['card'],
+      line_items: [{
+        quantity: 1,
+        price_data: {
+          currency: "eur",
+          unit_amount: @order.sub_total,
+          product_data: {
+            name: "Order sum"
+          }
+        }
+      }],
+      mode: "payment",
+      success_url: placed_url(@order),
+      cancel_url: order_url(@order)
+    )
+    @order.update(checkout_session_id: session.id)
   end
 
   def destroy
@@ -35,12 +58,6 @@ class OrdersController < ApplicationController
         render :show, status: :unprocessable_entity
         return
       end
-      @order.pending!
-      @order.update_ing
-      ActionCable.server.broadcast(
-        "livekitchen", render_to_string(partial: "/order_items/livekitchen_card_pending", locals: {order: @order})
-      )
-      redirect_to placed_path
     else
       if @order.pending?
         @order.update(status: 2)

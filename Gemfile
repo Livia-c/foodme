@@ -33,6 +33,12 @@ gem "cloudinary"
 # Use Redis adapter to run Action Cable in production
 gem "redis", "~> 4.0"
 
+# New type to handle money
+gem 'money-rails'
+
+# Gem to handle payements
+gem 'stripe'
+
 # Use Kredis to get higher-level data types in Redis [https://github.com/rails/kredis]
 # gem "kredis"
 

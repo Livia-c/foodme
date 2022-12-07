@@ -6,7 +6,7 @@
       <h5>Order details:</h5>
       <p><%= link_to "Empty cart", order_path, data: {turbo_method: :delete, turbo_confirm: 'Are you sure you would like to empty cart?'} %></p>
       <div class="container">
-      <% @order.order_items.each do |order_item| %>
+      <% @order.order_items.sort_by(&:created_at).each do |order_item| %>
         <div class="order-card">
           <h3><%= order_item.quantity %>x <%= order_item.menu_item.name.capitalize %></h3>
           <p>Price: <%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€"}) %></p>

@@ -15,14 +15,15 @@
     <% MenuItem::CATEGORY.each do |menu_category| %>
     <div class="customer-menu-card-category" id="<%= "#{menu_category}" %>" >
       <h4><%= menu_category.capitalize.pluralize %></h4>
-      <% menu_cat = MenuItem.where(menu_item_type: "#{menu_category}") %>
+      <%# <% menu_cat = MenuItem.where(menu_item_type: "#{menu_category}") %>
+      <% menu_cat = @menu_items.select{|item| item.menu_item_type == menu_category } %>
       <%= render "menu_item_cards", menu_items: menu_cat %>
     </div>
     <% end %>
   </div>
 
   <%# <%= @current_order.order_items.pluck(:quantity).sum %>
-  <%unless @current_order.order_items.pluck(:quantity).sum == 0 %>
+  <%unless !@current_order || @current_order.order_items.pluck(:quantity).sum == 0 %>
     <%= link_to "(#{@current_order.order_items.pluck(:quantity).sum}) Go to checkout  #{number_to_currency(@current_order.sub_total, options = {precision: 2, unit: "€"})}",
               order_path(@current_order), class: 'btn btn-primary m-4 checkout-btn' %>
     <div class="empty-space"></div>

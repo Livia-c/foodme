@@ -1,10 +1,7 @@
 <% if pending_orders.empty? %>
-  <div class="card-livekitchen">
-    <div class="livekitchen-text">
-      <div class="livekitchen-righttext">
-        <p>No new orders</p>
-      </div>
-    </div>
+  <div class="card-livekitchen-empty">
+    <i class="fa-regular fa-hourglass-half"></i>
+    <p>There are currently no orders in the queue waiting to be prepared</p>
   </div>
 <% else %>
   <% pending_orders.each do |order| %>

@@ -10,7 +10,7 @@
         <div class="order-card">
           <h3><%= order_item.quantity %>x <%= order_item.menu_item.name.capitalize %></h3>
           <%# <p>Price: <%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€"}) %>
-          <p><strong>Price:<%= humanized_money_with_symbol(order_item.total_price) %></strong></p>
+          <p><strong>Price:</strong><%= humanized_money_with_symbol(order_item.total_price) %></p>
 
           <% if @order.waiting? %>
             <% if order_item.quantity >= order_item.menu_item.max_available? %>

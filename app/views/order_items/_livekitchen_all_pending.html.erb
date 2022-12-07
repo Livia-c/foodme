@@ -1,0 +1,27 @@
+<% if pending_orders.empty? %>
+  <div class="card-livekitchen">
+    <div class="livekitchen-text">
+      <div class="livekitchen-righttext">
+        <p>No new orders</p>
+      </div>
+    </div>
+  </div>
+<% else %>
+  <% pending_orders.each do |order| %>
+    <div class="card-livekitchen">
+      <div class="livekitchen-text">
+        <div class="livekitchen-righttext">
+          <% order.order_items.each do |item| %>
+            <p><strong><%= item.menu_item.name %> (<%= pluralize item.quantity, "portion" %>)</strong></p>
+          <% end %>
+        </div>
+        <div class="livekitchen-lefttext">
+          <p>Order #<%= order.id %></p>
+          <%# check how table number will display when no table nr is given %>
+          <p>Table: <%= order.table_number == 0 ? "takeaway" : order.table_number %></p>
+        </div>
+      </div>
+      <%= button_to "", order_path(order), method: :patch, class: "btn btn-primary btn-kitchen fa-solid fa-fire-burner", style:"color:white"%>
+    </div>
+  <% end %>
+<% end %>

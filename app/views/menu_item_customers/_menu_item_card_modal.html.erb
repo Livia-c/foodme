@@ -5,7 +5,7 @@
       <div class="card-menu-mobile-title-description">
         <h3><%= menu_item.name.capitalize %></h3>
         <p class="warning-text"><%="This menu item is currently sold out" unless menu_item.available?%></p>
-        <p><%= menu_item.description.capitalize %></p>
+        <p><%= menu_item.description.capitalize if menu_item.available?%></p>
       </div>
       <div class="card-menu-mobile-icons">
         <% if menu_item.spiciness == 1 %>

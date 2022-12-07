@@ -1,7 +1,9 @@
 .livekitchen h2 {
-  text-align: center;
-  color: $black-grey;
-  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 26px;
+  margin-bottom: 26px;
 }
 
 .livekitchen p {

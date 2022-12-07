@@ -32,7 +32,7 @@ class Order < ApplicationRecord
   def update_ing
     create_ing_hash.each_pair do |ingredient, needed_quantity|
       ingredient.quantity -= needed_quantity
-      ingredient.save
+      ingredient.save!
     end
   end
 

@@ -36,6 +36,7 @@
   padding: 15px;
   font-size: 14px;
   margin: 0;
+  background-color: white;
 }
 
 .livekitchen-lefttext p {
@@ -60,4 +61,26 @@
 
 .fix{
   position: fixed;
+}
+
+.card-livekitchen-empty {
+  // border-style: solid;
+  // border-color: $background-green;
+  background-color: $background-green;
+  opacity: 0.7;
+  border-radius: 13px;
+  margin-right: 20px;
+  margin-left: 10px;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  margin-bottom: 20px;
+  p {
+    text-align: center;
+  }
+  i {
+    text-align: center;
+    display: grid;
+    font-size: xxx-large;
+    padding-bottom: 15px;
+  }
 }

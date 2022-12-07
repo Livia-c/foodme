@@ -5,6 +5,7 @@
           <%= f.input :unit, as: :select, collection: Ingredient::UNIT%>
           <%= f.input :quantity%>
           <%= f.input :category, as: :select, collection: Ingredient::CATEGORY%>
+          <%= f.input :photos, as: :file, input_html: { multiple: true }, label: "Add an image (otherwise a beautiful placeholder is set by default)"%>
         </div>
 
         <div class="form-actions">

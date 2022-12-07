@@ -1,5 +1,5 @@
 <!-- Card triggering modal -->
-    <div class="menu-item-card border rounded m-4" data-bs-toggle="modal" data-bs-target="#menuItem-<%=item.id%>-Modal" id="<%=dom_id(item)%>">
+    <div class="menu-item-card border rounded mt-4 mb-4" data-bs-toggle="modal" data-bs-target="#menuItem-<%=item.id%>-Modal" id="<%=dom_id(item)%>">
         <div class="menu-card-text">
           <p class="warning-text"><%="This menu item is currently sold out" unless item.available?%></p>
           <p><strong>Name: </strong><%= item.name %></p>

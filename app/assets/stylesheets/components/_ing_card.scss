@@ -1,8 +1,12 @@
 .ing-cards {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-gap: 16px;
-  margin-top: 13px;
+  grid-template-columns: repeat(auto-fit, 13rem);
+  justify-content: space-between;
+  justify-items: center;
+  align-items: flex-start;
+  height: max-content;
+  width: 100%;
+  grid-row-gap: 16px;
   margin-bottom: 30px;
 }
 
@@ -22,8 +26,25 @@
 }
 
 .card-body {
-  padding: 13px;
+  padding: 0px;
+  form {
+    padding: 13px;
+    padding-top: 0px;
+  }
 }
+
+.card-img-top {
+  height: 150px;
+  width: 100%;
+  min-width: 200px;
+  object-fit: cover;
+}
+
+.card-details {
+  padding: 13px;
+  padding-top: 8px;
+}
+
 .card-body-details {
   display: flex;
   flex-direction: row;
@@ -38,7 +59,6 @@
   border-radius: 25px;
   color: white;
   padding: 6px;
-  // font-weight: bold;
 }
 
 #circle-status-full {

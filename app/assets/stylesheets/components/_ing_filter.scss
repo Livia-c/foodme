@@ -1,9 +1,17 @@
+.search-bar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 26px;
+}
+
 .inventory-filter {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
-  margin-bottom: 13px;
+
 }
 
 .filter-card a {
@@ -23,4 +31,18 @@
 .filter-card a:hover {
   background-color: rgba(51, 115, 87, 0.6);
   transition: 0.2s;
+}
+
+.filter-card p {
+  margin: 0px;
+}
+
+.form-control-search {
+  border-bottom-right-radius: 0px;
+  border-top-right-radius: 0px;
+}
+
+.search-btn {
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
 }

@@ -1,0 +1,82 @@
+<%# titles %>
+<div class="card-category" id="vegetables">
+  <h4>Vegetables</h4>
+</div>
+<div class="ing-cards" data-controller="edit-ingredient">
+  <%= render "ing_cards", ingredients:  @ingredient_vegetables %>
+</div>
+<div class="card-category" id="fruits">
+  <h4>Fruits</h4>
+</div>
+<div class="ing-cards" data-controller="edit-ingredient">
+  <%= render "ing_cards", ingredients: @ingredient_fruits %>
+</div>
+<div class="card-category" id="carbohydrates">
+  <h4>Carbohydrates</h4>
+</div>
+<div class="ing-cards" data-controller="edit-ingredient">
+  <%= render "ing_cards", ingredients: @ingredient_carbohydrates %>
+</div>
+<div class="card-category" id="proteins">
+  <h4>Proteins</h4>
+</div>
+<div class="ing-cards" data-controller="edit-ingredient">
+  <%= render "ing_cards", ingredients: @ingredient_proteins %>
+</div>
+<div class="card-category" id="dairy">
+  <h4>Dairy</h4>
+</div>
+<div class="ing-cards" data-controller="edit-ingredient">
+  <%= render "ing_cards", ingredients: @ingredient_dairys %>
+</div>
+<div class="card-category" id="spices">
+  <h4>Spices</h4>
+</div>
+<div class="ing-cards" data-controller="edit-ingredient">
+  <%= render "ing_cards", ingredients: @ingredient_spices %>
+</div>
+<div class="card-category" id="other">
+  <h4>Other</h4>
+</div>
+<div class="ing-cards" data-controller="edit-ingredient">
+  <%= render "ing_cards", ingredients:  @ingredient_others %>
+</div>
+
+
+<%# filter %>
+
+<div class="filter-card">
+  <%= link_to "Vegetables", "#{ingredients_path}#vegetables" %>
+</div>
+<div class="filter-card">
+  <%= link_to "Fruits", "#{ingredients_path}#fruits" %>
+</div>
+<div class="filter-card">
+  <%= link_to "Carbohydrates", "#{ingredients_path}#carbohydrates" %>
+</div>
+<div class="filter-card">
+  <%= link_to "Proteins", "#{ingredients_path}#proteins" %>
+</div>
+<div class="filter-card">
+  <%= link_to "Dairy", "#{ingredients_path}#dairy" %>
+</div>
+<div class="filter-card">
+  <%= link_to "Spices", "#{ingredients_path}#spices" %>
+</div>
+<div class="filter-card">
+  <%= link_to "Other", "#{ingredients_path}#other" %>
+</div>
+
+<%# iteration %>
+<% Ingredient::CATEGORY.each do |ing_category| %>
+  <div class="card-category" id="<%= "#{ing_category}" %>" >
+    <h4><%= ing_category.capitalize.pluralize %></h4>
+    <% ing_cat = @ingredients.select{|ingredient| ingredient.category == ing_category } %>
+    <div class="ing-cards" data-controller="edit-ingredient">
+      <%= render "ing_cards", ingredients: ing_cat %>
+    </div>
+  </div>
+<% end %>
+
+<%# > params %>
+<%# => #<ActionController::Parameters {"query"=>"chee", "commit"=>"Go", "controller"=>"ingredients", "action"=>"index"} permitted: false> %>

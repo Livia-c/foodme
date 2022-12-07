@@ -1,8 +1,104 @@
+.order-cards-overview {
+
+}
+
+.order-card-delete {
+  margin-top: 13px;
+  margin-bottom: 13px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  h5 {
+    margin: 0px;
+  }
+}
+
+.order-cards {
+  // background: white;
+  // border-radius: 13px;
+  font-size: 1.125rem;
+  display: flex;
+  flex-direction: column;
+}
+
 .order-card {
+  display: flex;
+  flex-direction: column;
   background: white;
   border-radius: 13px;
+  margin-bottom: 13px;
 }
 
 .order-card p {
-  font-size: 1rem;
+  font-size: .775rem;
+}
+
+.order-card-title-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 6px;
+}
+
+.order-card-quantity {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px;
+}
+
+.order-card-empty {
+  background-color: $terracotta;
+  border-radius: 13px;
+  p {
+    padding: 0px;
+    margin: 0px;
+  }
+  a {
+    color: white;
+  }
+}
+
+.fa-cart-shopping {
+  color: white;
+  padding: 11px;
+}
+
+.fa-trash-can {
+  padding: 11px;
+  color: white;
+}
+
+.fa-plus {
+  font-size: 24px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.fa-minus {
+  font-size: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  display: flex;
+  align-items: center;
+}
+
+.order-card-quantity-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  background-color: $dark-green;
+  border-radius: 13px;
+  p {
+    font-size: 1rem;
+    margin: 0px;
+    color: white;
+  }
+  a {
+
+  }
 }

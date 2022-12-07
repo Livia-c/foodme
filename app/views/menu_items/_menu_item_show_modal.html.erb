@@ -1,5 +1,5 @@
 <!-- Card triggering modal -->
-    <div class="menu-item-card border rounded m-4" data-bs-toggle="modal" data-bs-target="#menuItem-<%=item.id%>-Modal" id="<%=dom_id(item)%>">
+    <div class="menu-item-card border rounded mt-4 mb-4" data-bs-toggle="modal" data-bs-target="#menuItem-<%=item.id%>-Modal" id="<%=dom_id(item)%>">
         <div class="menu-card-text">
           <p class="warning-text"><%="This menu item is currently sold out" unless item.available?%></p>
           <p><strong>Name: </strong><%= item.name %></p>
@@ -22,34 +22,36 @@
     </div>
 
     <!-- Modal -->
-    <div class="modal fade" id="menuItem-<%=item.id%>-Modal" tabindex="-1" aria-labelledby="menuItem-<%=item.id%>-ModalLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h1 class="modal-title fs-5 text-center" id="menuItemModalLabel"><%= item.name %></h1>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
+    <div class=" modal fade" id="menuItem-<%=item.id%>-Modal" tabindex="-1" aria-labelledby="menuItem-<%=item.id%>-ModalLabel" aria-hidden="true">
+      <div class="modal-dialog ">
+        <div class="modal-content  rounded-4">
+          <div class="modal-header modal-header">
+          <div class="menu-item-image-modal">
             <% if item.photos.attached?%>
               <% item.photos.each do |photo|%>
-                <div class="menu-item-img">
-                  <%=cl_image_tag photo.key%>
-                  <%= link_to upload_pictures_path(item), class: "update-img-link" do %>
-                    <i class="fa-solid fa-image" style="color:white"></i>
-                  <% end %>
-                </div>
+                <%=cl_image_tag photo.key %>
               <% end %>
             <% end %>
-            <%# <p><strong>€<%= '%.2f' % item.price %>
-            <p><strong>Price:</strong> <%= humanized_money_with_symbol(item.price) %></p>
-            <p><strong>Description: </strong><%= item.description %></p>
-            <%= link_to 'Update', edit_menu_item_path(item), class: 'btn btn-primary col-3' %>
-            <%= link_to 'Delete', menu_item_path(item), class: 'btn btn-danger col-3',
-            data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this delicious menu?'} %>
+          </div>
+          <%# <h1 class="modal-title fs-5" id="menuItem-<%=menu_item.id%>
+          <%# -ModalLabel"><%= menu_item.name.capitalize</h1>  %>
+          <button type="button" class="btn-close modal-button-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+          <div class="modal-body justify-content-between">
+            <div class="d-flex justify-content-between">
+              <p><strong><%= item.name %></strong></p>
+              <p><strong>Price:</strong> <%= humanized_money_with_symbol(item.price) %></p>
+            </div>
+            <p><%= item.description %></p>
+            <div class="modal-btn-center">
+              <%= link_to 'Delete', menu_item_path(item), class: 'btn btn-danger modal-btn ',
+              data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this delicious menu?'} %>
+              <%= link_to 'Update', edit_menu_item_path(item), class: 'btn btn-primary modal-btn ' %>
+            </div>
             <div class='justify-content-between'>
               <h5 class="border-bottom text-center mt-4">Recipe</h5>
               <% item.recipes.each do |recipe| %>
-                 <%= render "display_recipe", recipe: recipe %>
+                <%= render "display_recipe", recipe: recipe %>
               <% end %>
             </div>
             <div class='justify-content-between'>

@@ -3,14 +3,24 @@ class IngredientsController < ApplicationController
   before_action :set_ingredient, only: %i[show edit update destroy]
 
   def index
-    @ingredients = Ingredient.all
-    @ingredient_vegetables = Ingredient.where(category: "vegetable").order(:created_at)
-    @ingredient_fruits = Ingredient.where(category: "fruit").order(:created_at)
-    @ingredient_carbohydrates = Ingredient.where(category: "carbohydrate").order(:created_at)
-    @ingredient_proteins = Ingredient.where(category: "protein").order(:created_at)
-    @ingredient_dairys = Ingredient.where(category: "dairy").order(:created_at)
-    @ingredient_spices = Ingredient.where(category: "spice").order(:created_at)
-    @ingredient_others = Ingredient.where(category: "other").order(:created_at)
+    if params[:query].present?
+      if params[:query]["category"]
+        @search = params[:query]["category"]
+        @hide = true
+      else
+        @search = params[:query]
+      end
+      @ingredients = Ingredient.search_by_name_and_category(@search)
+    else
+      @ingredients = Ingredient.all.order(:category).reverse
+      # @ingredient_vegetables = Ingredient.where(category: "vegetable").order(:created_at)
+      # @ingredient_fruits = Ingredient.where(category: "fruit").order(:created_at)
+      # @ingredient_carbohydrates = Ingredient.where(category: "carbohydrate").order(:created_at)
+      # @ingredient_proteins = Ingredient.where(category: "protein").order(:created_at)
+      # @ingredient_dairys = Ingredient.where(category: "dairy").order(:created_at)
+      # @ingredient_spices = Ingredient.where(category: "spice").order(:created_at)
+      # @ingredient_others = Ingredient.where(category: "other").order(:created_at)
+    end
   end
 
   def show

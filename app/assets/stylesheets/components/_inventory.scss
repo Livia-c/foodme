@@ -8,4 +8,8 @@
 
 .inventory-title h2 {
   margin: 0px;
+  a {
+    text-decoration: none;
+    color: $black-grey;
+  }
 }

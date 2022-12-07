@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="row py-4">
+    <div class="col">
+      <% if @order.waiting? %>
+        <% if @order.order_items.empty? %>
+          <%= link_to "Your cart is currently empty, pick a dish", menu_item_customers_path %>
+        <% else %>
+          <div class="container">
+            <h5>Order details:</h5>
+            <p><%= link_to "Empty cart", order_path(@order), data: {turbo_method: :delete, turbo_confirm: 'Are you sure you would like to empty cart?'} %></p>
+            <div class="container">
+            <% @order.order_items.sort_by(&:created_at).each do |order_item| %>
+              <div class="order-card">
+                <h3><%= order_item.quantity %>x <%= order_item.menu_item.name.capitalize %></h3>
+                <%# <p>Price: <%= number_to_currency(order_item.total_price, options = {precision: 2, unit: "€"}) %>
+                <p><strong>Price:</strong><%= humanized_money_with_symbol(order_item.total_price/100) %></p>
+                <% if order_item.quantity >= order_item.menu_item.max_available? %>
+                  <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post }, class: "btn btn-primary disabled" %>
+                <% else %>
+                  <%= link_to "Add one", order_item_add_path(id: order_item), data: {turbo_method: :post }, class: "btn btn-primary" %>
+                <% end %>
+                <%= link_to "Reduce one", order_item_reduce_path(id: order_item), data: {turbo_method: :post }, class: "btn btn-primary" %>
+                <p><i class="fa-regular fa-trash-can"></i><%= link_to "Remove item", order_item_path(order_item), data: {turbo_method: :delete, turbo_confirm: 'Do you really want to delete this item?'} %></p>
+              </div>
+            <% end %>
+            <p>Total order amount <%= number_to_currency(@order.sub_total/100, options = {precision: 2, unit: "€"}) %></p>
+
+            <%# Hardcoded 10 min for buffer time for the chef to see the order and waiter to deliver it %>
+            <%# <p>Estimated time: <%=  @order.menu_items.all.sort_by(&:cooking_time).last.cooking_time + 10min</p> %>
+            <%# <%= simple_form_for [@order] do |f| %>
+              <%# <%= f.input :table_number, as: :select, collection: (1..10)%>
+              <%# <%= button_to "Confirm payment", order_path(@order), method: :patch, class: "btn btn-primary"%>
+            <%# <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <p><%= link_to "Start a new order", menu_item_customers_path, class: "btn btn-primary" %></p>
+      <% end %>
+      <br>
+    </div>
+    <div data-controller="pay" data-pay-key-value="<%= ENV['STRIPE_PUBLISHABLE_KEY'] %>" data-pay-session-id-value="<%= @order.checkout_session_id %>">
+      <button id="pay" class="btn btn-primary" data-action="click->pay#click">Pay</button>
+    </div>
+  </div>
+</div>

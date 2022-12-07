@@ -4,6 +4,6 @@ class OrderItem < ApplicationRecord
   validates :menu_item, :order, presence: true
 
   def total_price
-    self.quantity * self.menu_item.price
+    self.quantity * self.menu_item.price_cents
   end
 end

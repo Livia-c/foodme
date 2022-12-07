@@ -30,10 +30,9 @@ class OrderItemsController < ApplicationController
   def create
     # Find associated menu_item and current order
     chosen_menu_item = MenuItem.find(params[:menu_item_id])
-    current_order = @current_order
     if @current_order.waiting?
       # If order already has this menu_item then find the relevant order_item and iterate quantity otherwise create a new order_item for this menu_item
-      if current_order.menu_items.include?(chosen_menu_item)
+      if @current_order.menu_items.include?(chosen_menu_item)
         # Find the line_item with the chosen_product
         @order_item = current_order.order_items.find_by(menu_item_id: chosen_menu_item)
         # Iterate the line_item's quantity by one
@@ -55,7 +54,6 @@ class OrderItemsController < ApplicationController
     @order_item.save
     redirect_to menu_item_customers_path
   end
-
 
   # def update
   #   if @order_item.update(order_item_params)

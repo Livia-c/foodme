@@ -27,3 +27,6 @@ application.register("navbar", NavbarController)
 
 import OrderstatusSubscriptionController from "./orderstatus_subscription_controller"
 application.register("orderstatus-subscription", OrderstatusSubscriptionController)
+
+import PayController from "./pay_controller"
+application.register("pay", PayController)

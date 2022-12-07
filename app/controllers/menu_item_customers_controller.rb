@@ -3,6 +3,7 @@ class MenuItemCustomersController < ApplicationController
 
   def index
     @menu_items = MenuItem.includes([{photos_attachments: :blob}, { recipes: :ingredient }]).order(:created_at).all
+    @order = current_user.orders.where(status: "waiting").first
     # @menu_items_starter = MenuItem.includes([{photos_attachments: :blob}, { recipes: :ingredient }]).where(menu_item_type: "starter").order(:created_at)
     # @menu_items_soup = MenuItem.includes([{photos_attachments: :blob}, { recipes: :ingredient }]).where(menu_item_type: "soup").order(:created_at)
     # @menu_items_maindish = MenuItem.includes([{photos_attachments: :blob}, { recipes: :ingredient }]).where(menu_item_type: "main dish").order(:created_at)

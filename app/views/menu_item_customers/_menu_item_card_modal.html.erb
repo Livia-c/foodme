@@ -7,15 +7,16 @@
         <p class="warning-text"><%="This menu item is currently sold out" unless menu_item.available?%></p>
         <p><%= menu_item.description.capitalize if menu_item.available?%></p>
       </div>
+
       <div class="card-menu-mobile-icons">
-        <% if menu_item.spiciness == 1 %>
-          <p><i class="fa-solid fa-pepper-hot" id="very-hot"></i><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
-        <% elsif menu_item.spiciness == 2 %>
-          <p><i class="fa-solid fa-pepper-hot" id="very-hot"></i><i class="fa-solid fa-pepper-hot" id="very-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
-        <% elsif menu_item.spiciness == 3 %>
-          <p><i class="fa-solid fa-pepper-hot" id="very-hot"></i><i class="fa-solid fa-pepper-hot" id="very-hot"></i><i class="fa-solid fa-pepper-hot" id="very-hot"></i></p>
+        <% if menu_item.vegetarian && menu_item.signature_dish %>
+          <p><i class="fa-solid fa-leaf" id="vegetarian"></i> <i class="fa-solid fa-star ps-2" id="signature"></i></p>
+        <% elsif menu_item.vegetarian %>
+          <p><i class="fa-solid fa-leaf" id="vegetarian"></i></p>
+          <% elsif menu_item.signature_dish %>
+          <p><i class="fa-solid fa-star" id="signature"></i></p>
         <% else %>
-          <p><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
+          <p><i class="fa-solid fa-leaf" id="empty"></i></p>
         <% end %>
         <p><i class="fa-regular fa-clock">&#160;</i> <%= menu_item.cooking_time %>min</p>
         <%# <p><strong>€ <%= '%.2f' % menu_item.price %>
@@ -51,15 +52,13 @@
           <h1 class="modal-title fs-5" id="menuItem-<%=menu_item.id%>-ModalLabel"><%= menu_item.name.capitalize %></h1>
           <p><%= menu_item.description.capitalize %></p>
           <div class="card-menu-mobile-icons modal-card-menu-mobile-icons">
-            <% if menu_item.spiciness == 1 %>
-              <p><i class="fa-solid fa-pepper-hot" id="very-hot"></i><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
-            <% elsif menu_item.spiciness == 2 %>
-              <p><i class="fa-solid fa-pepper-hot" id="very-hot"></i><i class="fa-solid fa-pepper-hot" id="very-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
-            <% elsif menu_item.spiciness == 3 %>
-              <p><i class="fa-solid fa-pepper-hot" id="very-hot"></i><i class="fa-solid fa-pepper-hot" id="very-hot"></i><i class="fa-solid fa-pepper-hot" id="very-hot"></i></p>
-            <% else %>
-              <p><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i><i class="fa-solid fa-pepper-hot"></i></p>
-            <% end %>
+           <% if menu_item.vegetarian %>
+             <p><i class="fa-solid fa-leaf" id="vegetarian"></i></p>
+           <% elsif menu_item.vegan %>
+             <p><i class="fa-solid fa-leaf" id="vegan"></i></p>
+           <% else %>
+           <p><i class="fa-solid fa-leaf" id="empty"></i></p>
+           <% end %>
             <p><i class="fa-regular fa-clock">&#160;</i> <%= menu_item.cooking_time %>min</p>
             <%# <p><strong>€<%= '%.2f' % menu_item.price %>
             <p><strong><%= humanized_money_with_symbol(menu_item.price) %> </strong></p>

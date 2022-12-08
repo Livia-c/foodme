@@ -6,14 +6,14 @@
 <div class="customer-menu-filter">
   <% MenuItem::CATEGORY.each do |menu_category| %>
     <div class="customer-menu-filter-card">
-      <%= link_to "#{menu_category.capitalize.pluralize}", "#{menu_item_customers_path}##{menu_category}" %>
+      <%= link_to "#{menu_category.capitalize.pluralize}", "#{menu_item_customers_path}##{menu_category.gsub(/\s+/, "")}" %>
     </div>
   <% end %>
 </div>
 <div class="container">
   <div class="customer-menu-card-container">
     <% MenuItem::CATEGORY.each do |menu_category| %>
-    <div class="customer-menu-card-category" id="<%= "#{menu_category}" %>" >
+    <div class="customer-menu-card-category" id="<%= "#{menu_category.gsub(/\s+/, "")}" %>" >
       <h4><%= menu_category.capitalize.pluralize %></h4>
       <%# <% menu_cat = MenuItem.where(menu_item_type: "#{menu_category}") %>
       <% menu_cat = @menu_items.select{|item| item.menu_item_type == menu_category } %>

@@ -45,7 +45,9 @@
       <p>Total order amount <%= number_to_currency(invoice_payment, options = {precision: 2, unit: "€ "}) %></p>
       <%= simple_form_for [@order] do |f| %>
         <%= f.input :table_number, as: :select, collection: (1..6) %>
-        <%= button_to "Confirm payment", order_path(@order), method: :patch, data: {turbo: false }, class: "btn btn-primary"%>
+        <div class="d-flex justify-content-end">
+          <%= button_to "Proceed to payment", order_path(@order), method: :patch, data: {turbo: false }, class: "btn btn-primary"%>
+        </div>
       <% end%>
     <% end %>
   <% else %>

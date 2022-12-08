@@ -397,7 +397,7 @@ vegetable_dish = MenuItem.new(
   name: "Creamy vegetables",
   description: "Light and healthy vegetable mix: bell pepper, champignon mushrooms, broccoli, green beans and onion, all bathed in fine cream sauce.",
   spiciness: "0",
-  cooking_time: "15",
+  cooking_time: "12",
   price_cents: "950",
   menu_item_type: "main dish",
   vegetarian: true
@@ -452,7 +452,7 @@ salmon_dish = MenuItem.new(
   name: "Grilled salmon",
   description: "The finest salmon fillet, grilled with a caramelized crust. It is served with the delicious caponata.",
   spiciness: "0",
-  cooking_time: "20",
+  cooking_time: "17",
   price_cents: "1550",
   menu_item_type: "main dish"
 )
@@ -507,7 +507,7 @@ tiramisu_dish = MenuItem.new(
   name: "Tiramisu",
   description: "Smooth Italian dessert, with Savoiardi biscuits soaked in aromatic coffee, combined with the finest mascarpone cream and dusted with cocoa.",
   spiciness: "0",
-  cooking_time: "7",
+  cooking_time: "2",
   price_cents: "650",
   menu_item_type: "dessert",
   signature_dish: true
@@ -538,6 +538,16 @@ admin = User.new(
 )
 admin.save!
 puts "I just created an admin user nr #{admin.id}"
+puts "Use admin@restaurant.com and Lewagon2022 to log in"
+
+puts "Creating an user admin to log in"
+michele = User.new(
+  email: "michele@la-trattoria.com",
+  password: "Lewagon2022",
+  restaurant_user: true
+)
+michele.save!
+puts "I just created an admin user nr #{michele.id}"
 puts "Use admin@restaurant.com and 123456 to log in"
 
 puts "Creating a guest account to log in"
@@ -549,6 +559,16 @@ user2 = User.new(
 user2.save!
 puts "I just created a guest user nr #{user2.id}"
 puts "Use ana@mail.com and 123456 to log in as guest"
+
+puts "Creating a guest account to log in"
+omran = User.new(
+  email: "omran@gmail.com",
+  password: "Lewagon2022",
+  restaurant_user: false
+)
+omran.save!
+puts "I just created a guest user nr #{omran.id}"
+puts "Use ana@mail.com and Lewagon2022 to log in as guest"
 
 puts "Creating a guest account to log in"
 user1 = User.new(

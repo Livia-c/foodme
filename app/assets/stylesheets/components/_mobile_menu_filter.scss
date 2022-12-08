@@ -10,7 +10,8 @@
   top: 72px;
   background-color: $background-green;
   padding-left: 12px;
-  height: 40px
+  height: 40px;
+  z-index: 1;
 }
 
 /* Hide scrollbar for Chrome and Safari */

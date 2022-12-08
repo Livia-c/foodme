@@ -6,10 +6,10 @@
   <% end %>
         <div class="menu-card-text">
           <p class="warning-text" style="opacity: 1"><%="This menu item is currently sold out" unless item.available?%></p>
-          <h4><strong></strong><%= item.name %></h4>
-          <p><strong>Category:</strong> <%= item.menu_item_type %></p>
+          <h4 class="menu-card-item-title"><strong></strong><%= item.name %></h4>
+          <p><strong>Category:</strong> <%= item.menu_item_type.capitalize %></p>
           <p class="menu-item-description"><strong>Description: </strong><%= item.description %></p>
-          <p><strong>Spiciness level:</strong> <%= item.spiciness %></p>
+          <%# <p><strong>Spiciness level:</strong> <%= item.spiciness %>
           <div class="d-flex justify-content-between">
             <p><strong>Cooking time:</strong> <%= item.cooking_time %> minutes</p>
             <%# <p><strong>Price: </strong>€<%= '%.2f' % item.price%>

@@ -12,7 +12,7 @@
             <p><strong><%= item.menu_item.name %> (<%= pluralize item.quantity, "portion" %>)</strong></p>
           <% end %>
         </div>
-        <div class="livekitchen-lefttext">
+         <div class="livekitchen-lefttext">
           <p>Order #<%= order.id %></p>
           <%# check how table number will display when no table nr is given %>
           <p>Table: <%= order.table_number ? order.table_number : "takeaway"  %></p>

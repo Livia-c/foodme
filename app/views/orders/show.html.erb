@@ -1,7 +1,8 @@
 <div class="container">
   <% if @order.waiting? %>
     <% if @order.order_items.empty? %>
-      <%= link_to "Your cart is currently empty, pick a dish", menu_item_customers_path %>
+      <p class="empty-order-card">Your cart is currently empty, please pick a dish.</p>
+      <%= link_to "Menu", menu_item_customers_path, class: "btn btn-primary" %>
     <% else %>
       <div class="order-cards-overview">
         <div class="order-card-delete">

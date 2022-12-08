@@ -89,7 +89,7 @@ puts "I just created ingredient nr #{onion_ing.id}"
 aubergine = URI.open("https://images.unsplash.com/photo-1639428134238-b548770d4b77?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80")
 aubergine_ing = Ingredient.new(
   name: "Aubergine",
-  quantity: "9",
+  quantity: "4",
   unit: "kg",
   category: "vegetable"
 )
@@ -108,10 +108,10 @@ bellpepper_ing.photos.attach(io: bellpepper, filename: "bellpepper.png", content
 bellpepper_ing.save
 puts "I just created ingredient nr #{bellpepper_ing.id}"
 
-salad = URI.open("https://resources.commerceup.io/?key=https%3A%2F%2Fprod-admin-images.s3.amazonaws.com%2F7x2Ps1g9Ho9XCt2IpV1E-1%2Fproduct%2F00559-MixSaladLeavesBox04.jpg&width=800&resourceKey=7x2Ps1g9Ho9XCt2IpV1E-1")
+salad = URI.open("https://cdn.shopify.com/s/files/1/0242/7007/8048/products/MesclunMix.jpg?v=1601947758")
 salad_ing = Ingredient.new(
   name: "Salad mix",
-  quantity: "5.6",
+  quantity: "0.1",
   unit: "kg",
   category: "vegetable"
 )
@@ -151,6 +151,28 @@ fish_ing = Ingredient.new(
 fish_ing.photos.attach(io: fish, filename: "chicken.png", content_type: "image/png")
 fish_ing.save
 puts "I just created ingredient nr #{fish_ing.id}"
+
+chickpeas = URI.open("https://img.taste.com.au/K4kNaLMz/w720-h480-cfill-q80/taste/2009/05/chickpeas-143543-1.jpg")
+chickpea_ing = Ingredient.new(
+  name: "chickpeas",
+  quantity: "12",
+  unit: "kg",
+  category: "protein"
+)
+chickpea_ing.photos.attach(io: chickpeas, filename: "chicken.png", content_type: "image/png")
+chickpea_ing.save
+puts "I just created ingredient nr #{chickpea_ing.id}"
+
+egg = URI.open("https://media.zenfs.com/en/bbc_us_articles_995/1e5dc7bd90ba14641f84a61c62a7cb2c")
+egg_ing = Ingredient.new(
+  name: "egg",
+  quantity: "35",
+  unit: "pcs",
+  category: "protein"
+)
+egg_ing.photos.attach(io: egg, filename: "chicken.png", content_type: "image/png")
+egg_ing.save
+puts "I just created ingredient nr #{egg_ing.id}"
 
 oil = URI.open("https://post.healthline.com/wp-content/uploads/2020/08/corn-oil-732x549-thumbnail-732x549.jpg")
 oil_ing = Ingredient.new(
@@ -214,7 +236,8 @@ cotidiana_salad = MenuItem.new(
   spiciness: "0",
   cooking_time: "10",
   price_cents: "690",
-  menu_item_type: "starter"
+  menu_item_type: "starter",
+  vegetarian: true
 )
 cotidiana_salad.photos.attach(io: cotidiana, filename: "cotidiana.png", content_type: "image/png")
 cotidiana_salad.save
@@ -255,6 +278,8 @@ carpaccio_salad = MenuItem.new(
 carpaccio_salad.photos.attach(io: carpaccio, filename: "carpaccio.png", content_type: "image/png")
 carpaccio_salad.save
 puts "I just created menu item nr #{carpaccio_salad.id}"
+
+recipe = Recipe.create(menu_item: cotidiana_salad, ingredient: salad_ing, quantity: 0.2)
 
 caprese = URI.open("https://thumb.tildacdn.com/tild6239-6132-4532-b961-626565393636/-/format/webp/photo.jpg")
 caprese_salad = MenuItem.new(
@@ -320,7 +345,8 @@ salmon_soup = MenuItem.new(
   spiciness: "0",
   cooking_time: "10",
   price_cents: "550",
-  menu_item_type: "soup"
+  menu_item_type: "soup",
+  signature_dish: true
 )
 salmon_soup.photos.attach(io: salmon_s, filename: "salmon_soup.png", content_type: "image/png")
 salmon_soup.save
@@ -387,7 +413,8 @@ ossobuco_dish = MenuItem.new(
   spiciness: "0",
   cooking_time: "35",
   price_cents: "1550",
-  menu_item_type: "main dish"
+  menu_item_type: "main dish",
+  signature_dish: true
 )
 ossobuco_dish.photos.attach(io: ossobuco, filename: "ossobuco_dish.png", content_type: "image/png")
 ossobuco_dish.save
@@ -400,7 +427,8 @@ lingua_dish = MenuItem.new(
   spiciness: "0",
   cooking_time: "20",
   price_cents: "1450",
-  menu_item_type: "main dish"
+  menu_item_type: "main dish",
+  signature_dish: true
 )
 lingua_dish.photos.attach(io: lingua, filename: "lingua_dish.png", content_type: "image/png")
 lingua_dish.save
@@ -439,7 +467,8 @@ broccoli_dish = MenuItem.new(
   spiciness: "0",
   cooking_time: "10",
   price_cents: "750",
-  menu_item_type: "side"
+  menu_item_type: "side",
+  vegetarian: true
 )
 broccoli_dish.photos.attach(io: broccoli, filename: "broccoli_dish.png", content_type: "image/png")
 broccoli_dish.save
@@ -452,7 +481,8 @@ chickpea_dish = MenuItem.new(
   spiciness: "2",
   cooking_time: "7",
   price_cents: "650",
-  menu_item_type: "side"
+  menu_item_type: "side",
+  vegetarian: true
 )
 chickpea_dish.photos.attach(io: chickpea, filename: "chickpea_dish.png", content_type: "image/png")
 chickpea_dish.save
@@ -465,7 +495,8 @@ brownie_dish = MenuItem.new(
   spiciness: "0",
   cooking_time: "10",
   price_cents: "650",
-  menu_item_type: "dessert"
+  menu_item_type: "dessert",
+  vegetarian: true
 )
 brownie_dish.photos.attach(io: brownie, filename: "brownie_dish.png", content_type: "image/png")
 brownie_dish.save
@@ -478,7 +509,8 @@ tiramisu_dish = MenuItem.new(
   spiciness: "0",
   cooking_time: "7",
   price_cents: "650",
-  menu_item_type: "dessert"
+  menu_item_type: "dessert",
+  signature_dish: true
 )
 tiramisu_dish.photos.attach(io: tiramisu, filename: "tiramisu_dish.png", content_type: "image/png")
 tiramisu_dish.save
@@ -491,7 +523,8 @@ gelato_dish = MenuItem.new(
   spiciness: "0",
   cooking_time: "5",
   price_cents: "550",
-  menu_item_type: "dessert"
+  menu_item_type: "dessert",
+  vegetarian: true
 )
 gelato_dish.photos.attach(io: gelato, filename: "gelato_dish.png", content_type: "image/png")
 gelato_dish.save

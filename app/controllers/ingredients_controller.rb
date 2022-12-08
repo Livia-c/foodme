@@ -12,7 +12,7 @@ class IngredientsController < ApplicationController
       end
       @ingredients = Ingredient.search_by_name_and_category(@search)
     else
-      @ingredients = Ingredient.all.order(:category).reverse
+      @ingredients = Ingredient.all.order(category: :desc, created_at: :asc)
       # @ingredient_vegetables = Ingredient.where(category: "vegetable").order(:created_at)
       # @ingredient_fruits = Ingredient.where(category: "fruit").order(:created_at)
       # @ingredient_carbohydrates = Ingredient.where(category: "carbohydrate").order(:created_at)

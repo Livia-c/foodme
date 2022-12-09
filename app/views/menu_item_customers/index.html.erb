@@ -10,7 +10,7 @@
     </div>
   <% end %>
 </div>
-<div class="container">
+<div class="container" data-controller="checkout">
   <div class="customer-menu-card-container">
     <% MenuItem::CATEGORY.each do |menu_category| %>
     <div class="customer-menu-card-category" id="<%= "#{menu_category.gsub(/\s+/, "")}" %>" >
@@ -21,25 +21,8 @@
     </div>
     <% end %>
   </div>
+<div data-checkout-target="btn">
+  <% render "checkout_btn", current_order: @current_order %>
+</div>
 
-  <%# <%= @current_order.order_items.pluck(:quantity).sum %>
-  <%unless !@current_order || @current_order.order_items.pluck(:quantity).sum == 0 %>
-  <%# invoice_payment = '%.2f' % (@current_order.sub_total/100.0) %>
-    <%= link_to order_path(@current_order), class: 'btn btn-primary m-4 checkout-btn' do  %>
-      <div class="checkout-text">
-        <div class="checkout-quantity">
-          <p><%= @current_order.order_items.pluck(:quantity).sum %><p>
-        </div>
-        <%= "Go to checkout" %>
-      </div>
-      <div class="checkout-price">
-        <% invoice_payment = '%.2f' % (@current_order.sub_total/100.0) %>
-        <%= number_to_currency(invoice_payment, options = {precision: 2, unit: "€"}) %>
-      </div>
-    <% end %>
-    <div class="empty-space"></div>
-    <% end %>
 </div
-
-    <%#= link_to "(#{@current_order.order_items.pluck(:quantity).sum}) Go to checkout  #{number_to_currency(invoice_payment, options = {precision: 2, unit: "€"})}",
-              order_path(@current_order), class: 'btn btn-primary m-4 checkout-btn' %>

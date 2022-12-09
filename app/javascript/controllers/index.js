@@ -4,6 +4,9 @@
 
 import { application } from "./application"
 
+import CheckoutController from "./checkout_controller"
+application.register("checkout", CheckoutController)
+
 import DeleteFromListController from "./delete_from_list_controller"
 application.register("delete-from-list", DeleteFromListController)
 

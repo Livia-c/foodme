@@ -65,7 +65,7 @@
           </div>
           <% if menu_item.available? %>
             <% if user_signed_in? %>
-              <%= link_to "Add To Cart", order_items_path(menu_item_id: menu_item.id), data: {turbo_method: :post}, class: "btn btn-primary" %>
+              <%= link_to "Add To Cart", order_items_path(menu_item_id: menu_item.id), data: {turbo_method: :post, action: "click->checkout#add"}, token: form_authenticity_token,  class: "btn btn-primary" %>
             <% else %>
               <%=  link_to "Add To Cart", order_items_path(menu_item_id: menu_item.id), method: :post, class: "btn btn-primary "%>
             <% end %>

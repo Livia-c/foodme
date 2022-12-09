@@ -52,7 +52,10 @@ class OrderItemsController < ApplicationController
     end
     # Save and redirect to cart show path
     @order_item.save
-    redirect_to menu_item_customers_path
+    respond_to do |format|
+      format.html { redirect_to menu_item_customers_path }
+      format.json #
+    end
   end
 
   # def update

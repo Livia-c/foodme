@@ -4,7 +4,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 23vh;
+    height: 200px;
     cursor: pointer;
     overflow: hidden;
     background-color: white;
@@ -66,5 +66,5 @@
 
 .warning-text {
   color: $terracotta;
-  font-weight: 500;
+  font-weight: bold;
 }

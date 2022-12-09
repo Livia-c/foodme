@@ -550,6 +550,16 @@ michele.save!
 puts "I just created an admin user nr #{michele.id}"
 puts "Use admin@restaurant.com and 123456 to log in"
 
+puts "Creating an user admin to log in"
+daniele = User.new(
+  email: "daniele@la-trattoria.com",
+  password: "Lewagon2022",
+  restaurant_user: true
+)
+daniele.save!
+puts "I just created an admin user nr #{daniele.id}"
+puts "Use daniele@restaurant.com and 123456 to log in"
+
 puts "Creating a guest account to log in"
 user2 = User.new(
   email: "ana@mail.com",
@@ -562,7 +572,7 @@ puts "Use ana@mail.com and 123456 to log in as guest"
 
 puts "Creating a guest account to log in"
 omran = User.new(
-  email: "omran@gmail.com",
+  email: "omran@lewagon.com",
   password: "Lewagon2022",
   restaurant_user: false
 )
